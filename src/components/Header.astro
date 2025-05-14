@@ -2,33 +2,47 @@
 import RotaryD4240Logo from "./rotary-d4240-logo.astro";
 
 const mainMenu = [
-  { text: "Noticias", url: "/noticias" },
-  { text: "Año escolar", url: "/rye/ltep" },
-  { text: "Vacaciones", url: "/rye/step" },
-  { text: "Campamentos", url: "/rye/campamentos" },
-  { text: "Pasantías", url: "/ngse" },
-];
-
-const allPages = [
-  { text: "Home", url: "/" },
-  { text: "Features", url: "/features" },
-  { text: "Pricing", url: "/pricing" },
-  { text: "FAQ", url: "/faqs" },
-  { text: "Changelog", url: "/changelog" },
-  { text: "Integrations", url: "/integrations" },
-  { text: "Blog", url: "/blog" },
-  { text: "Case Studies", url: "/case-study" },
-  { text: "About Us", url: "/company" },
-  { text: "Careers", url: "/career" },
-  { text: "Contact", url: "/contact" },
-  { text: "Reviews", url: "/reviews" },
-  { text: "Privacy Policy", url: "/privacy-policy" },
-  { text: "Terms of Service", url: "/terms-conditions" },
-  { text: "404 Page", url: "/404" },
-  { text: "Contacto", url: "/contacto" },
   { text: "Distrito 4240", url: "https://rotaryd4240.org" },
-  { text: "Política de Privacidad", url: "/privacidad" },
-  { text: "Términos de Servicio", url: "/terminos" }
+  {
+    text: "Programas",
+    children: [
+      { text: "Año escolar", url: "/programas/rye-ltep" },
+      { text: "Vacaciones", url: "/programas/rye-step" },
+      { text: "Campamentos", url: "/programas/rye-camps" },
+      { text: "Pasantías", url: "/programas/ngse" },
+    ],
+  },
+  {
+    text: "Voluntarios",
+    children: [
+      { text: "Familias anfitrionas", url: "/voluntarios/familias" },
+      { text: "Rotarios", url: "/voluntarios/rotarios" },
+      { text: "Profesionales", url: "/voluntarios/profesionales" },
+    ],
+  },
+  { text: "Noticias", url: "/noticias" },
+  { text: "Contacto", url: "/contacto" },
+  { text: "Más", children: [
+    { text: "Home", url: "/" },
+    { text: "Features", url: "/features" },
+    { text: "Pricing", url: "/pricing" },
+    { text: "FAQ", url: "/faqs" },
+    { text: "Changelog", url: "/changelog" },
+    { text: "Integrations", url: "/integrations" },
+    { text: "Blog", url: "/blog" },
+    { text: "Case Studies", url: "/case-study" },
+    { text: "About Us", url: "/company" },
+    { text: "Careers", url: "/career" },
+    { text: "Contact", url: "/contact" },
+    { text: "Reviews", url: "/reviews" },
+    { text: "Privacy Policy", url: "/privacy-policy" },
+    { text: "Terms of Service", url: "/terms-conditions" },
+    { text: "404 Page", url: "/404" },
+    { text: "Contacto", url: "/contacto" },
+    { text: "Distrito 4240", url: "https://rotaryd4240.org" },
+    { text: "Política de Privacidad", url: "/privacidad" },
+    { text: "Términos de Servicio", url: "/terminos" }
+  ] },
 ];
 ---
 <header class="fixed w-full bg-white/90 dark:bg-secondary-950/90 backdrop-blur-xs z-50 py-4 transition-colors duration-300">
@@ -39,44 +53,45 @@ const allPages = [
 
     <nav class="hidden md:flex items-center space-x-8">
       {mainMenu.map(item => (
-        <a href={item.url} class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400 font-medium transition-colors">
-          {item.text}
-        </a>
-      ))}
+        item.children ? (
+          <div x-data="{ open: false }" class="relative">
+            <button
+              @click="open = !open"
+              @click.away="open = false"
+              class="flex items-center text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400 font-medium transition-colors"
+            >
+              {item.text}
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
 
-      <!-- All Pages Dropdown -->
-      <div x-data="{ open: false }" class="relative">
-        <button
-          @click="open = !open"
-          @click.away="open = false"
-          class="flex items-center text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400 font-medium transition-colors"
-        >
-          Más
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-
-        <div
-          x-show="open"
-          x-transition:enter="transition ease-out duration-200"
-          x-transition:enter-start="opacity-0 scale-95"
-          x-transition:enter-end="opacity-100 scale-100"
-          x-transition:leave="transition ease-in duration-150"
-          x-transition:leave-start="opacity-100 scale-100"
-          x-transition:leave-end="opacity-0 scale-95"
-          class="absolute left-0 mt-2 w-56 bg-white dark:bg-secondary-900 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-hidden z-50 max-h-96 overflow-y-auto"
-          x-cloak
-        >
-          <div class="py-2 grid grid-cols-1 gap-1">
-            {allPages.map(page => (
-              <a href={page.url} class="block px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800">
-                {page.text}
-              </a>
-            ))}
+            <div
+              x-show="open"
+              x-transition:enter="transition ease-out duration-200"
+              x-transition:enter-start="opacity-0 scale-95"
+              x-transition:enter-end="opacity-100 scale-100"
+              x-transition:leave="transition ease-in duration-150"
+              x-transition:leave-start="opacity-100 scale-100"
+              x-transition:leave-end="opacity-0 scale-95"
+              class="absolute left-0 mt-2 w-56 bg-white dark:bg-secondary-900 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-hidden z-50"
+              x-cloak
+            >
+              <div class="py-2 grid grid-cols-1 gap-1">
+                {item.children.map(child => (
+                  <a href={child.url} class="block px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800">
+                    {child.text}
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        ) : (
+          <a href={item.url} class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400 font-medium transition-colors">
+            {item.text}
+          </a>
+        )
+      ))}
     </nav>
 
     <div class="flex items-center space-x-4">
@@ -96,7 +111,7 @@ const allPages = [
       <a href="#signup" class="hidden sm:inline-flex btn-primary">Aplica Ahora</a>
 
       <!-- Mobile Menu Button and Dropdown -->
-      <div x-data="{ open: false, showAllPages: false }">
+      <div x-data="{ open: false, subMenus: {} }">
         <button
           @click="open = !open"
           class="md:hidden p-2 rounded-md text-secondary-600 hover:text-secondary-900 dark:text-secondary-300 dark:hover:text-white focus:outline-hidden focus:ring-2 focus:ring-primary-500"
@@ -121,33 +136,39 @@ const allPages = [
           class="absolute top-16 right-4 w-48 py-2 bg-white dark:bg-secondary-900 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-hidden"
           x-cloak
         >
-          {mainMenu.map(item => (
-            <a href={item.url} class="block px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800">
-              {item.text}
-            </a>
-          ))}
-
-          <!-- Mobile All Pages Dropdown -->
-          <button
-            @click="showAllPages = !showAllPages"
-            class="w-full text-left px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800 font-semibold border-t border-gray-200 dark:border-gray-700 mt-1 pt-1 flex items-center justify-between"
-          >
-            Más
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" :class="{ 'transform rotate-180': showAllPages }">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-
-          <div
-            x-show="showAllPages"
-            class="py-1 bg-gray-50 dark:bg-secondary-800"
-          >
-            {allPages.map(page => (
-              <a href={page.url} class="block px-6 py-1 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-700">
-                {page.text}
+          {mainMenu.map((item, index) => (
+            item.children ? (
+              <>
+                <button
+                  @click={`subMenus.menu${index} = !subMenus.menu${index}`}
+                  class="w-full text-left px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800 font-medium flex items-center justify-between"
+                >
+                  {item.text}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4 transition-transform"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    :class={`{ 'transform rotate-180': subMenus.menu${index} }`}
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div x-show={`subMenus.menu${index}`} class="py-1 bg-gray-50 dark:bg-secondary-800">
+                  {item.children.map(child => (
+                    <a href={child.url} class="block px-6 py-1 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-700">
+                      {child.text}
+                    </a>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <a href={item.url} class="block px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800">
+                {item.text}
               </a>
-            ))}
-          </div>
+            )
+          ))}
         </div>
       </div>
     </div>
