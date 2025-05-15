@@ -1,0 +1,161 @@
+---
+import InfoLayout from '../../layouts/InfoLayout.astro';
+
+const faqList = [
+  {
+    question: "¿Qué formación se requiere para ser voluntario?",
+    answer: "Proporcionamos capacitación completa para todos los voluntarios. Incluye sesiones sobre protección juvenil, gestión de crisis, procedimientos del programa y habilidades específicas según el rol. No se requiere experiencia previa, solo compromiso y disposición para aprender."
+  },
+  {
+    question: "¿Cuál es el tiempo estimado de dedicación?",
+    answer: "Varía según el rol. Algunos cargos requieren 2-3 horas semanales, mientras que roles de coordinación pueden necesitar 5-8 horas. La carga de trabajo suele concentrarse en momentos específicos del ciclo del programa (selección, orientación, etc)."
+  },
+  {
+    question: "¿Puedo participar aunque mi club no esté activo en el programa?",
+    answer: "¡Absolutamente! Muchos de nuestros voluntarios más valiosos provienen de clubes que no participan activamente. Tu experiencia y compromiso son lo más importante, y tu participación puede incluso motivar a tu club a involucrarse más adelante."
+  }
+];
+
+const roles = [
+  {
+    title: "Coordinación nacional",
+    description: "Liderar el programa en tu país, coordinando con clubes y el distrito."
+  },
+  {
+    title: "Comité de selección",
+    description: "Evaluar y entrevistar a candidatos potenciales para el programa."
+  },
+  {
+    title: "Promoción y alianzas",
+    description: "Establecer contactos con colegios y promover el programa."
+  },
+  {
+    title: "Consejeros y tutores",
+    description: "Acompañar a los jóvenes durante su proceso de intercambio."
+  },
+  {
+    title: "Oficial de Protección Juvenil",
+    description: "Garantizar el cumplimiento de las políticas de protección a menores."
+  },
+  {
+    title: "Relaciones internacionales",
+    description: "Coordinar con distritos en el extranjero para establecer intercambios."
+  },
+  {
+    title: "Tesorería y administración",
+    description: "Gestionar aspectos financieros y administrativos del programa."
+  }
+];
+---
+
+<InfoLayout title="Rotarios en acción: lidera el cambio en tu país">
+  <section class="py-16">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto mb-16">
+        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+          Buscamos rotarios comprometidos, entusiastas y con visión internacional para liderar y fortalecer el Programa de Intercambio de Jóvenes en su país. No necesitas experiencia previa, solo ganas de aprender, servir y transformar vidas.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+            <span class="inline-block rounded-full bg-primary-100 dark:bg-primary-900 p-2 mr-3">
+              <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+              </svg>
+            </span>
+            Roles donde puedes participar
+          </h2>
+
+          <div class="grid grid-cols-1 gap-4 mb-10">
+            {roles.map((role) => (
+              <div class="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-700 transition-colors duration-300">
+                <h3 class="font-semibold text-gray-900 dark:text-white mb-1">{role.title}</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">{role.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8 border border-gray-100 dark:border-gray-700">
+            <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Preguntas frecuentes</h2>
+
+            <div class="space-y-6">
+              {faqList.map((faq) => (
+                <div class="border-b border-gray-200 dark:border-gray-700 pb-6 last:border-0 last:pb-0">
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">{faq.question}</h3>
+                  <p class="text-gray-600 dark:text-gray-300">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/10 dark:to-secondary-900/10 rounded-lg p-8 mb-8 border border-gray-100 dark:border-gray-800/20">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Integrantes actuales</h3>
+
+            <div class="mb-8">
+              <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 mr-2 text-xs font-bold">CR</span>
+                Costa Rica
+              </h4>
+              <ul class="pl-8 space-y-2 list-disc text-gray-600 dark:text-gray-300">
+                <li>María González - Coordinación Nacional</li>
+                <li>Carlos Ramírez - Oficial de Protección Juvenil</li>
+                <li><span class="text-primary-600 dark:text-primary-400 font-medium">¡Vacante! - </span>Relaciones Internacionales</li>
+              </ul>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 mr-2 text-xs font-bold">PA</span>
+                Panamá
+              </h4>
+              <ul class="pl-8 space-y-2 list-disc text-gray-600 dark:text-gray-300">
+                <li>Roberto Díaz - Coordinación Nacional</li>
+                <li><span class="text-primary-600 dark:text-primary-400 font-medium">¡Vacante! - </span>Oficial de Protección Juvenil</li>
+                <li><span class="text-primary-600 dark:text-primary-400 font-medium">¡Vacante! - </span>Comité de Selección</li>
+              </ul>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 mr-2 text-xs font-bold">SV</span>
+                El Salvador
+              </h4>
+              <ul class="pl-8 space-y-2 list-disc text-gray-600 dark:text-gray-300">
+                <li><span class="text-primary-600 dark:text-primary-400 font-medium">¡Vacante! - </span>Coordinación Nacional</li>
+                <li>Ana Martínez - Tesorería</li>
+                <li>José Pérez - Promoción y Alianzas</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 mr-2 text-xs font-bold">NI</span>
+                Nicaragua
+              </h4>
+              <ul class="pl-8 space-y-2 list-disc text-gray-600 dark:text-gray-300">
+                <li>Laura Mejía - Coordinación Nacional</li>
+                <li><span class="text-primary-600 dark:text-primary-400 font-medium">¡Vacante! - </span>Tesorería</li>
+                <li><span class="text-primary-600 dark:text-primary-400 font-medium">¡Vacante! - </span>Comité de Selección</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-secondary-50 dark:bg-secondary-900/20 p-8 rounded-lg border border-secondary-100 dark:border-secondary-800/20 text-center">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">¿Te apasiona el intercambio juvenil?</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">Tu experiencia y entusiasmo pueden transformar la vida de jóvenes en nuestra región.</p>
+            <a href="/contacto" class="btn btn-primary inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
+              </svg>
+              Quiero ser voluntario/a
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</InfoLayout>

@@ -1,0 +1,144 @@
+---
+import InfoLayout from '../../layouts/InfoLayout.astro';
+
+const faqList = [
+  {
+    question: "¿Qué beneficios tiene para el club participar?",
+    answer: "Al participar en el programa, el club fortalece su imagen, aumenta su visibilidad en la comunidad, atrae potenciales socios jóvenes, crea conexiones internacionales con otros clubes y contribuye directamente al objetivo de Rotary de promover la paz y el entendimiento mundial."
+  },
+  {
+    question: "¿Podemos participar aunque no tengamos jóvenes interesados?",
+    answer: "¡Absolutamente! Un club puede apoyar el programa aunque no tenga candidatos propios. Puede colaborar en la estructura distrital, apoyar en la promoción o participar en los procesos de selección y orientación de jóvenes de otros clubes."
+  },
+  {
+    question: "¿Quién capacita al Oficial de Intercambio?",
+    answer: "El Comité Distrital de Intercambio de Jóvenes proporciona la capacitación, apoyo y recursos necesarios para los Oficiales de Intercambio. Realizamos sesiones de formación periódicas y contamos con materiales específicos para guiar su labor."
+  }
+];
+---
+
+<InfoLayout title="Tu club puede cambiar vidas">
+  <section class="py-16">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto mb-16">
+        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+          El Programa de Intercambio de Jóvenes es una de las iniciativas más transformadoras de Rotary. Tu club puede ayudar a que jóvenes de nuestra región vivan una experiencia internacional inolvidable, siendo embajadores de la paz y el entendimiento global.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <div class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+              <span class="inline-block rounded-full bg-primary-100 dark:bg-primary-900 p-2 mr-3">
+                <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </span>
+              Cómo puede participar un club
+            </h2>
+
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mr-3 mt-1">
+                  <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="text-gray-600 dark:text-gray-300">Unirse a la Asociación Nacional de Intercambio de su país y pagar la cuota anual.</span>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mr-3 mt-1">
+                  <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="text-gray-600 dark:text-gray-300">Nombrar un Oficial de Intercambio de Jóvenes (YEO).</span>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mr-3 mt-1">
+                  <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="text-gray-600 dark:text-gray-300">Promover el programa en colegios e Interact.</span>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mr-3 mt-1">
+                  <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="text-gray-600 dark:text-gray-300">Postular jóvenes para participar.</span>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mr-3 mt-1">
+                  <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="text-gray-600 dark:text-gray-300">Postular cargos para la directiva de la Asociación.</span>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mr-3 mt-1">
+                  <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="text-gray-600 dark:text-gray-300">Acompañar el proceso de entrevistas, orientación y preparación.</span>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mr-3 mt-1">
+                  <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="text-gray-600 dark:text-gray-300">Recibir estudiantes del exterior (en fases futuras del programa).</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-primary-50 dark:bg-primary-900/20 p-6 rounded-lg border border-primary-100 dark:border-primary-800/20 mb-8">
+            <div class="flex items-start">
+              <div class="mr-4 mt-1">
+                <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium text-primary-700 dark:text-primary-300 mb-2">Importante:</p>
+                <p class="text-gray-600 dark:text-gray-300">El único costo para el club es la cuota anual. Todos los demás gastos son cubiertos por las familias participantes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8 border border-gray-100 dark:border-gray-700 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Preguntas frecuentes</h2>
+
+            <div class="space-y-6">
+              {faqList.map((faq) => (
+                <div class="border-b border-gray-200 dark:border-gray-700 pb-6 last:border-0 last:pb-0">
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">{faq.question}</h3>
+                  <p class="text-gray-600 dark:text-gray-300">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="bg-secondary-50 dark:bg-secondary-900/20 p-8 rounded-lg border border-secondary-100 dark:border-secondary-800/20 text-center">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">¿Quieres sumar a tu club?</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">Estamos aquí para guiarte en cada paso del proceso.</p>
+            <a href="/contacto" class="btn btn-primary inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+              </svg>
+              Contáctanos para sumar a tu club
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</InfoLayout>
