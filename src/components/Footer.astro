@@ -1,7 +1,6 @@
 ---
+import FooterCredits from "./FooterCredits.astro";
 import RotaryD4240Logo from "./rotary-d4240-logo.astro";
-
-const currentYear = new Date().getFullYear();
 
 const footerLinks = [
   {
@@ -93,12 +92,12 @@ const footerLinks = [
 
     <div class="border-t border-gray-800 pt-8 mt-8">
       <div class="flex flex-col md:flex-row justify-between items-center">
-        <p class="text-gray-400 text-sm mb-4 md:mb-0">
-          &copy; {currentYear} Rotary Distrito 4240 - Intercambio de Jóvenes. Todos los derechos reservados.
-        </p>
+        <FooterCredits />
+        <!-- TODO: Enable privacy policy
         <div class="flex space-x-6">
           <a href="/privacidad" class="text-gray-400 hover:text-primary-400 text-sm transition-colors">Política de Privacidad</a>
         </div>
+        -->
       </div>
     </div>
   </div>
