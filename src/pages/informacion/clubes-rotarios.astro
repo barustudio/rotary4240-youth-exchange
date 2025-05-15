@@ -15,9 +15,15 @@ const faqList = [
     answer: "El Comité Distrital de Intercambio de Jóvenes proporciona la capacitación, apoyo y recursos necesarios para los Oficiales de Intercambio. Realizamos sesiones de formación periódicas y contamos con materiales específicos para guiar su labor."
   }
 ];
+
+const cta = {
+  title: 'Inicia aquí',
+  link: 'https://forms.gle/h7nKkAK4ww7aWjoX8',
+  target: '_blank' as const,
+};
 ---
 
-<InfoLayout title="Tu club puede cambiar vidas">
+<InfoLayout title="Tu club puede cambiar vidas" cta={cta}>
   <section class="py-16">
     <div class="container-custom">
       <div class="max-w-3xl mx-auto mb-16">
