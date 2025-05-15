@@ -18,11 +18,11 @@ interface Props {
   sponsorClubs?: Array<string>;
   faqs: Array<{ question: string; answer: string }>;
   testimonials?: Array<{ name: string; country: string; content: string; image?: string }>;
-  testimonialContent?: {
+  testimonialContent?: Array<{
     type: 'image' | 'youtube';
     url?: string;
     alt?: string;
-  };
+  }>;
 }
 
 const {
@@ -94,19 +94,20 @@ const {
       <div class="rounded-2xl overflow-hidden bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 h-auto flex flex-col  text-center items-center justify-center shadow-lg p-8 gap-3">
         <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Experiencia Internacional</h3>
         <p class="text-gray-600 dark:text-gray-300">Una oportunidad única para crecer, aprender y desarrollar habilidades globales a través de una inmersión cultural guiada y estructurada.</p>
-        {testimonialContent ? (
-          <>
-            {testimonialContent.type === 'image' && testimonialContent.url && (
+        {testimonialContent && testimonialContent.length > 0 ? (
+          testimonialContent.map(content => (
+          <div class="w-full h-full">
+            {content.type === 'image' && content.url && (
               <img
-                src={testimonialContent.url}
-                alt={testimonialContent.alt || "Testimonio visual del programa"}
+                src={content.url}
+                alt={content.alt || "Testimonio visual del programa"}
                 class="w-full h-full object-cover"
               />
             )}
-            {testimonialContent.type === 'youtube' && testimonialContent.url && (
+            {content.type === 'youtube' && content.url && (
               <div class="aspect-video w-full">
                 <iframe
-                  src={`https://www.youtube.com/embed/${testimonialContent.url.includes('youtu.be') ? testimonialContent.url.split('/').at(-1) : testimonialContent.url}`}
+                  src={`https://www.youtube.com/embed/${content.url.includes('youtu.be') ? content.url.split('/').at(-1) : content.url}`}
                   title="YouTube video testimonial"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
@@ -114,7 +115,8 @@ const {
                 ></iframe>
               </div>
             )}
-          </>
+          </div>
+          ))
         ) : (
           <div class="p-8 text-center w-full">
             <svg class="w-20 h-20 mx-auto mb-6 text-primary-500 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
