@@ -2,6 +2,9 @@
 import ProgramLayout from '../../layouts/ProgramLayout.astro';
 import ProgramContent from '../../components/ProgramContent.astro';
 import ryeLogo from '../../assets/images/logo-rye.png';
+import ryeCampsTestimonial1 from '../../assets/images/rye-camp-1.jpg';
+import ryeCampsTestimonial2 from '../../assets/images/rye-camp-2.jpg';
+import ryeCampsTestimonial3 from '../../assets/images/rye-camp-3.jpg';
 
 const programInfo = {
   title: "Campamentos",
@@ -147,14 +150,19 @@ const programInfo = {
   ],
   testimonialContent: [
     {
-      type: 'youtube' as const,
-      url: 'https://youtu.be/HId-3_0jleo',
-      alt: 'Desde Panamá hasta Brasil: la experiencia RYE de Sohannys en Rio Grande do Sul 🇵🇦🇧🇷'
+      type: 'image' as const,
+      image: ryeCampsTestimonial1,
+      alt: 'Jóvenes de Chitré rumbo a una aventura en Egipto 🇵🇦🇪🇬'
     },
     {
-      type: 'youtube' as const,
-      url: 'https://youtu.be/9SCQCgSyi6s',
-      alt: ' Un año en Alemania: la experiencia RYE de Anayansi 🇵🇦🇩🇪'
+      type: 'image' as const,
+      image: ryeCampsTestimonial2,
+      alt: 'Paseo en camello por el desierto 🇵🇦🇪🇬'
+    },
+    {
+      type: 'image' as const,
+      image: ryeCampsTestimonial3,
+      alt: 'Descubriendo Taiwán 🇹🇼'
     }
   ]
 };
