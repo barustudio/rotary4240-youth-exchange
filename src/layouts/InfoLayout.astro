@@ -3,12 +3,26 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import Layout from './Layout.astro';
 
-export interface Props {
+interface CTA {
   title: string;
-  subtitle?: string;
+  link: string;
+  target?: '_blank' | '_self';
 }
 
-const { title, subtitle } = Astro.props;
+interface Props {
+  title: string;
+  subtitle?: string;
+  cta?: CTA;
+}
+
+const { title, subtitle, cta } = Astro.props;
+
+const ctaWithDefaults = {
+  title: 'Contactar ahora',
+  link: '/contacto',
+  target: '_self',
+  ...cta,
+};
 ---
 
 <Layout title={title}>
@@ -35,7 +49,13 @@ const { title, subtitle } = Astro.props;
           ¿Listo para formar parte del programa de intercambio?
         </h2>
         <div class="flex flex-wrap gap-4 justify-center">
-          <a href="/contacto" class="btn btn-primary">Contactar ahora</a>
+          <a
+            href={ctaWithDefaults.link}
+            target={ctaWithDefaults.target}
+            class="btn btn-primary"
+          >
+            {ctaWithDefaults.title}
+          </a>
           <a href="/#programas" class="btn btn-outline-secondary">Ver programas</a>
         </div>
       </div>

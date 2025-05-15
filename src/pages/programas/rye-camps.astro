@@ -62,20 +62,29 @@ const programInfo = {
   countryExamples: [
     {
       country: "Europa",
-      details: "Campamentos de verano temáticos: deportes de invierno en los Alpes, música en Austria, arte en Italia, vela en países nórdicos."
+      details: "Cultura gastronómica en Francia, navegación en la costa catalana, aventura de montaña en Suiza, actividades náuticas en Dinamarca, etc."
+    },
+    {
+      country: "Asia",
+      details: "Ciencia y tecnología de semiconductores de Taiwán, cocina tradicional y excursiones en Turquía, etc."
     },
     {
       country: "América del Norte",
-      details: "Campamentos de liderazgo y servicio comunitario, intercambios culturales combinados con actividades al aire libre."
+      details: "Campamentos de aventura y naturaleza en Canadá y Estados Unidos, exploraciones culturales en California, etc."
+    },
+    {
+      country: "América del Sur",
+      details: "Experiencia en la Amazonía brasileña."
     }
   ],
 
   costs: [
-    "Cuota de participación del campamento (variable, $300-800)",
-    "Pasaje aéreo internacional",
-    "Seguro médico de viaje",
+    "Cuota administrativa de 200.00 USD",
+    "Cuota de participación del campamento (variable, 100-2500 USD)",
+    "Pasaje aéreo",
+    "Seguro médico (determinado por los organizadores del campamento)",
+    "Trámites de visa (si aplica, generalmente el programa se realiza con visa de turista)",
     "Dinero para gastos personales y souvenirs",
-    "Equipo específico necesario según el tema del campamento"
   ],
 
   rotaryProvides: [
@@ -109,12 +118,6 @@ const programInfo = {
       date: "Octubre-Noviembre",
       description: "Anuncio de campamentos disponibles para invierno"
     }
-  ],
-
-  sponsorClubs: [
-    "Club Rotario Panamá Norte",
-    "Club Rotario Panamá Sur",
-    "Consulta tu club Rotario local para más información"
   ],
 
   faqs: [
@@ -192,7 +195,6 @@ const programInfo = {
     applicationSteps={programInfo.applicationSteps}
     applicationFormLink={programInfo.applicationFormLink}
     importantDates={programInfo.importantDates}
-    sponsorClubs={programInfo.sponsorClubs}
     faqs={programInfo.faqs}
     testimonials={programInfo.testimonials}
     testimonialContent={programInfo.testimonialContent}

@@ -46,9 +46,15 @@ const roles = [
     description: "Gestionar aspectos financieros y administrativos del programa."
   }
 ];
+
+const cta = {
+  title: 'Inicia aquí',
+  link: 'https://forms.gle/h7nKkAK4ww7aWjoX8',
+  target: '_blank' as const,
+};
 ---
 
-<InfoLayout title="Rotarios en acción: lidera el cambio en tu país">
+<InfoLayout title="Rotarios en acción: lidera el cambio en tu país" cta={cta}>
   <section class="py-16">
     <div class="container-custom">
       <div class="max-w-3xl mx-auto mb-16">

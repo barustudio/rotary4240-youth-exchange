@@ -1,5 +1,5 @@
 ---
-import RotaryD4240Logo from "./rotary-d4240-logo.astro";
+import MainLogo from "./MainLogo.astro";
 
 const mainMenu = [
   {
@@ -68,7 +68,7 @@ const mainMenu = [
 <header class="fixed w-full bg-white/90 dark:bg-secondary-950/90 backdrop-blur-xs z-50 py-4 transition-colors duration-300">
   <div class="container-custom flex items-center justify-between">
     <a href="/" class="flex items-center" aria-label="Ir a la página principal">
-      <RotaryD4240Logo class="w-48" />
+      <MainLogo class="w-64 md:w-96 mr-12" />
     </a>
 
     <nav class="hidden md:flex items-center space-x-8">
@@ -117,7 +117,7 @@ const mainMenu = [
     <div class="flex items-center space-x-4">
       <button
         x-on:click="darkMode = !darkMode"
-        class="p-2 rounded-full text-secondary-500 hover:text-secondary-700 dark:text-secondary-400 dark:hover:text-secondary-200 focus:outline-hidden focus:ring-2 focus:ring-primary-500"
+        class="mx-4 p-2 rounded-full text-secondary-500 hover:text-secondary-700 dark:text-secondary-400 dark:hover:text-secondary-200 focus:outline-hidden focus:ring-2 focus:ring-primary-500"
         aria-label="Toggle dark mode"
       >
         <svg x-show="!darkMode" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
