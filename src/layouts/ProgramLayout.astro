@@ -9,9 +9,10 @@ interface Props {
   duration: string;
   programCode: string;
   logo: ImageMetadata;
+  applicationFormLink: string;
 }
 
-const { title, age, duration, programCode, logo } = Astro.props;
+const { title, age, duration, programCode, logo, applicationFormLink } = Astro.props;
 ---
 
 <Layout title={title}>
@@ -57,12 +58,19 @@ const { title, age, duration, programCode, logo } = Astro.props;
     <section id="aplicar" class="py-20 bg-primary-50 dark:bg-primary-900/10">
       <div class="container-custom text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
-          ¿Listo para vivir esta experiencia única con Rotary?
+          ¿Listo para vivir esta experiencia?
         </h2>
         <div class="flex flex-wrap gap-4 justify-center">
-          <a href="/contacto" class="btn btn-primary">Aplicar ahora</a>
-          <a href="/clubes" class="btn btn-outline-primary">Contactar un club</a>
-          <a href="/#programas" class="btn btn-outline-secondary">Ver otros programas</a>
+          <a
+            href={applicationFormLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
+          >
+            Aplica Hoy Mismo
+          </a>
+          <a href="/contacto" class="btn btn-outline-primary">¿Tienes preguntas?</a>
+          <a href="/programas" class="btn btn-outline-secondary">Ver otros programas</a>
         </div>
       </div>
     </section>
