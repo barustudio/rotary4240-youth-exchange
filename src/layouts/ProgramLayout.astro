@@ -1,0 +1,80 @@
+---
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+  age: string;
+  duration: string;
+  programCode: string;
+  logo: ImageMetadata;
+  applicationFormLink: string;
+}
+
+const { title, age, duration, programCode, logo, applicationFormLink } = Astro.props;
+---
+
+<Layout title={title}>
+  <Header />
+
+  <main class="pt-24">
+    <!-- 1. Hero del programa -->
+    <section class="py-20">
+      <div class="container-custom">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="flex flex-col gap-6">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">{title}</h1>
+            <div class="flex flex-wrap gap-4 my-6 text-gray-600 dark:text-white">
+              <span class="badge bg-primary-100 dark:bg-secondary-500 px-3">
+                Edad: {age} años
+              </span>
+              <span class="badge bg-primary-100 dark:bg-secondary-500 px-3">
+                Duración: {duration}
+              </span>
+              <span class="badge bg-primary-100 dark:bg-secondary-500 px-3">
+                [{programCode}]
+              </span>
+            </div>
+            <a href="#aplicar" class="btn btn-primary mt-6 w-fit">Quiero participar</a>
+          </div>
+          <div class="flex justify-center">
+            <div class="w-64 h-64 overflow-hidden">
+              <img
+                  src={logo.src}
+                  alt={`Logo de ${title}`}
+                  class="w-full h-full object-contain p-4"
+                />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contenido principal -->
+    <slot />
+
+    <!-- Call to Action Final -->
+    <section id="aplicar" class="py-20 bg-primary-50 dark:bg-primary-900/10">
+      <div class="container-custom text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
+          ¿Listo para vivir esta experiencia?
+        </h2>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a
+            href={applicationFormLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
+          >
+            Aplica Hoy Mismo
+          </a>
+          <a href="/contacto" class="btn btn-outline-primary">¿Tienes preguntas?</a>
+          <a href="/#programas" class="btn btn-outline-secondary">Ver otros programas</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

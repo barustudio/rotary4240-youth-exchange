@@ -1,0 +1,168 @@
+---
+import InfoLayout from '../../layouts/InfoLayout.astro';
+
+const faqList = [
+  {
+    question: "¿Puedo participar si soy madre/padre soltero?",
+    answer: "¡Por supuesto! Valoramos la diversidad de estructuras familiares. Familias monoparentales, parejas sin hijos, familias con hijos adultos o familias con niños pequeños pueden ser excelentes anfitriones. Lo importante es ofrecer un ambiente seguro y acogedor."
+  },
+  {
+    question: "¿Qué tipo de apoyo recibimos de Rotary?",
+    answer: "Rotary proporciona capacitación completa, consejeros dedicados, una red de apoyo de otras familias anfitrionas, actividades grupales regulares, y asistencia en caso de emergencias. Nunca estarán solos en esta experiencia."
+  },
+  {
+    question: "¿Qué responsabilidades tenemos como familia anfitriona?",
+    answer: "Sus principales responsabilidades son proporcionar alojamiento, alimentación, incluir al estudiante en actividades familiares y ofrecer un ambiente seguro y acogedor. También deberán asistir a algunas sesiones de orientación y mantener comunicación regular con el consejero del estudiante."
+  }
+];
+
+const beneficios = [
+  "Experimentar otra cultura sin salir de casa",
+  "Crear lazos familiares internacionales para toda la vida",
+  "Redescubrir tu propia cultura al verla a través de otros ojos",
+  "Desarrollar una perspectiva global en toda la familia",
+  "Contribuir directamente al entendimiento intercultural"
+];
+
+const testimonios = [
+  {
+    cita: "Hospedar a Mia de Alemania transformó nuestra dinámica familiar. Mis hijos ahora tienen una hermana en otro continente y nosotros ganamos una hija más. Es una experiencia que recomiendo a todas las familias.",
+    familia: "Familia Rodríguez - San José, Costa Rica"
+  },
+  {
+    cita: "Al principio teníamos dudas por no hablar inglés perfectamente, pero resultó ser una ventaja: ¡aprendimos juntos! Sarah se esforzó con su español y nosotros practicamos inglés. Una experiencia de aprendizaje mutuo increíble.",
+    familia: "Familia Morales - Ciudad de Panamá"
+  }
+];
+---
+
+<InfoLayout title="Abre tu hogar, abre tu corazón">
+  <section class="py-16">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto mb-16">
+        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+          Ser familia anfitriona es una forma poderosa de hacer del mundo un lugar más unido. No necesitas ser rotario, solo tener el deseo de compartir tu cultura y acoger a un joven como parte de tu hogar.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8 border border-gray-100 dark:border-gray-700 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+              <span class="inline-block rounded-full bg-primary-100 dark:bg-primary-900 p-2 mr-3">
+                <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                </svg>
+              </span>
+              ¿Cómo funciona?
+            </h2>
+
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mr-3 mt-1">
+                  <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="text-gray-600 dark:text-gray-300">Aceptar hospedar a un estudiante por 3 a 5 meses.</span>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mr-3 mt-1">
+                  <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="text-gray-600 dark:text-gray-300">Ofrecer un entorno seguro, afectuoso y estable.</span>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mr-3 mt-1">
+                  <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="text-gray-600 dark:text-gray-300">Participar en actividades con otros jóvenes y familias anfitrionas.</span>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mr-3 mt-1">
+                  <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="text-gray-600 dark:text-gray-300">Integrar al estudiante en la vida familiar como un hijo más.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8 border border-gray-100 dark:border-gray-700">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Preguntas frecuentes</h2>
+
+            <div class="space-y-6">
+              {faqList.map((faq) => (
+                <div class="border-b border-gray-200 dark:border-gray-700 pb-6 last:border-0 last:pb-0">
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">{faq.question}</h3>
+                  <p class="text-gray-600 dark:text-gray-300">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/10 dark:to-secondary-900/10 rounded-lg p-8 mb-8 border border-gray-100 dark:border-gray-800/20">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Beneficios para tu familia</h3>
+
+            <ul class="space-y-4">
+              {beneficios.map((beneficio) => (
+                <li class="flex items-start">
+                  <div class="flex-shrink-0 w-6 h-6 rounded-full bg-secondary-100 dark:bg-secondary-900/30 flex items-center justify-center mr-3 mt-1">
+                    <svg class="w-4 h-4 text-secondary-600 dark:text-secondary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <span class="text-gray-600 dark:text-gray-300">{beneficio}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="mt-8">
+              <img src="/img/familias-anfitrionas.jpg" alt="Familias anfitrionas" class="rounded-lg w-full h-auto" onerror="this.style.display='none'" />
+            </div>
+          </div>
+
+          {testimonios.length > 0 && (
+            <div class="mb-8">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Testimonios</h3>
+
+              <div class="space-y-6">
+                {testimonios.map((testimonio) => (
+                  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border border-gray-100 dark:border-gray-700">
+                    <div class="mb-2">
+                      {[...Array(5)].map(() => (
+                        <svg class="w-5 h-5 inline-block text-warning-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                      ))}
+                    </div>
+                    <blockquote class="mb-3 text-gray-700 dark:text-gray-300 italic">"{testimonio.cita}"</blockquote>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 text-right">{testimonio.familia}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div class="bg-secondary-50 dark:bg-secondary-900/20 p-8 rounded-lg border border-secondary-100 dark:border-secondary-800/20 text-center">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">¿Quieres ser parte de esta experiencia?</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">Dar la bienvenida a un estudiante de intercambio en tu hogar es una de las experiencias más gratificantes que puede vivir una familia.</p>
+            <a href="/contacto" class="btn btn-primary inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+              </svg>
+              Quiero ser familia anfitriona
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</InfoLayout>

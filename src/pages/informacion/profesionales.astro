@@ -1,0 +1,189 @@
+---
+import InfoLayout from '../../layouts/InfoLayout.astro';
+
+const faqList = [
+  {
+    question: "¿Puedo colaborar desde cualquier país?",
+    answer: "¡Sí! Muchos de nuestros profesionales colaboran de forma remota, especialmente en tareas como revisión de documentos, asesoría legal, capacitaciones online y entrevistas virtuales. Para algunas actividades como procesos de selección o talleres presenciales, necesitamos voluntarios en cada país."
+  },
+  {
+    question: "¿Qué tipo de compromiso implica?",
+    answer: "Depende del rol y la disponibilidad. Puede ser desde una colaboración puntual (como realizar entrevistas durante un fin de semana) hasta un apoyo regular (como ser parte del comité de crisis). Creamos un plan de colaboración según tu disponibilidad y expertise."
+  },
+  {
+    question: "¿Recibiré alguna capacitación?",
+    answer: "Absolutamente. Todos los voluntarios reciben capacitación sobre el programa, políticas de protección juvenil y procedimientos específicos relacionados con su área de expertise. Contamos con manuales, guías y mentores para asegurar que te sientas cómodo en tu rol."
+  }
+];
+
+const areas = [
+  {
+    nombre: "Psicólogos/as",
+    tareas: [
+      "Entrevistas de evaluación a candidatos",
+      "Talleres de inteligencia emocional",
+      "Apoyo en situaciones de adaptación",
+      "Asesoría en gestión de crisis"
+    ]
+  },
+  {
+    nombre: "Abogados/as",
+    tareas: [
+      "Asesoría en trámites migratorios",
+      "Revisión de documentos legales",
+      "Consultas sobre seguros y responsabilidad",
+      "Capacitación en aspectos legales del programa"
+    ]
+  },
+  {
+    nombre: "Docentes",
+    tareas: [
+      "Evaluación de nivel de idioma",
+      "Orientación académica",
+      "Preparación intercultural",
+      "Talleres de comunicación"
+    ]
+  },
+  {
+    nombre: "Agentes de viaje",
+    tareas: [
+      "Asesoría en itinerarios",
+      "Gestión de cambios y emergencias",
+      "Orientación sobre documentación de viaje",
+      "Consejos de seguridad en viajes internacionales"
+    ]
+  }
+];
+---
+
+<InfoLayout title="Comparte tu experiencia profesional con impacto internacional">
+  <section class="py-16">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto mb-16">
+        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+          ¿Eres psicólogo, abogado, docente, agente de viajes o profesional en otro ámbito? Puedes apoyar el Programa de Intercambio de Jóvenes brindando tu experiencia y conocimiento en momentos clave del proceso.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+            <span class="inline-block rounded-full bg-primary-100 dark:bg-primary-900 p-2 mr-3">
+              <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </span>
+            ¿Cómo puedes ayudar?
+          </h2>
+
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start">
+              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mr-3 mt-1">
+                <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <span class="text-gray-600 dark:text-gray-300">Realizando entrevistas de selección</span>
+            </li>
+            <li class="flex items-start">
+              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mr-3 mt-1">
+                <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <span class="text-gray-600 dark:text-gray-300">Apoyando temas legales o migratorios</span>
+            </li>
+            <li class="flex items-start">
+              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mr-3 mt-1">
+                <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <span class="text-gray-600 dark:text-gray-300">Ofreciendo talleres o sesiones de orientación</span>
+            </li>
+            <li class="flex items-start">
+              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mr-3 mt-1">
+                <svg class="w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <span class="text-gray-600 dark:text-gray-300">Asesorando en temas de salud mental, seguros o gestión de crisis</span>
+            </li>
+          </ul>
+
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8 border border-gray-100 dark:border-gray-700">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Preguntas frecuentes</h2>
+
+            <div class="space-y-6">
+              {faqList.map((faq) => (
+                <div class="border-b border-gray-200 dark:border-gray-700 pb-6 last:border-0 last:pb-0">
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">{faq.question}</h3>
+                  <p class="text-gray-600 dark:text-gray-300">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/10 dark:to-secondary-900/10 rounded-lg p-8 mb-8 border border-gray-100 dark:border-gray-800/20">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Áreas profesionales</h3>
+
+            <div class="space-y-6">
+              {areas.map((area) => (
+                <div class="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+                  <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                    <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 mr-2 text-xs font-bold">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                    </span>
+                    {area.nombre}
+                  </h4>
+                  <ul class="pl-8 space-y-1 list-disc text-gray-600 dark:text-gray-300 text-sm">
+                    {area.tareas.map((tarea) => (
+                      <li>{tarea}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8 border border-gray-100 dark:border-gray-700 mb-8">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">¿Por qué ser voluntario profesional?</h3>
+            <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+              <li class="flex items-start">
+                <span class="text-primary-600 dark:text-primary-400 mr-2">→</span>
+                <span>Contribuyes al desarrollo de jóvenes mientras compartes tu expertise</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-primary-600 dark:text-primary-400 mr-2">→</span>
+                <span>Amplías tu red profesional internacional</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-primary-600 dark:text-primary-400 mr-2">→</span>
+                <span>Participas en un programa de prestigio mundial</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-primary-600 dark:text-primary-400 mr-2">→</span>
+                <span>Flexibilidad para adaptar tu colaboración a tu disponibilidad</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-secondary-50 dark:bg-secondary-900/20 p-8 rounded-lg border border-secondary-100 dark:border-secondary-800/20 text-center">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">¿Te gustaría colaborar?</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">Tu experiencia profesional puede marcar la diferencia en el éxito de nuestro programa de intercambio.</p>
+            <a href="/contacto" class="btn btn-primary inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+              </svg>
+              Sumarme como profesional voluntario
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</InfoLayout>

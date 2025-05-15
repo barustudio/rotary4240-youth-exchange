@@ -3,41 +3,44 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-primary-50: #f5f3ff;
-  --color-primary-100: #ede9fe;
-  --color-primary-200: #ddd6fe;
-  --color-primary-300: #c4b5fd;
-  --color-primary-400: #a78bfa;
-  --color-primary-500: #8b5cf6;
-  --color-primary-600: #7c3aed;
-  --color-primary-700: #6d28d9;
-  --color-primary-800: #5b21b6;
-  --color-primary-900: #4c1d95;
-  --color-primary-950: #2e1065;
+  /* Rotary Primary - Royal Blue */
+  --color-primary-50: #e6e9f1;
+  --color-primary-100: #ccd3e3;
+  --color-primary-200: #99a6c8;
+  --color-primary-300: #667aac;
+  --color-primary-400: #334d91;
+  --color-primary-500: #002677; /* Rotary Royal Blue */
+  --color-primary-600: #001f61;
+  --color-primary-700: #00184c;
+  --color-primary-800: #001037;
+  --color-primary-900: #000a23;
+  --color-primary-950: #000411;
 
-  --color-secondary-50: #f8fafc;
-  --color-secondary-100: #f1f5f9;
-  --color-secondary-200: #e2e8f0;
-  --color-secondary-300: #cbd5e1;
-  --color-secondary-400: #94a3b8;
-  --color-secondary-500: #64748b;
-  --color-secondary-600: #475569;
-  --color-secondary-700: #334155;
-  --color-secondary-800: #1e293b;
-  --color-secondary-900: #0f172a;
-  --color-secondary-950: #020617;
+  /* Rotary Secondary - Azure */
+  --color-secondary-50: #e0f2fb;
+  --color-secondary-100: #b3e0f7;
+  --color-secondary-200: #80cdf2;
+  --color-secondary-300: #4dbbea;
+  --color-secondary-400: #26ade4;
+  --color-secondary-500: #0077C8; /* Rotary Azure */
+  --color-secondary-600: #0063a7;
+  --color-secondary-700: #004e86;
+  --color-secondary-800: #003a65;
+  --color-secondary-900: #002544;
+  --color-secondary-950: #001022;
 
-  --color-accent-50: #fcfdf5;
-  --color-accent-100: #f8fadc;
-  --color-accent-200: #f3f7b0;
-  --color-accent-300: #eef484;
-  --color-accent-400: #e6ee54;
-  --color-accent-500: #d9e11a;
-  --color-accent-600: #bbc40f;
-  --color-accent-700: #99a10d;
-  --color-accent-800: #7c8012;
-  --color-accent-900: #676a14;
-  --color-accent-950: #373b05;
+  /* Rotary Accent - Gold */
+  --color-accent-50: #fff8e6;
+  --color-accent-100: #ffecbf;
+  --color-accent-200: #ffdf99;
+  --color-accent-300: #ffd372;
+  --color-accent-400: #ffc64c;
+  --color-accent-500: #f7a81b; /* Rotary Gold */
+  --color-accent-600: #d78e15;
+  --color-accent-700: #b77510;
+  --color-accent-800: #975b0a;
+  --color-accent-900: #774205;
+  --color-accent-950: #572900;
 
   --color-warning-50: #fefce8;
   --color-warning-100: #fef9c3;
@@ -142,23 +145,23 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
   }
-  
+
   h1 {
     @apply text-4xl md:text-5xl lg:text-6xl font-bold;
   }
-  
+
   h2 {
     @apply text-3xl md:text-4xl font-bold;
   }
-  
+
   h3 {
     @apply text-2xl md:text-3xl font-semibold;
   }
-  
+
   h4 {
     @apply text-xl md:text-2xl font-semibold;
   }
-  
+
   p {
     @apply text-base md:text-lg leading-relaxed;
   }

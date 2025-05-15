@@ -1,0 +1,29 @@
+---
+import { Image } from 'astro:assets';
+import logoBarustudio from '../assets/images/logo-barustudio.png';
+
+const year = new Date().getFullYear();
+---
+
+<div class="flex justify-start flex-col items-center md:flex-row gap-x-2 text-sm text-center md:text-left gap-4 dark:text-slate-400">
+  <span>&copy; {year} Rotary Distrito 4240 - Intercambio de Jóvenes. Todos los derechos reservados.</span>
+
+  <span class="hidden md:block">·</span>
+
+  <div class="inline-flex justify-start gap-x-2 items-center">
+    <Image
+      src={logoBarustudio}
+      alt="Barustudio"
+      class="w-7 h-auto"
+    />
+    <span>
+      Desarrollado por
+      <a
+        class="text-blue-600 hover:underline dark:text-gray-100 dark:font-bold"
+        href="https://barustudio.com/"
+      >
+        Barustudio
+      </a>
+    </span>
+  </div>
+</div>
