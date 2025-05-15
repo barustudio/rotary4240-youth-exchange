@@ -2,16 +2,24 @@
 import '../styles/global.css';
 import '../styles/transitions.css';
 import { ViewTransitions } from 'astro:transitions';
+import type { MetaData } from '../types';
 
 export interface Props {
-  title: string;
-  description?: string;
+  metadata?: MetaData;
 }
 
-const { 
-  title, 
+const { metadata } = Astro.props;
+
+const metadataWithDefaults = {
+  title: "Rotary D4240 - Intercambios juveniles",
+  description: "Intercambios juveniles de Rotary en Centroamérica",
+  ...metadata,
+};
+
+const {
+  title,
   description = "Modern SaaS landing page template with responsive design and modular sections."
-} = Astro.props;
+} = metadataWithDefaults;
 ---
 
 <!doctype html>
