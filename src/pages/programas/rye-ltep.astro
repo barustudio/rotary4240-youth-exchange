@@ -157,7 +157,12 @@ const programInfo = {
       country: "Panamá → Japón",
       content: "Al principio estaba nervioso por el idioma y las diferencias culturales, pero con el apoyo de mi club Rotario y mis familias anfitrionas, logré adaptarme rápidamente. El año en Japón no solo me enseñó un nuevo idioma, sino valores y perspectivas que me acompañarán toda la vida."
     }
-  ]
+  ],
+  testimonialContent: {
+    type: 'youtube' as const,
+    url: 'https://youtu.be/HId-3_0jleo',
+    alt: 'Desde Panamá hasta Brasil: la experiencia RYE de Sohannys en Rio Grande do Sul 🇵🇦🇧🇷'
+  }
 };
 ---
 
@@ -187,5 +192,6 @@ const programInfo = {
     sponsorClubs={programInfo.sponsorClubs}
     faqs={programInfo.faqs}
     testimonials={programInfo.testimonials}
+    testimonialContent={programInfo.testimonialContent}
   />
 </ProgramLayout>
