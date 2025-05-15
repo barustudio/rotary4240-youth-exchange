@@ -1,13 +1,14 @@
 ---
 import ProgramLayout from '../../layouts/ProgramLayout.astro';
 import ProgramContent from '../../components/ProgramContent.astro';
+import ryeLogo from '../../assets/images/logo-rye.png';
 
 const programInfo = {
   title: "Campamentos",
   age: "15-25*",
   duration: "1-2 semanas",
   programCode: "RYE-CAMPS",
-  icon: "M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01M18 14v4m-6-4v6m-6-4v4",
+  logo: ryeLogo,
 
   description: "Los Campamentos Internacionales de Rotary ofrecen experiencias temáticas intensivas y cortas donde jóvenes de múltiples países se reúnen para actividades específicas. Estos campamentos pueden centrarse en deportes, arte, música, desarrollo de liderazgo, aventura al aire libre, o temas culturales, brindando una inmersión internacional sin el compromiso de tiempo de otros programas.",
 
@@ -152,7 +153,7 @@ const programInfo = {
   age={programInfo.age}
   duration={programInfo.duration}
   programCode={programInfo.programCode}
-  icon={programInfo.icon}
+  logo={programInfo.logo}
 >
   <ProgramContent
     description={programInfo.description}
