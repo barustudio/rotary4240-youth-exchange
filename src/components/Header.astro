@@ -27,40 +27,42 @@ const mainMenu = [
       { text: "Profesionales", url: "/informacion/profesionales" },
     ],
   },
-  {
-    text: "Noticias",
-    url: "/noticias",
-  },
+  // TODO: Enable news
+  // {
+  //   text: "Noticias",
+  //   url: "/noticias",
+  // },
   {
     text: "Contacto",
     url: "/contacto",
     optional: true,
   },
-  {
-    text: "Más",
-    isMore: true,
-    children: [
-      { text: "Reglamento", url: "/reglamento" },
-      { text: "Normas para la Protección de la Juventud", url: "/politica-de-proteccion-de-la-juventud" },
-      { text: "Pautas para Notificar Acusaciones de Abuso y Acoso", url: "/pautas-para-notificar-acusaciones-de-abuso-y-acoso" },
-      { text: "Política de Privacidad", url: "/privacidad" },
-      { text: "Términos de Servicio", url: "/terminos" },
-      { text: "Features", url: "/dummy/features" },
-      { text: "Pricing", url: "/dummy/pricing" },
-      { text: "FAQ", url: "/dummy/faqs" },
-      { text: "Changelog", url: "/dummy/changelog" },
-      { text: "Integrations", url: "/dummy/integrations" },
-      { text: "Blog", url: "/dummy/blog" },
-      { text: "Case Studies", url: "/dummy/case-study" },
-      { text: "About Us", url: "/dummy/company" },
-      { text: "Careers", url: "/dummy/career" },
-      { text: "Contact", url: "/dummy/contact" },
-      { text: "Reviews", url: "/dummy/reviews" },
-      { text: "Privacy Policy", url: "/dummy/privacy-policy" },
-      { text: "Terms of Service", url: "/dummy/terms-conditions" },
-      { text: "404 Page", url: "/404" },
-    ]
-  },
+  // TODO: Enable more
+  // {
+  //   text: "Más",
+  //   isMore: true,
+  //   children: [
+  //     { text: "Reglamento", url: "/reglamento" },
+  //     { text: "Normas para la Protección de la Juventud", url: "/politica-de-proteccion-de-la-juventud" },
+  //     { text: "Pautas para Notificar Acusaciones de Abuso y Acoso", url: "/pautas-para-notificar-acusaciones-de-abuso-y-acoso" },
+  //     { text: "Política de Privacidad", url: "/privacidad" },
+  //     { text: "Términos de Servicio", url: "/terminos" },
+  //     { text: "Features", url: "/dummy/features" },
+  //     { text: "Pricing", url: "/dummy/pricing" },
+  //     { text: "FAQ", url: "/dummy/faqs" },
+  //     { text: "Changelog", url: "/dummy/changelog" },
+  //     { text: "Integrations", url: "/dummy/integrations" },
+  //     { text: "Blog", url: "/dummy/blog" },
+  //     { text: "Case Studies", url: "/dummy/case-study" },
+  //     { text: "About Us", url: "/dummy/company" },
+  //     { text: "Careers", url: "/dummy/career" },
+  //     { text: "Contact", url: "/dummy/contact" },
+  //     { text: "Reviews", url: "/dummy/reviews" },
+  //     { text: "Privacy Policy", url: "/dummy/privacy-policy" },
+  //     { text: "Terms of Service", url: "/dummy/terms-conditions" },
+  //     { text: "404 Page", url: "/404" },
+  //   ]
+  // },
 ];
 ---
 <header class="fixed w-full bg-white/90 dark:bg-secondary-950/90 backdrop-blur-xs z-50 py-4 transition-colors duration-300">
@@ -126,7 +128,14 @@ const mainMenu = [
         </svg>
       </button>
 
-      <a href="#signup" class="hidden sm:inline-flex btn-primary">Aplica Ahora</a>
+      <a
+        href="http://bit.ly/formulario-rye"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden sm:inline-flex btn-primary"
+      >
+        Aplica Ahora
+      </a>
 
       <!-- Mobile Menu Button and Dropdown -->
       <div x-data="{ open: false, subMenus: {} }">
