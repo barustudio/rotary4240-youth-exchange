@@ -8,46 +8,42 @@ interface Props {
   age: string;
   duration: string;
   programCode: string;
-  icon: string;
+  logo: ImageMetadata;
 }
 
-const { title, age, duration, programCode, icon } = Astro.props;
+const { title, age, duration, programCode, logo } = Astro.props;
 ---
 
 <Layout title={title}>
   <Header />
 
-  <main>
+  <main class="pt-24">
     <!-- 1. Hero del programa -->
-    <section class="bg-gray-50 dark:bg-gray-800 py-20">
+    <section class="py-20">
       <div class="container-custom">
         <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div>
+          <div class="flex flex-col gap-6">
             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">{title}</h1>
-            <div class="flex flex-wrap gap-4 my-6">
-              <span class="badge bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
+            <div class="flex flex-wrap gap-4 my-6 text-gray-600 dark:text-white">
+              <span class="badge bg-primary-100 dark:bg-secondary-500 px-3">
                 Edad: {age} años
               </span>
-              <span class="badge bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
+              <span class="badge bg-primary-100 dark:bg-secondary-500 px-3">
                 Duración: {duration}
               </span>
-              <span class="badge bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
+              <span class="badge bg-primary-100 dark:bg-secondary-500 px-3">
                 [{programCode}]
               </span>
             </div>
-            <a href="#aplicar" class="btn btn-primary mt-6">Quiero participar</a>
+            <a href="#aplicar" class="btn btn-primary mt-6 w-fit">Quiero participar</a>
           </div>
           <div class="flex justify-center">
-            <div class="w-48 h-48 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
-              <svg
-                class="w-24 h-24 text-primary-600 dark:text-primary-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icon}></path>
-              </svg>
+            <div class="w-64 h-64 overflow-hidden">
+              <img
+                  src={logo.src}
+                  alt={`Logo de ${title}`}
+                  class="w-full h-full object-contain p-4"
+                />
             </div>
           </div>
         </div>
