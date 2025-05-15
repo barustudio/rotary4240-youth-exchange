@@ -2,7 +2,12 @@
 import RotaryD4240Logo from "./rotary-d4240-logo.astro";
 
 const mainMenu = [
-  { text: "Distrito 4240", url: "https://rotaryd4240.org" },
+  {
+    text: "Distrito 4240",
+    url: "https://rotary4240.org",
+    optional: true,
+    target: "_blank",
+  },
   {
     text: "Programas",
     children: [
@@ -14,35 +19,51 @@ const mainMenu = [
   },
   {
     text: "Voluntarios",
+    optional: true,
     children: [
       { text: "Familias anfitrionas", url: "/voluntarios/familias" },
       { text: "Rotarios", url: "/voluntarios/rotarios" },
       { text: "Profesionales", url: "/voluntarios/profesionales" },
     ],
   },
-  { text: "Noticias", url: "/noticias" },
-  { text: "Contacto", url: "/contacto" },
-  { text: "Más", children: [
-    { text: "Home", url: "/" },
-    { text: "Features", url: "/features" },
-    { text: "Pricing", url: "/pricing" },
-    { text: "FAQ", url: "/faqs" },
-    { text: "Changelog", url: "/changelog" },
-    { text: "Integrations", url: "/integrations" },
-    { text: "Blog", url: "/blog" },
-    { text: "Case Studies", url: "/case-study" },
-    { text: "About Us", url: "/company" },
-    { text: "Careers", url: "/career" },
-    { text: "Contact", url: "/contact" },
-    { text: "Reviews", url: "/reviews" },
-    { text: "Privacy Policy", url: "/privacy-policy" },
-    { text: "Terms of Service", url: "/terms-conditions" },
-    { text: "404 Page", url: "/404" },
-    { text: "Contacto", url: "/contacto" },
-    { text: "Distrito 4240", url: "https://rotaryd4240.org" },
-    { text: "Política de Privacidad", url: "/privacidad" },
-    { text: "Términos de Servicio", url: "/terminos" }
-  ] },
+  {
+    text: "Noticias",
+    url: "/noticias",
+  },
+  {
+    text: "Contacto",
+    url: "/contacto",
+    optional: true,
+  },
+  {
+    text: "Más",
+    isMore: true,
+    children: [
+      { text: "Reglamento", url: "/reglamento" },
+      { text: "Normas para la Protección de la Juventud", url: "/politica-de-proteccion-de-la-juventud" },
+      { text: "Pautas para Notificar Acusaciones de Abuso y Acoso", url: "/pautas-para-notificar-acusaciones-de-abuso-y-acoso" },
+      { text: "Política de Privacidad", url: "/privacidad" },
+      { text: "Términos de Servicio", url: "/terminos" },
+      { text: "Home", url: "/" },
+      { text: "Features", url: "/features" },
+      { text: "Pricing", url: "/pricing" },
+      { text: "FAQ", url: "/faqs" },
+      { text: "Changelog", url: "/changelog" },
+      { text: "Integrations", url: "/integrations" },
+      { text: "Blog", url: "/blog" },
+      { text: "Case Studies", url: "/case-study" },
+      { text: "About Us", url: "/company" },
+      { text: "Careers", url: "/career" },
+      { text: "Contact", url: "/contact" },
+      { text: "Reviews", url: "/reviews" },
+      { text: "Privacy Policy", url: "/privacy-policy" },
+      { text: "Terms of Service", url: "/terms-conditions" },
+      { text: "404 Page", url: "/404" },
+      { text: "Contacto", url: "/contacto" },
+      { text: "Distrito 4240", url: "https://rotary4240.org" },
+      { text: "Política de Privacidad", url: "/privacidad" },
+    ]
+  },
 ];
 ---
 <header class="fixed w-full bg-white/90 dark:bg-secondary-950/90 backdrop-blur-xs z-50 py-4 transition-colors duration-300">
@@ -54,7 +75,7 @@ const mainMenu = [
     <nav class="hidden md:flex items-center space-x-8">
       {mainMenu.map(item => (
         item.children ? (
-          <div x-data="{ open: false }" class="relative">
+          <div x-data="{ open: false }" class={`relative ${item.optional ? 'hidden lg:block' : ''}`}>
             <button
               @click="open = !open"
               @click.away="open = false"
@@ -87,7 +108,7 @@ const mainMenu = [
             </div>
           </div>
         ) : (
-          <a href={item.url} class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400 font-medium transition-colors">
+          <a href={item.url} target={item.target || '_self'} class={`text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400 font-medium transition-colors ${item.optional ? 'hidden lg:block' : ''}`}>
             {item.text}
           </a>
         )
@@ -164,7 +185,7 @@ const mainMenu = [
                 </div>
               </>
             ) : (
-              <a href={item.url} class="block px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800">
+              <a href={item.url} target={item.target || '_self'} class="block px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800">
                 {item.text}
               </a>
             )
