@@ -1,8 +1,8 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import HeroSection from '../../components/HeroSection.astro';
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import HeroSection from '../../../components/HeroSection.astro';
 
 const posts = [
   {
@@ -79,12 +79,12 @@ const categories = [...new Set(posts.map(post => post.category))];
 <Layout title="Blog - SaaSify" description="Latest product updates, feature releases, and company news from SaaSify.">
   <Header />
   <main>
-    <HeroSection 
-      title="Latest Updates & News" 
+    <HeroSection
+      title="Latest Updates & News"
       highlightText="Updates"
       description="Stay up to date with our latest product updates, feature releases, and company news."
     />
-    
+
     <!-- Category Filter -->
     <div class="container-custom py-8">
       <div class="flex flex-wrap gap-4 justify-center mb-12">
@@ -102,8 +102,8 @@ const categories = [...new Set(posts.map(post => post.category))];
         {posts.map((post, index) => (
           <div class="card border border-gray-200 dark:border-gray-700 overflow-hidden slide-up" style={'animation-delay: ' + (index * 100) + 'ms'}>
             <a href={'/blog/' + post.id} class="block">
-              <img 
-                src={post.image} 
+              <img
+                src={post.image}
                 alt={post.title}
                 class="w-full h-48 object-cover"
                 loading="lazy"
@@ -120,9 +120,9 @@ const categories = [...new Set(posts.map(post => post.category))];
               </a>
               <p class="text-gray-600 dark:text-gray-300 mb-6">{post.excerpt}</p>
               <div class="flex items-center">
-                <img 
-                  src={post.authorAvatar} 
-                  alt={post.author} 
+                <img
+                  src={post.authorAvatar}
+                  alt={post.author}
                   class="w-10 h-10 rounded-full mr-3 object-cover"
                   loading="lazy"
                 />

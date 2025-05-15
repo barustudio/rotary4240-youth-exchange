@@ -1,19 +1,19 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import HeroSection from '../components/HeroSection.astro';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import HeroSection from '../../components/HeroSection.astro';
 ---
 
 <Layout title="Customer Reviews - Sassify">
   <Header />
   <main>
-    <HeroSection 
-      title="Customer Reviews" 
+    <HeroSection
+      title="Customer Reviews"
       highlightText="Reviews"
       description="See what our customers are saying about their experience with Sassify."
     />
-    
+
     <section class="py-16 bg-white dark:bg-gray-800">
       <div class="container-custom">
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -40,7 +40,7 @@ import HeroSection from '../components/HeroSection.astro';
             </p>
             <p class="text-sm text-gray-500 dark:text-gray-400">June 12, 2023</p>
           </div>
-          
+
           <!-- Review Card 2 -->
           <div class="card p-6 border border-gray-200 dark:border-gray-700">
             <div class="flex items-center mb-4">
@@ -64,7 +64,7 @@ import HeroSection from '../components/HeroSection.astro';
             </p>
             <p class="text-sm text-gray-500 dark:text-gray-400">May 3, 2023</p>
           </div>
-          
+
           <!-- Review Card 3 -->
           <div class="card p-6 border border-gray-200 dark:border-gray-700">
             <div class="flex items-center mb-4">
@@ -88,10 +88,10 @@ import HeroSection from '../components/HeroSection.astro';
             </p>
             <p class="text-sm text-gray-500 dark:text-gray-400">April 18, 2023</p>
           </div>
-          
+
           <!-- More review cards can be added here -->
         </div>
-        
+
         <div class="mt-16 text-center">
           <a href="/contact" class="btn-primary">Share Your Experience</a>
         </div>
@@ -99,4 +99,4 @@ import HeroSection from '../components/HeroSection.astro';
     </section>
   </main>
   <Footer />
-</Layout> 
+</Layout>
