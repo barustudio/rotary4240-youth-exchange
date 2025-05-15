@@ -5,8 +5,10 @@ import type { MetaData } from '../../types';
 
 export interface Props extends MetaData {}
 
+const MAIN_URL = 'https://intercambios.rotary4240.org';
+
 const getCanonical = (path = ''): string | URL => {
-  const url = String(new URL(path, Astro.url.origin));
+  const url = String(new URL(path, MAIN_URL));
 
   if (!path) {
     return url;
@@ -16,7 +18,7 @@ const getCanonical = (path = ''): string | URL => {
 };
 
 const _canonical = String(getCanonical(String(Astro.url.pathname)));
-const _ogImage = `https://intercambios.rotary4240.org/og.png`;
+const _ogImage = `${MAIN_URL}/og.png`;
 
 const {
   title,
