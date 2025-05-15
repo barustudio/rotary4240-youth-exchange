@@ -13,9 +13,14 @@ interface Props {
 }
 
 const { title, age, duration, programCode, logo, applicationFormLink } = Astro.props;
+
+const metadata = {
+  title: `${programCode} (${title} de ${duration})`,
+  description: `Intercambios de Rotary en Centroamérica para jóvenes (${age} años)`,
+};
 ---
 
-<Layout title={title}>
+<Layout metadata={metadata}>
   <Header />
 
   <main class="pt-24">

@@ -1,4 +1,16 @@
-# Astro Sassify Template
+# Programa de intercambios juveniles de Rotary en Centroamérica (D4240) - Sitio oficial
+
+![Intercambios Juveniles de Rotary en Centroamérica](./public/og.png)
+
+Este proyecto es el sitio web oficial de los programas de intercambio del Distrito 4240 de Rotary International, que incluye Panamá, Costa Rica, El Salvador y Nicaragua. Está construido sobre la plantilla [Astro Sassify Template](https://github.com/larry-xue/astro-sassify-template), con personalización para reflejar los objetivos, secciones y formularios del programa.
+
+El sitio ofrece información sobre intercambios largos, cortos, campamentos temáticos y pasantías internacionales, así como espacios para que rotarios, familias y profesionales se sumen como voluntarios.
+
+> Este repositorio se mantiene público por si algún otro distrito rotario desea reutilizarlo o adaptarlo para sus propios programas.
+
+---
+
+## [Astro Sassify Template](https://github.com/larry-xue/astro-sassify-template)
 
 A modern, responsive Astro template with Tailwind CSS and Alpine.js integration. This template provides a solid foundation for building fast, SEO-friendly websites with a clean design system.
 

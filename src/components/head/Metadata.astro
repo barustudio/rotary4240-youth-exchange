@@ -1,0 +1,58 @@
+---
+import { AstroSeo } from '@astrolib/seo';
+
+import type { MetaData } from '../../types';
+
+export interface Props extends MetaData {}
+
+const getCanonical = (path = ''): string | URL => {
+  const url = String(new URL(path, Astro.url.origin));
+
+  if (!path) {
+    return url;
+  }
+
+  return url.endsWith('/') ? url.slice(0, -1) : url + '/';
+};
+
+const _canonical = String(getCanonical(String(Astro.url.pathname)));
+const _ogImage = `${Astro.url.origin}/og.png`;
+
+const {
+  title,
+  canonical = _canonical,
+  robots = {},
+  description,
+  openGraph = {},
+  twitter = {
+    handle: '@handle',
+    site: '@site',
+    cardType: 'summary_large_image',
+  },
+} = Astro.props;
+
+const og = {
+  ...openGraph,
+  url: _canonical,
+  siteName: 'Intercambios Juveniles Rotary D4240',
+  locale: 'es',
+  type: 'website',
+  images: [
+    {
+      url: _ogImage,
+      width: 1200,
+      height: 630,
+      alt: 'Intercambios Juveniles Rotary D4240',
+      type: 'image/png',
+    },
+  ],
+}
+---
+
+<AstroSeo
+  title={title}
+  description={description}
+  canonical={canonical}
+  openGraph={og}
+  twitter={twitter}
+/>
