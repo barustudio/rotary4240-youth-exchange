@@ -1,4 +1,20 @@
 ---
+import type { ImageMetadata } from 'astro';
+
+interface TestimonialContentYoutube {
+  type: 'youtube';
+  url?: string;
+  alt?: string;
+}
+
+interface TestimonialContentImage {
+  type: 'image';
+  image: ImageMetadata;
+  alt?: string;
+}
+
+export type TestimonialContent = TestimonialContentYoutube | TestimonialContentImage;
+
 interface Props {
   description: string;
   benefits: Array<string>;
@@ -18,11 +34,7 @@ interface Props {
   sponsorClubs?: Array<string>;
   faqs: Array<{ question: string; answer: string }>;
   testimonials?: Array<{ name: string; country: string; content: string; image?: string }>;
-  testimonialContent?: Array<{
-    type: 'image' | 'youtube';
-    url?: string;
-    alt?: string;
-  }>;
+  testimonialContent?: Array<TestimonialContent>;
 }
 
 const {
@@ -97,9 +109,9 @@ const {
         {testimonialContent && testimonialContent.length > 0 ? (
           testimonialContent.map(content => (
           <div class="w-full h-full">
-            {content.type === 'image' && content.url && (
+            {content.type === 'image' && content.image && (
               <img
-                src={content.url}
+                src={content.image.src}
                 alt={content.alt || "Testimonio visual del programa"}
                 class="w-full h-full object-cover"
               />
