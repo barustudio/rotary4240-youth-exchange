@@ -144,6 +144,18 @@ const programInfo = {
       country: "Panamá → Finlandia",
       content: "Participé en el campamento de 'Liderazgo y Naturaleza' en Finlandia. Combinamos actividades al aire libre como senderismo y canoa con talleres de liderazgo y trabajo en equipo. Lo más valioso fue aprender cómo se abordan los mismos problemas desde perspectivas culturales tan diferentes."
     }
+  ],
+  testimonialContent: [
+    {
+      type: 'youtube' as const,
+      url: 'https://youtu.be/HId-3_0jleo',
+      alt: 'Desde Panamá hasta Brasil: la experiencia RYE de Sohannys en Rio Grande do Sul 🇵🇦🇧🇷'
+    },
+    {
+      type: 'youtube' as const,
+      url: 'https://youtu.be/9SCQCgSyi6s',
+      alt: ' Un año en Alemania: la experiencia RYE de Anayansi 🇵🇦🇩🇪'
+    }
   ]
 };
 ---
@@ -175,5 +187,6 @@ const programInfo = {
     sponsorClubs={programInfo.sponsorClubs}
     faqs={programInfo.faqs}
     testimonials={programInfo.testimonials}
+    testimonialContent={programInfo.testimonialContent}
   />
 </ProgramLayout>
