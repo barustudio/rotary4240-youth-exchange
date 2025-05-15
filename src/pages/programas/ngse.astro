@@ -2,6 +2,8 @@
 import ProgramLayout from '../../layouts/ProgramLayout.astro';
 import ProgramContent from '../../components/ProgramContent.astro';
 import logoNgse from '../../assets/images/logo-ngse.png';
+import ngseTestimonial1 from '../../assets/images/ngse-1.jpg';
+import ngseTestimonial2 from '../../assets/images/ngse-2.jpg';
 
 const programInfo = {
   title: "Pasantías",
@@ -143,7 +145,18 @@ const programInfo = {
     }
   ],
 
-  testimonialContent: [],
+  testimonialContent: [
+    {
+      type: 'image' as const,
+      image: ngseTestimonial1,
+      alt: 'Joven de Chorrera, Panamá, con su club anfitrión en Brasil 🇵🇦🇧🇷'
+    },
+    {
+      type: 'image' as const,
+      image: ngseTestimonial2,
+      alt: 'Joven de Chorrera, Panamá, con su club anfitrión en Brasil 🇵🇦🇧🇷'
+    },
+  ]
 };
 ---
 
