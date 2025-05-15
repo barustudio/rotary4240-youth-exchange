@@ -26,13 +26,8 @@ interface MetaDataTwitter {
 export interface MetaData {
   title?: string;
   description?: string;
-
-  ignoreTitleTemplate?: boolean;
-
   canonical?: string;
-
   robots?: MetaDataRobots;
-
   openGraph?: MetaDataOpenGraph;
   twitter?: MetaDataTwitter;
 }
