@@ -1,0 +1,191 @@
+---
+import ProgramLayout from '../../layouts/ProgramLayout.astro';
+import ProgramContent from '../../components/ProgramContent.astro';
+
+const programInfo = {
+  title: "Año escolar",
+  age: "15-17",
+  duration: "10-12 meses",
+  programCode: "RYE-LTEP",
+  icon: "M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222",
+
+  description: "El Programa de Intercambio de Jóvenes a Largo Plazo (LTEP) es la experiencia más completa de Rotary para estudiantes de secundaria. Durante un año académico completo, los participantes viven con familias anfitrionas en otro país mientras asisten a una escuela local, aprenden un nuevo idioma y se sumergen completamente en una cultura diferente.",
+
+  benefits: [
+    "Desarrollo de fluidez en un nuevo idioma",
+    "Aumento de la madurez, independencia y confianza",
+    "Perspectiva global y comprensión intercultural",
+    "Amistades internacionales duraderas",
+    "Desarrollo de habilidades de adaptación y resolución de problemas"
+  ],
+
+  experiences: [
+    "Vida cotidiana con familias anfitrionas rotarias (generalmente 2-3 familias durante el año)",
+    "Asistencia regular a una escuela secundaria local",
+    "Participación en actividades comunitarias y del club Rotario",
+    "Oportunidades de viajes y excursiones culturales",
+    "Interacción con otros estudiantes de intercambio internacionales"
+  ],
+
+  ageRequirements: "Jóvenes entre 15 y 17 años al momento de la partida (preferentemente estudiantes de secundaria)",
+
+  profileRequirements: [
+    "Buen rendimiento académico",
+    "Capacidad de adaptación y flexibilidad",
+    "Madurez emocional para manejar periodos lejos de casa",
+    "Interés genuino en otras culturas e idiomas"
+  ],
+
+  skills: [
+    "Habilidades básicas de comunicación",
+    "Capacidad para resolver problemas de forma independiente",
+    "Actitud positiva y mente abierta",
+    "Disposición para aprender y participar activamente"
+  ],
+
+  familySupport: "Se requiere un fuerte compromiso familiar, tanto en términos de apoyo emocional como financiero. Los padres deben entender la naturaleza del programa y estar preparados para la separación prolongada.",
+
+  detailedDuration: "El programa tiene una duración de 10 a 12 meses, generalmente siguiendo el calendario escolar del país anfitrión (agosto/septiembre a junio/julio del año siguiente).",
+
+  phases: [
+    "Preparación y orientación (3-6 meses antes de la partida)",
+    "Adaptación inicial y ajuste cultural (primeros 3 meses)",
+    "Inmersión plena en la vida escolar y familiar (meses 4-9)",
+    "Preparación para el regreso y cierre (últimos 1-2 meses)",
+    "Reintegración y actividades post-intercambio"
+  ],
+
+  countryExamples: [
+    {
+      country: "Estados Unidos",
+      details: "Año escolar de agosto a junio, con posibilidad de asistir a la graduación. Participación en deportes escolares y clubes, celebración de festividades como Homecoming y Prom."
+    },
+    {
+      country: "Europa",
+      details: "Programas que incluyen aprendizaje intensivo del idioma local. Posibilidad de viajes culturales organizados por los distritos Rotarios."
+    }
+  ],
+
+  costs: [
+    "Cuota de participación en el programa (~$500-1000)",
+    "Pasaje aéreo de ida y vuelta",
+    "Seguro médico internacional completo",
+    "Fondo de emergencia (~$500, reembolsable)",
+    "Gastos personales y dinero de bolsillo (~$250-350 mensuales)",
+    "Trámites de visa y pasaporte",
+    "Ropa adecuada para el clima del país anfitrión"
+  ],
+
+  rotaryProvides: [
+    "Alojamiento con familias anfitrionas seleccionadas",
+    "Alimentación diaria",
+    "Matrícula y gastos escolares",
+    "Consejero rotario para apoyo continuo",
+    "Orientaciones antes, durante y después del intercambio",
+    "Red de seguridad y apoyo del club y distrito Rotario",
+    "En algunos distritos: estipendio mensual para gastos menores"
+  ],
+
+  applicationSteps: [
+    "Completar el formulario de interés inicial",
+    "Asistir a una sesión informativa con padres",
+    "Presentar la solicitud formal con documentación requerida",
+    "Entrevista personal con el comité de Intercambio de Jóvenes",
+    "Si es seleccionado, participar en orientaciones obligatorias",
+    "Completar la aplicación internacional para asignación de país"
+  ],
+
+  applicationFormLink: "/contacto",
+
+  importantDates: [
+    {
+      date: "Septiembre-Noviembre",
+      description: "Período de aplicación"
+    },
+    {
+      date: "Diciembre-Enero",
+      description: "Entrevistas y selección"
+    },
+    {
+      date: "Febrero-Abril",
+      description: "Asignación de países y preparación"
+    },
+    {
+      date: "Agosto-Septiembre",
+      description: "Salida para el intercambio"
+    }
+  ],
+
+  sponsorClubs: [
+    "Club Rotario Panamá Norte",
+    "Club Rotario Panamá Sur",
+    "Club Rotario David",
+    "Consulta tu club Rotario local para más información"
+  ],
+
+  faqs: [
+    {
+      question: "¿Tengo que hablar el idioma del país anfitrión antes de partir?",
+      answer: "No es requisito tener fluidez previa, pero se recomienda tener conocimientos básicos. Parte del valor del programa es el aprendizaje del idioma por inmersión."
+    },
+    {
+      question: "¿Puedo elegir el país al que quiero ir?",
+      answer: "Puedes indicar preferencias, pero la asignación final depende de la disponibilidad y los acuerdos entre distritos. Es importante mantener una actitud abierta."
+    },
+    {
+      question: "¿Qué pasa si tengo problemas durante mi intercambio?",
+      answer: "Cada estudiante tiene un consejero rotario asignado, además de la red de apoyo del club anfitrión, el distrito y las familias anfitrionas. Existen protocolos claros para resolver cualquier dificultad."
+    },
+    {
+      question: "¿Cómo se manejan las alergias, restricciones alimentarias o condiciones médicas?",
+      answer: "Estas se documentan en la aplicación y se comunican a las familias anfitrionas. Rotary trabaja para acomodar necesidades específicas, pero es importante ser transparente desde el inicio."
+    },
+    {
+      question: "¿Se permiten visitas familiares durante el intercambio?",
+      answer: "Las visitas familiares no se recomiendan durante los primeros meses para facilitar la adaptación. Pueden permitirse durante períodos específicos, pero deben coordinarse con el consejero y el club anfitrión."
+    }
+  ],
+
+  testimonials: [
+    {
+      name: "María Fernández",
+      country: "Panamá → Francia",
+      content: "Mi año en Francia cambió completamente mi perspectiva del mundo. Aprendí francés, conocí amigos de toda Europa y descubrí capacidades en mí que nunca supe que tenía. Las familias anfitrionas se convirtieron en mi segunda familia y sigo en contacto con ellos años después."
+    },
+    {
+      name: "Carlos Jiménez",
+      country: "Panamá → Japón",
+      content: "Al principio estaba nervioso por el idioma y las diferencias culturales, pero con el apoyo de mi club Rotario y mis familias anfitrionas, logré adaptarme rápidamente. El año en Japón no solo me enseñó un nuevo idioma, sino valores y perspectivas que me acompañarán toda la vida."
+    }
+  ]
+};
+---
+
+<ProgramLayout
+  title={programInfo.title}
+  age={programInfo.age}
+  duration={programInfo.duration}
+  programCode={programInfo.programCode}
+  icon={programInfo.icon}
+>
+  <ProgramContent
+    description={programInfo.description}
+    benefits={programInfo.benefits}
+    experiences={programInfo.experiences}
+    ageRequirements={programInfo.ageRequirements}
+    profileRequirements={programInfo.profileRequirements}
+    skills={programInfo.skills}
+    familySupport={programInfo.familySupport}
+    detailedDuration={programInfo.detailedDuration}
+    phases={programInfo.phases}
+    countryExamples={programInfo.countryExamples}
+    costs={programInfo.costs}
+    rotaryProvides={programInfo.rotaryProvides}
+    applicationSteps={programInfo.applicationSteps}
+    applicationFormLink={programInfo.applicationFormLink}
+    importantDates={programInfo.importantDates}
+    sponsorClubs={programInfo.sponsorClubs}
+    faqs={programInfo.faqs}
+    testimonials={programInfo.testimonials}
+  />
+</ProgramLayout>

@@ -1,0 +1,178 @@
+---
+import ProgramLayout from '../../layouts/ProgramLayout.astro';
+import ProgramContent from '../../components/ProgramContent.astro';
+
+const programInfo = {
+  title: "Vacaciones",
+  age: "15-17",
+  duration: "1-3 meses",
+  programCode: "RYE-STEP",
+  icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+
+  description: "El Programa de Intercambio de Vacaciones (STEP) ofrece a los jóvenes una experiencia internacional más breve pero igualmente enriquecedora. Este intercambio de familia a familia permite a los participantes pasar de 1 a 3 meses en otro país durante sus vacaciones escolares, viviendo con una familia anfitriona cuyo hijo visitará luego su hogar en reciprocidad.",
+
+  benefits: [
+    "Exposición a una nueva cultura sin interrumpir el ciclo escolar regular",
+    "Desarrollo de habilidades lingüísticas básicas",
+    "Experiencia internacional para jóvenes que no pueden comprometerse a un año completo",
+    "Formación de vínculos familiares internacionales",
+    "Primera experiencia de independencia en un entorno seguro y estructurado"
+  ],
+
+  experiences: [
+    "Convivencia con una familia anfitriona seleccionada",
+    "Participación en la vida cotidiana de la familia y su comunidad",
+    "Asistencia a eventos rotarios y comunitarios",
+    "Excursiones y actividades culturales",
+    "Formación de una relación reciproca con el estudiante anfitrión que luego visitará tu hogar"
+  ],
+
+  ageRequirements: "Jóvenes entre 15 y 17 años al momento del intercambio, con flexibilidad según el acuerdo entre distritos",
+
+  profileRequirements: [
+    "Capacidad de adaptación a nuevos entornos",
+    "Interés en otras culturas",
+    "Disponibilidad para recibir a un estudiante extranjero en reciprocidad",
+    "Buena conducta en la escuela y en casa"
+  ],
+
+  skills: [
+    "Comunicación básica",
+    "Sociabilidad",
+    "Respeto por reglas y costumbres diferentes",
+    "Apertura mental y tolerancia"
+  ],
+
+  familySupport: "La familia debe estar dispuesta y capacitada para recibir al estudiante extranjero en reciprocidad. El apoyo familiar es esencial tanto para el joven que viaja como para el que llega como huésped.",
+
+  detailedDuration: "El programa dura típicamente de 1 a 3 meses, coincidiendo con los períodos de vacaciones escolares. La duración exacta se acuerda entre las familias participantes y puede ajustarse según las necesidades específicas.",
+
+  phases: [
+    "Solicitud y emparejamiento con familia extranjera (3-6 meses antes)",
+    "Preparación y orientación pre-intercambio",
+    "Experiencia en el extranjero (1-3 meses)",
+    "Recepción del estudiante extranjero en reciprocidad (normalmente en los siguientes 6-12 meses)",
+    "Actividades de reintegración y compartir experiencias"
+  ],
+
+  countryExamples: [
+    {
+      country: "Europa",
+      details: "Intercambios durante el verano (junio-agosto), con enfoque en aprendizaje de idiomas y experiencias culturales como festivales locales."
+    },
+    {
+      country: "Australia/Nueva Zelanda",
+      details: "Intercambios durante vacaciones de invierno (diciembre-febrero) aprovechando las diferencias en calendarios escolares entre hemisferios."
+    }
+  ],
+
+  costs: [
+    "Pasaje aéreo de ida y vuelta",
+    "Seguro médico internacional",
+    "Gastos personales y dinero de bolsillo (~$200-300 mensuales)",
+    "Trámites de visa (si aplica)",
+    "Pequeña cuota administrativa (~$200-300)",
+    "Gastos asociados con recibir al estudiante extranjero en reciprocidad"
+  ],
+
+  rotaryProvides: [
+    "Coordinación del emparejamiento entre familias",
+    "Apoyo del club Rotario local y del consejero asignado",
+    "Orientaciones antes y después del intercambio",
+    "Supervisión y seguimiento durante la experiencia",
+    "Certificación de participación en el programa"
+  ],
+
+  applicationSteps: [
+    "Completar el formulario de interés inicial",
+    "Entrevista familiar para evaluar la capacidad de recibir en reciprocidad",
+    "Presentación de documentación (académica, médica, cartas de recomendación)",
+    "Participación en orientación obligatoria",
+    "Contacto inicial con la familia anfitriona antes del viaje"
+  ],
+
+  applicationFormLink: "/contacto",
+
+  importantDates: [
+    {
+      date: "Septiembre-Enero",
+      description: "Aplicación para intercambios de verano (junio-agosto)"
+    },
+    {
+      date: "Febrero-Abril",
+      description: "Emparejamiento y preparación para intercambios de verano"
+    },
+    {
+      date: "Marzo-Julio",
+      description: "Aplicación para intercambios de invierno (diciembre-febrero)"
+    }
+  ],
+
+  sponsorClubs: [
+    "Club Rotario Panamá Norte",
+    "Club Rotario Panamá Sur",
+    "Consulta tu club Rotario local para más información"
+  ],
+
+  faqs: [
+    {
+      question: "¿Cómo se seleccionan las familias anfitrionas?",
+      answer: "Las familias anfitrionas son seleccionadas por los clubes Rotarios locales, siguiendo un proceso de verificación de antecedentes y entrevistas. Todas las familias deben cumplir con los estándares de seguridad y adecuación establecidos por Rotary International."
+    },
+    {
+      question: "¿Qué sucede si no hay compatibilidad con la familia anfitriona?",
+      answer: "Aunque es raro, si surgen problemas significativos, el club Rotario local y los coordinadores del programa intervienen para resolver la situación, que podría incluir la reubicación con otra familia si fuera necesario."
+    },
+    {
+      question: "¿Es obligatorio que mi familia reciba a un estudiante extranjero?",
+      answer: "Sí, este programa se basa en la reciprocidad. Tu familia debe estar dispuesta y capacitada para recibir al estudiante extranjero en un periodo acordado, generalmente dentro de los 6-12 meses siguientes a tu experiencia."
+    },
+    {
+      question: "¿Puedo elegir el país al que quiero ir?",
+      answer: "Puedes indicar preferencias, pero el emparejamiento depende de la disponibilidad de familias adecuadas en los países participantes y la compatibilidad entre los estudiantes."
+    }
+  ],
+
+  testimonials: [
+    {
+      name: "Ana Morales",
+      country: "Panamá → Italia",
+      content: "Mis dos meses en Italia fueron mágicos. Aprendí italiano básico, disfruté de la comida local y formé un vínculo tan fuerte con mi familia anfitriona que seguimos en contacto cinco años después. Cuando Giulia vino a Panamá, fue maravilloso poder mostrarle mi cultura y ver mi país a través de sus ojos."
+    },
+    {
+      name: "Roberto Díaz",
+      country: "Panamá → Canadá",
+      content: "El intercambio de verano en Canadá me ayudó a mejorar mi inglés y a experimentar una cultura diferente sin perder un año escolar. La reciprocidad fue una de las mejores partes, ya que nuestra familia tuvo la oportunidad de compartir nuestra cultura panameña cuando recibimos a mi 'hermano' canadiense."
+    }
+  ]
+};
+---
+
+<ProgramLayout
+  title={programInfo.title}
+  age={programInfo.age}
+  duration={programInfo.duration}
+  programCode={programInfo.programCode}
+  icon={programInfo.icon}
+>
+  <ProgramContent
+    description={programInfo.description}
+    benefits={programInfo.benefits}
+    experiences={programInfo.experiences}
+    ageRequirements={programInfo.ageRequirements}
+    profileRequirements={programInfo.profileRequirements}
+    skills={programInfo.skills}
+    familySupport={programInfo.familySupport}
+    detailedDuration={programInfo.detailedDuration}
+    phases={programInfo.phases}
+    countryExamples={programInfo.countryExamples}
+    costs={programInfo.costs}
+    rotaryProvides={programInfo.rotaryProvides}
+    applicationSteps={programInfo.applicationSteps}
+    applicationFormLink={programInfo.applicationFormLink}
+    importantDates={programInfo.importantDates}
+    sponsorClubs={programInfo.sponsorClubs}
+    faqs={programInfo.faqs}
+    testimonials={programInfo.testimonials}
+  />
+</ProgramLayout>
