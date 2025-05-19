@@ -33,14 +33,15 @@ const monthToString = (month: number, short?: boolean): string => {
   return short ? months[month - 1].slice(0, 3).toUpperCase() : months[month - 1];
 };
 
-const signatureString = (name: string, country: string): string => {
-  return `${name.split(' ')[0]} ${country.toUpperCase()}`;
+const signatureNameString = (name: string): string => {
+  return `${name.split(' ')[0]}`;
 };
 
 const testimonialData = Astro.props;
-const { studentName, homeCountry, country, programCode, year, month, quote, image } = Astro.props;
+const { studentName, homeCountry, homeClub, country, programCode, year, month, quote, image } = Astro.props;
 
 const ProgramLogo = programCode === ProgramCode.NGSE ? DistrictNgseLogo : DistrictRyeLogo;
+const signatureDescription = homeClub ? `Estudiante del CR ${homeClub} en ` : `Estudiante de `;
 ---
 
 <div class="transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
@@ -88,8 +89,16 @@ const ProgramLogo = programCode === ProgramCode.NGSE ? DistrictNgseLogo : Distri
           {quote}
         </div>
 
-        <div class="text-[#3a3a3a] font-mono tracking-wide leading-relaxed border-b border-black/20 py-2 mt-1 md:mt-4">
-          {signatureString(studentName, homeCountry)}
+        <div class="flex flex-col py-2 mt-1 md:mt-4">
+          <div class="text-[#3a3a3a] font-mono tracking-wide leading-relaxed border-b border-black/20 mb-1">
+            {signatureNameString(studentName)}
+          </div>
+          <span class="flex items-center gap-1 text-black/60 font-mono tracking-wide leading-relaxed text-xs">
+            {signatureDescription}
+            <span class="text-black/80 text-xl leading-none">
+              {homeCountry}
+            </span>
+          </span>
         </div>
       </div>
     </div>
