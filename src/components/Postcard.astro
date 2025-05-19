@@ -6,19 +6,19 @@ import { ProgramCode, ProgramTitle } from '../const';
 
 interface Props extends Testimonial {}
 
-const getImage = (program: ProgramCode, image?: ImageMetadata): ImageMetadata => {
+const getImage = (programCode: ProgramCode, image?: ImageMetadata): ImageMetadata => {
   if (image) {
     return image;
   }
 
-  return program.split('-')[0] === 'rye' ? logoRye : logoNgse;
+  return programCode.split('-')[0] === 'rye' ? logoRye : logoNgse;
 };
 
 const getPhotoFooter = (testimonial: Testimonial): string => {
-  const prefix = testimonial.program === ProgramCode.RYE_STEP ? 'Mis' : 'Mi';
-  const programName = ProgramTitle[testimonial.program as keyof typeof ProgramTitle];
-  const title = testimonial.programTitle
-  ? testimonial.programTitle
+  const prefix = testimonial.programCode === ProgramCode.RYE_STEP ? 'Mis' : 'Mi';
+  const programName = ProgramTitle[testimonial.programCode as keyof typeof ProgramTitle];
+  const title = testimonial.program
+  ? testimonial.program
   : `${prefix} ${programName}`;
 
   const cityString = testimonial.city ? ` en ${testimonial.city}` : '';
@@ -35,7 +35,7 @@ const signatureString = (name: string, country: string): string => {
 };
 
 const testimonialData = Astro.props;
-const { studentName, studentCountry, country, program, year, month, quote, image } = Astro.props;
+const { studentName, studentCountry, country, programCode, year, month, quote, image } = Astro.props;
 ---
 
 <div class="transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
@@ -56,7 +56,7 @@ const { studentName, studentCountry, country, program, year, month, quote, image
       <div class="flex flex-col items-end justify-center bg-white p-4 shadow-lg">
         <div class="w-full" style="aspect-ratio: 3/4;">
           <img
-            src={getImage(program, image).src}
+            src={getImage(programCode, image).src}
             alt={`${country} - ${studentName}`}
             class="w-full h-full object-cover"
           />

@@ -37,12 +37,12 @@ export interface MetaData {
 export interface Testimonial {
   studentName: string;
   studentCountry: string;
-  program: ProgramCode;
+  programCode: ProgramCode;
   city?: string;
   country: string;
   year: number;
   month: number;
   quote: string;
-  programTitle?: ProgramTitle | string | undefined;
+  program?: ProgramTitle | string | undefined;
   image?: ImageMetadata;
 }
