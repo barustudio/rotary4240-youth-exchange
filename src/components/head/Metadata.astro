@@ -23,7 +23,10 @@ const _ogImage = `${MAIN_URL}/og.png`;
 const {
   title,
   canonical = _canonical,
-  robots = {},
+  robots = {
+    index: true,
+    follow: true,
+  },
   description,
   openGraph = {},
   twitter = {
@@ -57,4 +60,6 @@ const og = {
   canonical={canonical}
   openGraph={og}
   twitter={twitter}
+  noindex={!robots.index}
+  nofollow={!robots.follow}
 />
