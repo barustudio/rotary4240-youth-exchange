@@ -1,10 +1,11 @@
 ---
-import '../styles/global.css';
-import '../styles/transitions.css';
 import { ViewTransitions } from 'astro:transitions';
 import type { MetaData } from '../types';
+import '../styles/global.css';
+import '../styles/transitions.css';
 import Metadata from '../components/head/Metadata.astro';
 import Favicons from '../components/head/Favicons.astro';
+import Analytics from '../components/head/Analytics.astro';
 
 export interface Props {
   metadata?: MetaData;
@@ -36,6 +37,9 @@ const metadataWithDefaults = {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <Analytics />
+
     <ViewTransitions />
   </head>
   <body class="antialiased bg-white dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100 transition-colors duration-300">
