@@ -9,22 +9,14 @@ import logoNgse from '../assets/images/logo-ngse.png';
 
 interface Props extends Testimonial {}
 
-const getImage = (programCode: ProgramCode, image?: ImageMetadata): ImageMetadata => {
-  if (image) {
-    return image;
-  }
-
-  return programCode.split('-')[0] === 'rye' ? logoRye : logoNgse;
-};
-
-const getPhotoFooter = (testimonial: Testimonial): string => {
-  const prefix = testimonial.programCode === ProgramCode.RYE_STEP ? 'Mis' : 'Mi';
-  const programName = ProgramTitle[testimonial.programCode as keyof typeof ProgramTitle];
-  const title = testimonial.program
-  ? testimonial.program
+const getPhotoFooter = ({ programCode, program, city }: Testimonial): string => {
+  const prefix = programCode === ProgramCode.RYE_STEP ? 'Mis' : 'Mi';
+  const programName = ProgramTitle[programCode as keyof typeof ProgramTitle];
+  const title = program
+  ? program
   : `${prefix} ${programName}`;
 
-  const cityString = testimonial.city ? ` en ${testimonial.city}` : '';
+  const cityString = city ? ` en ${city}` : '';
   return `${title}${cityString}`;
 };
 
@@ -33,15 +25,31 @@ const monthToString = (month: number, short?: boolean): string => {
   return short ? months[month - 1].slice(0, 3).toUpperCase() : months[month - 1];
 };
 
-const signatureNameString = (name: string): string => {
-  return `${name.split(' ')[0]}`;
-};
-
-const testimonialData = Astro.props;
-const { studentName, homeCountry, homeClub, country, programCode, year, month, quote, image } = Astro.props;
+const {
+  studentName,
+  homeCountry,
+  homeClub,
+  country,
+  city,
+  programCode,
+  program,
+  year,
+  month,
+  quote,
+  image
+} = Astro.props;
 
 const ProgramLogo = programCode === ProgramCode.NGSE ? DistrictNgseLogo : DistrictRyeLogo;
+
+const mainImage = image
+  ? image
+  : programCode.split('-')[0] === 'RYE' ? logoRye : logoNgse;
+const imageFooter = getPhotoFooter({ programCode, program, city } as Testimonial);
+
+const signatureName = studentName.split(' ')[0];
 const signatureDescription = homeClub ? `Estudiante del CR ${homeClub} en ` : `Estudiante de `;
+
+const monthString = monthToString(month);
 ---
 
 <div class="transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
@@ -63,9 +71,9 @@ const signatureDescription = homeClub ? `Estudiante del CR ${homeClub} en ` : `E
         <!-- Image -->
         <div class="w-full" style="aspect-ratio: 3/4;">
           <img
-            src={getImage(programCode, image).src}
+            src={mainImage.src}
             alt={`${country} - ${studentName}`}
-            class="w-full h-full object-cover"
+            class={`w-full h-full ${image ? 'object-cover' : 'object-contain'}`}
           />
         </div>
 
@@ -73,8 +81,8 @@ const signatureDescription = homeClub ? `Estudiante del CR ${homeClub} en ` : `E
         <div class="flex items-center justify-between mt-4 w-full gap-3">
           <ProgramLogo class="block w-1/2 md:hidden" />
           <div class="text-sm text-[#3a3a3a]/70 text-right w-1/2 md:w-full">
-            <div class="italic">{getPhotoFooter(testimonialData)}</div>
-            <div>{monthToString(month)} {year}</div>
+            <div class="italic">{imageFooter}</div>
+            <div>{monthString} {year}</div>
           </div>
         </div>
       </div>
@@ -91,7 +99,7 @@ const signatureDescription = homeClub ? `Estudiante del CR ${homeClub} en ` : `E
 
         <div class="flex flex-col py-2 mt-1 md:mt-4">
           <div class="text-[#3a3a3a] font-mono tracking-wide leading-relaxed border-b border-black/20 mb-1">
-            {signatureNameString(studentName)}
+            {signatureName}
           </div>
           <span class="flex items-center gap-1 text-black/60 font-mono tracking-wide leading-relaxed text-xs">
             {signatureDescription}
