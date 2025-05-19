@@ -1,3 +1,5 @@
+import type { ProgramCode, ProgramTitle } from "./const";
+
 interface MetaDataRobots {
   index?: boolean;
   follow?: boolean;
@@ -30,4 +32,17 @@ export interface MetaData {
   robots?: MetaDataRobots;
   openGraph?: MetaDataOpenGraph;
   twitter?: MetaDataTwitter;
+}
+
+export interface Testimonial {
+  studentName: string;
+  studentCountry: string;
+  program: ProgramCode;
+  city?: string;
+  country: string;
+  year: number;
+  month: number;
+  quote: string;
+  programTitle?: ProgramTitle | string | undefined;
+  image?: ImageMetadata;
 }
