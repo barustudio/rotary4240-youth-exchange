@@ -1,9 +1,11 @@
 ---
+import { ProgramCode } from '../../const';
 import ProgramLayout from '../../layouts/ProgramLayout.astro';
 import ProgramContent from '../../components/ProgramContent.astro';
 import logoNgse from '../../assets/images/logo-ngse.png';
 import ngseTestimonial1 from '../../assets/images/ngse-1.jpg';
 import ngseTestimonial2 from '../../assets/images/ngse-2.jpg';
+import ngseVictoria from '../../assets/images/testimonials/ngse-2025-brazil-victoria.jpg';
 
 const programInfo = {
   title: "Pasantías",
@@ -127,16 +129,17 @@ const programInfo = {
   ],
 
   testimonials: [
-    {
-      name: "Elena Martínez",
-      country: "Panamá → Costa Rica",
-      content: "Mi pasantía de tres meses en una ONG ambiental en Costa Rica transformó mi perspectiva profesional. Apliqué mis conocimientos de biología en proyectos de conservación de tortugas marinas, mientras aprendía nuevas metodologías y establecía contactos con científicos internacionales. Esta experiencia fue decisiva para mi admisión posterior en un programa de maestría en Europa."
+  {
+      studentName: "Victoria Valderrama",
+      studentCountry: "🇵🇦",
+      programCode: ProgramCode.NGSE,
+      city: "Belo Horizonte",
+      country: "🇧🇷",
+      year: 2025,
+      month: 3,
+      quote: "Mi pasantía en Belo Horizonte (Minas Gerais), ha sido una experiencia increíble tanto a nivel profesional como personal. Estoy aprendiendo muchísimo en mi área mientras colaboro con personas apasionadas y comprometidas. Fuera del trabajo, cada día descubro algo nuevo: desde la calidez de la gente y la riqueza cultural hasta la deliciosa comida típica. Estoy muy agradecida por esta oportunidad que me está ayudando a crecer, conocer nuevas realidades y formar vínculos que sé que durarán mucho más allá de esta experiencia.",
+      image: ngseVictoria,
     },
-    {
-      name: "Daniel Herrera",
-      country: "Panamá → El Salvador",
-      content: "Participé en un proyecto de desarrollo comunitario en El Salvador por diez semanas, aplicando mis conocimientos de ingeniería civil en la construcción de sistemas de agua potable. La experiencia de trabajar con recursos limitados pero con una comunidad increíblemente comprometida me enseñó más sobre resolución creativa de problemas que cualquier clase universitaria."
-    }
   ],
 
   testimonialContent: [
