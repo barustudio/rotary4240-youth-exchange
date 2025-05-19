@@ -2,8 +2,9 @@
 import ProgramLayout from '../../layouts/ProgramLayout.astro';
 import ProgramContent from '../../components/ProgramContent.astro';
 import logoRye from '../../assets/images/logo-rye.png';
-import ryeLtepAnayansi from '../../assets/images/rye-ltep-anayansi.jpg';
-import ryeLtepSohannys from '../../assets/images/rye-ltep-sohannys.jpg';
+import ryeLtepAnayansi from '../../assets/images/testimonials/ltep-2022-anayansi.jpg';
+import ryeLtepSohannys from '../../assets/images/testimonials/ltep-2023-sohannys.jpg';
+import { ProgramCode } from '../../const';
 
 const programInfo = {
   title: "Año escolar",
@@ -171,15 +172,25 @@ const programInfo = {
 
   testimonials: [
     {
-      name: "Anayansi Aguilar",
-      country: "🇵🇦 → 🇩🇪",
-      content: "Mi año en Alemania fue uno de los mayores retos y a la vez uno de los mayores regalos de mi vida. Desde el primer día en Plön, el Club Rotario anfitrión me hizo sentir bienvenida. Aprendí a adaptarme a una cultura completamente distinta, a entender nuevas formas de pensar, y sobre todo, a valorar la diversidad. A pesar del frío, siempre sentí el calor de las personas que me rodeaban. Hoy regreso a casa con una nueva familia alemana, amigos de todo el mundo y una visión mucho más amplia del futuro que quiero construir. Gracias, Rotary, por darme alas para volar.",
+      studentName: "Anayansi Aguilar",
+      studentCountry: "🇵🇦",
+      city: "Plön",
+      country: "🇩🇪",
+      program: ProgramCode.RYE_LTEP,
+      year: 2022,
+      month: 12,
+      quote: "Mi año en Alemania fue uno de los mayores retos y a la vez uno de los mayores regalos de mi vida. Desde el primer día en Plön, el Club Rotario anfitrión me hizo sentir bienvenida. Aprendí a adaptarme a una cultura completamente distinta, a entender nuevas formas de pensar, y sobre todo, a valorar la diversidad. A pesar del frío, siempre sentí el calor de las personas que me rodeaban. Hoy regreso a casa con una nueva familia alemana, amigos de todo el mundo y una visión mucho más amplia del futuro que quiero construir. Gracias, Rotary, por darme alas para volar.",
       image: ryeLtepAnayansi,
     },
     {
-      name: "Sohannys Barría",
-      country: "🇵🇦 → 🇧🇷",
-      content: "Nunca imaginé cuánto podía cambiar en un solo año. Vivir en Canela, Rio Grande do Sul, fue una experiencia transformadora. Aprendí portugués, me integré a una nueva familia, y participé en proyectos con el Club Rotario Canela Inspiração que me hicieron ver el mundo con otros ojos. Conocí personas increíbles y descubrí talentos que no sabía que tenía. Hoy me siento más segura, más abierta al mundo y profundamente agradecida con Rotary por haberme dado esta oportunidad. Este intercambio no solo me enseñó sobre Brasil, me enseñó sobre mí misma.",
+      studentName: "Sohannys Barría",
+      studentCountry: "🇵🇦",
+      city: "Canela",
+      country: "🇧🇷",
+      program: ProgramCode.RYE_LTEP,
+      year: 2023,
+      month: 6,
+      quote: "Nunca imaginé cuánto podía cambiar en un solo año. Vivir en Canela, Rio Grande do Sul, fue una experiencia transformadora. Aprendí portugués, me integré a una nueva familia, y participé en proyectos con el Club Rotario Canela Inspiração que me hicieron ver el mundo con otros ojos. Conocí personas increíbles y descubrí talentos que no sabía que tenía. Hoy me siento más segura, más abierta al mundo y profundamente agradecida con Rotary por haberme dado esta oportunidad. Este intercambio no solo me enseñó sobre Brasil, me enseñó sobre mí misma.",
       image: ryeLtepSohannys,
     }
   ],
