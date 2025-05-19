@@ -1,8 +1,11 @@
 ---
-import logoRye from '../assets/images/logo-rye.png';
-import logoNgse from '../assets/images/logo-ngse.png';
 import type { Testimonial } from '../types';
 import { ProgramCode, ProgramTitle } from '../const';
+import DistrictNgseLogo from './logos/DistrictNgseLogo.astro';
+import DistrictRyeLogo from './logos/DistrictRyeLogo.astro';
+
+import logoRye from '../assets/images/logo-rye.png';
+import logoNgse from '../assets/images/logo-ngse.png';
 
 interface Props extends Testimonial {}
 
@@ -36,6 +39,8 @@ const signatureString = (name: string, country: string): string => {
 
 const testimonialData = Astro.props;
 const { studentName, studentCountry, country, programCode, year, month, quote, image } = Astro.props;
+
+const ProgramLogo = programCode === ProgramCode.NGSE ? DistrictNgseLogo : DistrictRyeLogo;
 ---
 
 <div class="transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
@@ -64,21 +69,28 @@ const { studentName, studentCountry, country, programCode, year, month, quote, i
         </div>
 
         <!-- Footer -->
-        <div class="mt-4 text-sm text-[#3a3a3a]/70 text-right">
-          <div class="italic">{getPhotoFooter(testimonialData)}</div>
-          <div>{monthToString(month)} {year}</div>
+        <div class="flex items-center justify-between mt-4 w-full gap-3">
+          <ProgramLogo class="block w-1/2 md:hidden" />
+          <div class="text-sm text-[#3a3a3a]/70 text-right w-1/2 md:w-full">
+            <div class="italic">{getPhotoFooter(testimonialData)}</div>
+            <div>{monthToString(month)} {year}</div>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Text Content Section (appears second on mobile) -->
-    <div class="flex flex-col justify-end space-y-4 italic md:order-1">
-      <div class="text-[#3a3a3a] font-mono tracking-wide leading-relaxed italic text-md xl:text-xs">
-        {quote}
-      </div>
+    <div class="flex flex-col justify-between space-y-4 italic md:order-1">
+      <ProgramLogo class="hidden md:block md:w-2/3" />
 
-      <div class="text-[#3a3a3a] font-mono tracking-wide leading-relaxed border-b border-black/20 py-2 mt-1 md:mt-4">
-        {signatureString(studentName, studentCountry)}
+      <div class="flex flex-col justify-end space-y-4 italic md:order-1">
+        <div class="text-[#3a3a3a] font-mono tracking-wide leading-relaxed italic text-sm lg:text-lg xl:text-xs">
+          {quote}
+        </div>
+
+        <div class="text-[#3a3a3a] font-mono tracking-wide leading-relaxed border-b border-black/20 py-2 mt-1 md:mt-4">
+          {signatureString(studentName, studentCountry)}
+        </div>
       </div>
     </div>
   </div>
