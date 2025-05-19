@@ -1,27 +1,22 @@
 ---
-import logoRye from '../assets/images/logo-rye.png';
-import logoNgse from '../assets/images/logo-ngse.png';
 import type { Testimonial } from '../types';
 import { ProgramCode, ProgramTitle } from '../const';
+import DistrictNgseLogo from './logos/DistrictNgseLogo.astro';
+import DistrictRyeLogo from './logos/DistrictRyeLogo.astro';
+
+import logoRye from '../assets/images/logo-rye.png';
+import logoNgse from '../assets/images/logo-ngse.png';
 
 interface Props extends Testimonial {}
 
-const getImage = (programCode: ProgramCode, image?: ImageMetadata): ImageMetadata => {
-  if (image) {
-    return image;
-  }
-
-  return programCode.split('-')[0] === 'rye' ? logoRye : logoNgse;
-};
-
-const getPhotoFooter = (testimonial: Testimonial): string => {
-  const prefix = testimonial.programCode === ProgramCode.RYE_STEP ? 'Mis' : 'Mi';
-  const programName = ProgramTitle[testimonial.programCode as keyof typeof ProgramTitle];
-  const title = testimonial.program
-  ? testimonial.program
+const getPhotoFooter = ({ programCode, program, city }: Testimonial): string => {
+  const prefix = programCode === ProgramCode.RYE_STEP ? 'Mis' : 'Mi';
+  const programName = ProgramTitle[programCode as keyof typeof ProgramTitle];
+  const title = program
+  ? program
   : `${prefix} ${programName}`;
 
-  const cityString = testimonial.city ? ` en ${testimonial.city}` : '';
+  const cityString = city ? ` en ${city}` : '';
   return `${title}${cityString}`;
 };
 
@@ -30,26 +25,45 @@ const monthToString = (month: number, short?: boolean): string => {
   return short ? months[month - 1].slice(0, 3).toUpperCase() : months[month - 1];
 };
 
-const signatureString = (name: string, country: string): string => {
-  return `${name.split(' ')[0]} ${country.toUpperCase()}`;
-};
+const {
+  studentName,
+  homeCountry,
+  homeClub,
+  country,
+  city,
+  programCode,
+  program,
+  year,
+  month,
+  quote,
+  image
+} = Astro.props;
 
-const testimonialData = Astro.props;
-const { studentName, studentCountry, country, programCode, year, month, quote, image } = Astro.props;
+const ProgramLogo = programCode === ProgramCode.NGSE ? DistrictNgseLogo : DistrictRyeLogo;
+
+const mainImage = image
+  ? image
+  : programCode.split('-')[0] === 'RYE' ? logoRye : logoNgse;
+const imageFooter = getPhotoFooter({ programCode, program, city } as Testimonial);
+
+const signatureName = studentName.split(' ')[0];
+const signatureDescription = homeClub ? `Estudiante del CR ${homeClub} en ` : `Estudiante de `;
+
+const monthString = monthToString(month);
 ---
 
 <div class="transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-[#f8f5f0] rounded-none shadow-md overflow-hidden h-full relative p-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-[#f8f5f0] dark:bg-[#1a1a1a] rounded-none shadow-md overflow-hidden h-full relative p-6">
     <!-- Image Section (appears first on mobile) -->
     <div class="md:order-2 h-full flex flex-col justify-center">
       <!-- Photo -->
-      <div class="relative flex flex-col items-end justify-center bg-white p-4 shadow-lg">
-        <!-- Made in Country Stamp -->
-        <div class="absolute top-[-10px] right-[-10px] w-24 h-24">
-          <div class="rounded-full border-[3px] border-black/20 p-2 bg-white transform rotate-[12deg] opacity-80">
-            <div class="text-center text-[#3a3a3a]">
+      <div class="relative flex flex-col items-end justify-center bg-white dark:bg-[#2a2a2a] p-4 shadow-lg">
+        <!-- Country Stamp -->
+        <div class="absolute top-[-10px] right-[-10px] size-24 xl:size-18">
+          <div class="rounded-full border-[3px] border-black/20 dark:border-white/20 p-2 bg-white dark:bg-[#2a2a2a] transform rotate-[12deg] opacity-80">
+            <div class="text-center text-[#3a3a3a] dark:text-white/90">
               <div class="tracking-wider text-xs">FROM</div>
-              <div class="text-5xl tracking-wider">{country.toUpperCase()}</div>
+              <div class="text-5xl xl:text-4xl tracking-wider">{country}</div>
             </div>
           </div>
         </div>
@@ -57,28 +71,43 @@ const { studentName, studentCountry, country, programCode, year, month, quote, i
         <!-- Image -->
         <div class="w-full" style="aspect-ratio: 3/4;">
           <img
-            src={getImage(programCode, image).src}
+            src={mainImage.src}
             alt={`${country} - ${studentName}`}
-            class="w-full h-full object-cover"
+            class={`w-full h-full ${image ? 'object-cover' : 'object-contain'}`}
           />
         </div>
 
         <!-- Footer -->
-        <div class="mt-4 text-sm text-[#3a3a3a]/70 text-right">
-          <div class="italic">{getPhotoFooter(testimonialData)}</div>
-          <div>{monthToString(month)} {year}</div>
+        <div class="flex items-center justify-between mt-4 w-full gap-3">
+          <ProgramLogo class="block w-1/2 md:hidden" />
+          <div class="text-sm text-[#3a3a3a]/70 dark:text-white/70 text-right w-1/2 md:w-full">
+            <div class="italic">{imageFooter}</div>
+            <div>{monthString} {year}</div>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Text Content Section (appears second on mobile) -->
-    <div class="flex flex-col justify-end space-y-4 italic md:order-1">
-      <div class="text-[#3a3a3a] font-mono tracking-wide leading-relaxed italic text-md xl:text-xs">
-        {quote}
-      </div>
+    <div class="flex flex-col justify-between space-y-4 italic md:order-1">
+      <ProgramLogo class="hidden md:block md:w-2/3" />
 
-      <div class="text-[#3a3a3a] font-mono tracking-wide leading-relaxed border-b border-black/20 py-2 mt-1 md:mt-4">
-        {signatureString(studentName, studentCountry)}
+      <div class="flex flex-col justify-end space-y-4 italic md:order-1">
+        <div class="text-[#3a3a3a] dark:text-white/90 font-mono tracking-wide leading-relaxed italic text-sm lg:text-lg xl:text-xs">
+          {quote}
+        </div>
+
+        <div class="flex flex-col py-2 mt-1 md:mt-4">
+          <div class="text-[#3a3a3a] dark:text-white/90 font-mono tracking-wide leading-relaxed border-b border-black/20 dark:border-white/20 mb-1">
+            {signatureName}
+          </div>
+          <span class="flex items-center gap-1 text-black/60 dark:text-white/60 font-mono tracking-wide leading-relaxed text-xs">
+            {signatureDescription}
+            <span class="text-black/80 dark:text-white/80 text-xl leading-none">
+              {homeCountry}
+            </span>
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -89,6 +118,13 @@ const { studentName, studentCountry, country, programCode, year, month, quote, i
   .bg-[#f8f5f0] {
     background-image:
       linear-gradient(rgba(248, 245, 240, 0.9), rgba(248, 245, 240, 0.9)),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  /* Dark mode vintage paper texture */
+  .dark .bg-[#1a1a1a] {
+    background-image:
+      linear-gradient(rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.9)),
       url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   }
 </style>
