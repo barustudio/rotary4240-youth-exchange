@@ -36,7 +36,7 @@ export interface MetaData {
 
 export interface Testimonial {
   studentName: string;
-  studentCountry: string;
+  homeCountry: string;
   programCode: ProgramCode;
   city?: string;
   country: string;

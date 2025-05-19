@@ -38,7 +38,7 @@ const signatureString = (name: string, country: string): string => {
 };
 
 const testimonialData = Astro.props;
-const { studentName, studentCountry, country, programCode, year, month, quote, image } = Astro.props;
+const { studentName, homeCountry, country, programCode, year, month, quote, image } = Astro.props;
 
 const ProgramLogo = programCode === ProgramCode.NGSE ? DistrictNgseLogo : DistrictRyeLogo;
 ---
@@ -89,7 +89,7 @@ const ProgramLogo = programCode === ProgramCode.NGSE ? DistrictNgseLogo : Distri
         </div>
 
         <div class="text-[#3a3a3a] font-mono tracking-wide leading-relaxed border-b border-black/20 py-2 mt-1 md:mt-4">
-          {signatureString(studentName, studentCountry)}
+          {signatureString(studentName, homeCountry)}
         </div>
       </div>
     </div>
