@@ -1,0 +1,33 @@
+---
+import Footer from "../../../components/Footer.astro";
+import Header from "../../../components/Header.astro";
+import Layout from "../../../layouts/Layout.astro";
+import ApplicationForm from "../../../components/ApplicationForm.astro";
+
+export function getStaticPaths() {
+  return [
+    { params: { programCode: undefined } },
+    { params: { programCode: 'rye-ltep' } },
+    { params: { programCode: 'rye-camps' } },
+    { params: { programCode: 'rye-step' } },
+    { params: { programCode: 'ngse' } },
+  ];
+}
+
+const { programCode } = Astro.params;
+const programName = programCode ? programCode.toUpperCase() : 'Rotary Youth Exchange';
+const metadata = {
+  title: `Aplica para ${programName}`,
+  description: `Formulario de aplicación para ${programName}`,
+};
+---
+
+<Layout metadata={metadata}>
+  <Header />
+
+  <main class="pt-24">
+    <ApplicationForm />
+  </main>
+
+  <Footer />
+</Layout>
