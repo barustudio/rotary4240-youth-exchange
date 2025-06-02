@@ -46,10 +46,10 @@ const metadataWithDefaults = {
   </head>
   <body class="antialiased bg-white dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100 transition-colors duration-300">
 
-    <div id="page-wrapper" class="page-transition-wrapper">
+    <div id="page-wrapper" class="page-transition-wrapper min-h-screen flex flex-col justify-between">
       <Header />
 
-      <main>
+      <main class="flex-grow">
         <slot />
       </main>
 
