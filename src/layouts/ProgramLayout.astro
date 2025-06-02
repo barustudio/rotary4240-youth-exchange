@@ -9,7 +9,7 @@ interface Props {
   duration: string;
   programCode: string;
   logo: ImageMetadata;
-  applicationFormLink: string;
+  applicationFormLink?: string;
 }
 
 const { title, age, duration, programCode, logo, applicationFormLink } = Astro.props;
@@ -18,6 +18,8 @@ const metadata = {
   title: `${programCode} (${title} de ${duration})`,
   description: `Intercambios de Rotary en Centroamérica para jóvenes (${age} años)`,
 };
+
+const formUrl = applicationFormLink ?? `/programas/${programCode}/aplicar`;
 ---
 
 <Layout metadata={metadata}>
@@ -67,8 +69,8 @@ const metadata = {
         </h2>
         <div class="flex flex-wrap gap-4 justify-center">
           <a
-            href={applicationFormLink}
-            target="_blank"
+            href={formUrl}
+            target={applicationFormLink ? '_blank' : '_self'}
             rel="noopener noreferrer"
             class="btn btn-primary"
           >
