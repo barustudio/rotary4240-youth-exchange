@@ -1,6 +1,4 @@
 ---
-import Footer from "../../../components/Footer.astro";
-import Header from "../../../components/Header.astro";
 import Layout from "../../../layouts/Layout.astro";
 import ApplicationForm from "../../../components/ApplicationForm.astro";
 
@@ -23,11 +21,5 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <Header />
-
-  <main class="pt-24">
-    <ApplicationForm />
-  </main>
-
-  <Footer />
+  <ApplicationForm />
 </Layout>
