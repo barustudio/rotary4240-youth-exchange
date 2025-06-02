@@ -1,29 +1,28 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
-import Layout from '../../layouts/Layout.astro'; // Assuming a general Layout component
+import Layout from '../../layouts/Layout.astro';
 import Postcard from '../../components/Postcard.astro';
-import { generateTestimonialSlug } from '../../utils/slugs'; // Import the slug generation helper
 
 export async function getStaticPaths() {
-  const testimonials = await getCollection('testimonios');
+  const testimonials = await getCollection('testimonials');
   return testimonials.map(entry => ({
-    params: { slug: generateTestimonialSlug(entry.data) },
+    params: { slug: entry.slug },
     props: { entry },
   }));
 }
 
 interface Props {
-  entry: CollectionEntry<'testimonios'>;
+  entry: CollectionEntry<'testimonials'>;
 }
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
-const pageTitle = `${entry.data.studentName}'s Testimonial - ${entry.data.programCode}`;
-const pageDescription = entry.data.quote.substring(0, 160); // Use quote as description
+const title = `Testimonio de ${entry.data.studentName} - Estudiante del programa ${entry.data.programCode}`;
+const description = entry.data.quote.substring(0, 160);
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
+<Layout metadata={{ title, description }}>
   <section class="py-12 md:py-20">
     <div class="container mx-auto px-4">
       <article class="max-w-3xl mx-auto">

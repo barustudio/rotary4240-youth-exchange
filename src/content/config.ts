@@ -21,5 +21,5 @@ const testimonialsCollection = defineCollection({
 });
 
 export const collections = {
-  'testimonios': testimonialsCollection,
+  'testimonials': testimonialsCollection,
 };
