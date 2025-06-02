@@ -1,0 +1,155 @@
+import { ProgramCode } from '../../const';
+import logoNgse from '../../assets/images/logo-ngse.png';
+import ngseTestimonial1 from '../../assets/images/ngse-1.jpg';
+import ngseTestimonial2 from '../../assets/images/ngse-2.jpg';
+import ngseVictoria from '../../assets/images/testimonials/ngse-2025-brazil-victoria.jpg';
+
+export const programInfo = {
+  title: "Pasantías",
+  age: "18-30",
+  duration: "2-3 meses",
+  programCode: "NGSE",
+  logo: logoNgse,
+
+  description: "El Programa de Intercambio de Nuevas Generaciones para Servicio (NGSE) está diseñado para adultos jóvenes que desean adquirir experiencia profesional o realizar voluntariado en el extranjero. Este programa combina la inmersión cultural con el desarrollo profesional, permitiendo a los participantes aplicar sus habilidades y conocimientos en entornos internacionales mientras viven con familias anfitrionas o en alojamientos coordinados por Rotary.",
+
+  benefits: [
+    "Experiencia profesional internacional para enriquecer el currículum",
+    "Desarrollo de habilidades específicas en contextos internacionales",
+    "Creación de redes profesionales globales",
+    "Profunda comprensión cultural a través de la inmersión",
+    "Oportunidad de contribuir mediante proyectos de impacto social"
+  ],
+
+  experiences: [
+    "Prácticas profesionales en empresas, organizaciones o instituciones",
+    "Proyectos de voluntariado comunitario",
+    "Vida con familias anfitrionas o en alojamientos designados",
+    "Participación en actividades de los clubes Rotary locales",
+    "Oportunidades para desarrollar proyectos propios de servicio"
+  ],
+
+  ageRequirements: "Adultos jóvenes entre 18 y 30 años, generalmente graduados universitarios o en sus últimos años de carrera profesional o técnica.",
+
+  profileRequirements: [
+    "Formación académica o profesional relevante para la pasantía deseada",
+    "Experiencia previa básica en el área de interés",
+    "Madurez y capacidad de adaptación a entornos laborales diversos",
+    "Interés demostrable en servicio comunitario e intercambio cultural"
+  ],
+
+  skills: [
+    "Conocimiento profesional en su área de especialización",
+    "Comunicación efectiva en inglés u otro idioma relevante",
+    "Habilidades interpersonales para entornos multiculturales",
+    "Capacidad para trabajar independientemente y en equipo",
+    "Iniciativa y resolución de problemas"
+  ],
+
+  familySupport: "Aunque los participantes son adultos independientes, se recomienda contar con apoyo familiar o respaldo financiero complementario para emergencias y para maximizar la experiencia cultural durante el tiempo libre.",
+
+  detailedDuration: "El programa típicamente dura entre 2 y 3 meses, aunque en algunos casos puede extenderse hasta 6 meses dependiendo del proyecto específico, los acuerdos entre distritos y los requisitos de visa del país anfitrión.",
+
+  phases: [
+    "Solicitud y emparejamiento con oportunidades disponibles (3-6 meses antes)",
+    "Preparación profesional y cultural",
+    "Experiencia de pasantía/voluntariado en el extranjero (2-3 meses)",
+    "Evaluación y documentación de la experiencia",
+    "Actividades post-intercambio y aplicación de lo aprendido"
+  ],
+
+  costs: [
+    "Cuota administrativa de 200.00 USD",
+    "Pasaje aéreo",
+    "Seguro médico y de responsabilidad civil (determinado por el país receptor)",
+    "Trámites de visa (si aplica, generalmente el programa se realiza con visa de turista)",
+    "Gastos personales y de transporte local (en algunos casos)",
+    "Alojamiento (en algunos casos)",
+    "Alimentación (en algunos casos)"
+  ],
+
+  rotaryProvides: [
+    "Coordinación de la oportunidad profesional o voluntariado",
+    "Alojamiento con familia anfitriona o asistencia para encontrar alojamiento",
+    "Consejero rotario local para apoyo continuo",
+    "Red de contactos profesionales en el campo de interés",
+    "En algunos casos, estipendio o apoyo parcial para gastos básicos",
+    "Certificación de la experiencia internacional"
+  ],
+
+  applicationSteps: [
+    "Contactar al comité NGSE del distrito Rotario local",
+    "Completar la solicitud con currículum y carta de motivación",
+    "Entrevista para evaluar aptitudes profesionales y objetivos",
+    "Si es aceptado, desarrollo de un plan personalizado de intercambio",
+    "Preparación específica para el país y tipo de pasantía asignada"
+  ],
+
+  applicationFormLink: "http://bit.ly/formulario-rye",
+
+  importantDates: [
+    {
+      date: "Proceso continuo",
+      description: "Las aplicaciones se aceptan durante todo el año y se procesan según disponibilidad"
+    },
+    {
+      date: "2-4 meses",
+      description: "Tiempo promedio desde la aplicación hasta la confirmación de plaza"
+    },
+    {
+      date: "1-2 meses",
+      description: "Tiempo de preparación recomendado antes de la partida"
+    }
+  ],
+
+  faqs: [
+    {
+      question: "¿Necesito ser rotario o tener conexión con Rotary para aplicar?",
+      answer: "No es requisito ser rotario, aunque tener una conexión con un club Rotary facilita el proceso. Los programas están abiertos a todos los jóvenes calificados de la comunidad que cumplan con los requisitos."
+    },
+    {
+      question: "¿Las pasantías son remuneradas?",
+      answer: "La mayoría de las pasantías no ofrecen remuneración económica formal, aunque algunos programas pueden proporcionar estipendios para gastos básicos. El valor principal está en la experiencia internacional, el desarrollo profesional y las conexiones establecidas."
+    },
+    {
+      question: "¿Puedo elegir el país y tipo de organización para mi pasantía?",
+      answer: "Puedes indicar tus preferencias y área de especialización, pero la asignación final dependerá de las oportunidades disponibles en el momento de tu aplicación y los acuerdos entre distritos Rotarios."
+    },
+    {
+      question: "¿Qué tipo de reconocimiento obtendré al finalizar el programa?",
+      answer: "Recibirás un certificado oficial del programa NGSE, y dependiendo de la organización anfitriona, podrías recibir una carta de recomendación o certificado adicional. La experiencia internacional es altamente valorada en currículums profesionales."
+    },
+    {
+      question: "¿Puedo extender mi pasantía si surge la oportunidad?",
+      answer: "Las extensiones son posibles en algunos casos, siempre que la organización anfitriona, el club Rotario local y las regulaciones migratorias lo permitan. Cualquier extensión debe ser aprobada formalmente por el comité NGSE."
+    }
+  ],
+
+  testimonials: [
+  {
+      studentName: "Victoria Valderrama",
+      homeCountry: "🇵🇦",
+      homeClub: "Chorrera",
+      programCode: ProgramCode.NGSE,
+      city: "Belo Horizonte",
+      country: "🇧🇷",
+      year: 2025,
+      month: 3,
+      quote: "Actualmente realizo una pasantía en el área administrativa del CEFET-MG, combinando tareas prácticas con seminarios académicos. Esta experiencia ha impulsado mi desarrollo profesional y académico en un entorno internacional, rodeada de docentes, investigadores y compañeros de diversas culturas. Gracias al apoyo de mi familia anfitriona y la participación en actividades culturales con clubes Rotarios, he fortalecido mis habilidades en portugués y ampliado mi red de contactos. Esta vivencia me ha permitido valorar aún más la riqueza cultural de Panamá y reafirmar mi compromiso de representarla con orgullo en el mundo.",
+      image: ngseVictoria,
+    },
+  ],
+
+  testimonialContent: [
+    {
+      type: 'image' as const,
+      image: ngseTestimonial1,
+      alt: 'Joven de Chorrera, Panamá, con su club anfitrión en Brasil 🇵🇦🇧🇷'
+    },
+    {
+      type: 'image' as const,
+      image: ngseTestimonial2,
+      alt: 'Joven de Chorrera, Panamá, con su club anfitrión en Brasil 🇵🇦🇧🇷'
+    },
+  ]
+};

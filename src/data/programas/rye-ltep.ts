@@ -1,0 +1,208 @@
+import logoRye from '../../assets/images/logo-rye.png';
+import ryeLtepAnayansi from '../../assets/images/testimonials/ltep-2022-germany-anayansi.jpg';
+import ryeLtepSohannys from '../../assets/images/testimonials/ltep-2023-brazil-sohannys.jpg';
+import { ProgramCode } from '../../const';
+
+export const programInfo = {
+  title: "Año escolar",
+  age: "15-17",
+  duration: "10-12 meses",
+  programCode: "RYE-LTEP",
+  logo: logoRye,
+
+  description: "El Programa de Intercambio de Jóvenes a Largo Plazo (LTEP) es la experiencia más completa de Rotary para estudiantes de secundaria. Durante un año académico completo, los participantes viven con familias anfitrionas en otro país mientras asisten a una escuela local, aprenden un nuevo idioma y se sumergen completamente en una cultura diferente.",
+
+  benefits: [
+    "Desarrollo de fluidez en un nuevo idioma",
+    "Aumento de la madurez, independencia y confianza",
+    "Perspectiva global y comprensión intercultural",
+    "Amistades internacionales duraderas",
+    "Desarrollo de habilidades de adaptación y resolución de problemas"
+  ],
+
+  experiences: [
+    "Vida cotidiana con familias anfitrionas rotarias (generalmente 2-3 familias durante el año)",
+    "Asistencia regular a una escuela secundaria local",
+    "Participación en actividades comunitarias y del club Rotario",
+    "Oportunidades de viajes y excursiones culturales",
+    "Interacción con otros estudiantes de intercambio internacionales"
+  ],
+
+  ageRequirements: "Jóvenes entre 15 y 17 años al momento de aplicar (preferentemente estudiantes de secundaria). El viaje puede realizarse con 18 años recién cumplidos.",
+
+  profileRequirements: [
+    "Buen rendimiento académico",
+    "Capacidad de adaptación y flexibilidad",
+    "Madurez emocional para manejar periodos lejos de casa",
+    "Interés genuino en otras culturas e idiomas"
+  ],
+
+  skills: [
+    "Habilidades básicas de comunicación",
+    "Capacidad para resolver problemas de forma independiente",
+    "Actitud positiva y mente abierta",
+    "Disposición para aprender y participar activamente"
+  ],
+
+  familySupport: "Se requiere un fuerte compromiso familiar, tanto en términos de apoyo emocional como financiero. Los padres deben entender la naturaleza del programa y estar preparados para la separación prolongada.",
+
+  detailedDuration: "El programa tiene una duración de 10 a 12 meses, generalmente siguiendo el calendario escolar del país anfitrión (agosto/septiembre a junio/julio del año siguiente).",
+
+  phases: [
+    "Preparación y orientación (3-6 meses antes de la partida)",
+    "Adaptación inicial y ajuste cultural (primeros 3 meses)",
+    "Inmersión plena en la vida escolar y familiar (meses 4-9)",
+    "Preparación para el regreso y cierre (últimos 1-2 meses)",
+    "Reintegración y actividades post-intercambio"
+  ],
+
+  costs: [
+    "Cuota de participación en el programa (500 USD)",
+    "Gastos asociados con recibir al estudiante extranjero en reciprocidad (escolaridad, útiles escolares, alimentación, etc.)",
+    "Pasaje aéreo abierto de ida y vuelta",
+    "Excursiones y eventos organizados por el país anfitrión (opcionales)",
+    "Asignación mensual para alimentación y transporte (80 USD)",
+    "Seguro médico (determinado por el país anfitrión)",
+    "Fondo de emergencia (~500 USD, reembolsable)",
+    "Blazer azul marino (uniforme del programa)",
+    "Gastos personales y dinero de bolsillo",
+    "Trámites de pasaporte y visa estudiantil",
+    "Ropa adecuada para el clima del país anfitrión",
+  ],
+
+  rotaryProvides: [
+    "Alojamiento con familias anfitrionas seleccionadas",
+    "Consejero rotario para apoyo continuo",
+    "Orientaciones antes, durante y después del intercambio",
+    "Red de seguridad y apoyo del club y distrito Rotario",
+    "Certificación de participación en el programa",
+  ],
+
+  applicationSteps: [
+    "Completar el formulario de interés inicial",
+    "El comité nacional le asignará un Club Rotario local",
+    "Cancelar 1er abono de la cuota de participación (100 USD)",
+    "Asistir a una sesión informativa con padres organizada por el Club Rotario asignado",
+    "Presentar la solicitud formal con documentación requerida",
+    "Entrevista personal con el comité de Intercambio de Jóvenes",
+    "Si es seleccionado, cancelar 2do abono de la cuota de participación (200 USD)",
+    "Participar en orientaciones obligatorias",
+    "Completar la aplicación internacional para asignación de país",
+    "Cancelar cuota de participación antes del viaje (200 USD)"
+  ],
+
+  applicationFormLink: "http://bit.ly/formulario-rye",
+
+  importantDates: [
+    {
+      date: "Septiembre-Noviembre",
+      description: "Período de aplicación"
+    },
+    {
+      date: "Diciembre-Enero",
+      description: "Entrevistas y selección"
+    },
+    {
+      date: "Febrero-Abril",
+      description: "Asignación de países y preparación"
+    },
+    {
+      date: "Julio-Agosto",
+      description: "Salida para el intercambio"
+    }
+  ],
+
+  faqs: [
+    {
+      question: "¿Tengo que hablar el idioma del país anfitrión antes de partir?",
+      answer: "No es requisito tener fluidez previa, pero se recomienda tener conocimientos básicos. Parte del valor del programa es el aprendizaje del idioma por inmersión."
+    },
+    {
+      question: "¿Puedo elegir el país al que quiero ir?",
+      answer: "Puedes indicar preferencias, pero la asignación final depende de la disponibilidad y los acuerdos entre distritos. Es importante mantener una actitud abierta."
+    },
+    {
+      question: "¿Qué sucede si no puedo viajar?",
+      answer: "Si no puedes viajar, puedes cancelar el intercambio y recibir un reembolso completo de la cuota de participación, siempre y cuando lo notifiques con suficiente antelación. Si ya te hemos asignado un destino, se te retendrán 100 USD de la cuota de participación. Si ya haz participado en el campamento de orientación, se te retendrán 300 USD de la cuota de participación."
+    },
+    {
+      question: "¿Debo asistir a la escuela durante el intercambio?",
+      answer: "Sí, es obligatorio. Todos los estudiantes deben asistir regularmente a clases en el centro educativo asignado como parte esencial del programa."
+    },
+    {
+      question: "¿El año escolar realizado en el extranjero será reconocido en mi país?",
+      answer: "Depende. Rotary no gestiona el reconocimiento de créditos. Recomendamos consultar con tu centro educativo o autoridad correspondiente antes del intercambio."
+    },
+    {
+      question: "¿Puedo iniciar el viaje después de terminar mi año escolar?",
+      answer: "Depende. El viaje debe alinearse con el inicio del ciclo escolar del país de destino. En el hemisferio norte, por ejemplo, los intercambios suelen comenzar en agosto. Si en tu país aún no ha finalizado el año escolar, recomendamos hablar con tu escuela para evaluar la posibilidad de adelantar contenido o retomar al regresar del intermcabio."
+    },
+    {
+      question: "¿Puedo dar clases virtuales o trabajar módulos escolares de mi país de origen durante el intercambio?",
+      answer: "No. Está prohibido. El enfoque del intercambio es la inmersión total en el entorno educativo y cultural del país anfitrión."
+    },
+    {
+      question: "Si cumplo 18 años antes o durante el intercambio, ¿siguen aplicando todas las reglas del programa?",
+      answer: "Sí. Todas las normas del programa aplican sin excepción, incluso si ya alcanzaste la mayoría de edad durante el intercambio."
+    },
+    {
+      question: "¿Qué pasa si tengo problemas durante mi intercambio?",
+      answer: "Cada estudiante tiene un consejero rotario asignado, además de la red de apoyo del club anfitrión, el distrito y las familias anfitrionas. Existen protocolos claros para resolver cualquier dificultad."
+    },
+    {
+      question: "¿Cómo se manejan las alergias, restricciones alimentarias o condiciones médicas?",
+      answer: "Estas se documentan en la aplicación y se comunican a las familias anfitrionas. Rotary trabaja para acomodar necesidades específicas, pero es importante ser transparente desde el inicio."
+    },
+    {
+      question: "¿Se permiten visitas familiares durante el intercambio?",
+      answer: "Nunca durante los primeros meses para facilitar la adaptación. Pueden permitirse durante períodos específicos, pero deben coordinarse con el consejero y el club anfitrión. En general, recomendamos evitarlas al máximo para no interferir con el proceso de inmersión cultural."
+    },
+    {
+      question: "¿Conoceré a mi familia anfitriona antes del viaje?",
+      answer: "Sí. Antes del viaje se intercambian los contactos de la familia anfitriona y se recomienda tener acercamientos previos mediante videollamadas para iniciar una relación de confianza."
+    },
+    {
+      question: "Nunca he viajado solo, ¿puedo viajar con algún familiar al país del intercambio?",
+      answer: "No. Todos los estudiantes deben viajar solos. Esta es una parte fundamental del proceso de independencia y adaptación que promueve el programa. Estaremos pendientes de tu salida, incluyendo escalas si las hay, y al llegar a tu destino te estará esperando tu familia anfitriona.",
+    }
+  ],
+
+  testimonials: [
+    {
+      studentName: "Anayansi Aguilar",
+      homeCountry: "🇵🇦",
+      homeClub: "Pacífico",
+      city: "Plön",
+      country: "🇩🇪",
+      programCode: ProgramCode.RYE_LTEP,
+      year: 2022,
+      month: 12,
+      quote: "Mi año en Alemania fue uno de los mayores retos y a la vez uno de los mayores regalos de mi vida. Desde el primer día en Plön, el Club Rotario anfitrión me hizo sentir bienvenida. Aprendí a adaptarme a una cultura completamente distinta, a entender nuevas formas de pensar, y sobre todo, a valorar la diversidad. A pesar del frío, siempre sentí el calor de las personas que me rodeaban. Hoy regreso a casa con una nueva familia alemana, amigos de todo el mundo y una visión mucho más amplia del futuro que quiero construir. Gracias, Rotary, por darme alas para volar.",
+      image: ryeLtepAnayansi,
+    },
+    {
+      studentName: "Sohannys Barría",
+      homeCountry: "🇵🇦",
+      homeClub: "David",
+      city: "Canela",
+      country: "🇧🇷",
+      programCode: ProgramCode.RYE_LTEP,
+      year: 2023,
+      month: 6,
+      quote: "Nunca imaginé cuánto podía cambiar en un solo año. Vivir en Canela, Rio Grande do Sul, fue una experiencia transformadora. Aprendí portugués, me integré a una nueva familia, y participé en proyectos con el Club Rotario Canela Inspiração que me hicieron ver el mundo con otros ojos. Conocí personas increíbles y descubrí talentos que no sabía que tenía. Hoy me siento más segura, más abierta al mundo y profundamente agradecida con Rotary por haberme dado esta oportunidad. Este intercambio no solo me enseñó sobre Brasil, me enseñó sobre mí misma.",
+      image: ryeLtepSohannys,
+    }
+  ],
+  testimonialContent: [
+    {
+      type: 'youtube' as const,
+      url: 'https://youtu.be/HId-3_0jleo',
+      alt: 'Desde Panamá hasta Brasil: la experiencia RYE de Sohannys en Rio Grande do Sul 🇵🇦🇧🇷'
+    },
+    {
+      type: 'youtube' as const,
+      url: 'https://youtu.be/9SCQCgSyi6s',
+      alt: ' Un año en Alemania: la experiencia RYE de Anayansi 🇵🇦🇩🇪'
+    }
+  ]
+};
