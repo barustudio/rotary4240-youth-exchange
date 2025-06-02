@@ -1,0 +1,42 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro'; // Assuming a general Layout component
+import Postcard from '../../components/Postcard.astro';
+import { generateTestimonialSlug } from '../../utils/slugs'; // Import the slug generation helper
+
+export async function getStaticPaths() {
+  const testimonials = await getCollection('testimonios');
+  return testimonials.map(entry => ({
+    params: { slug: generateTestimonialSlug(entry.data) },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<'testimonios'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const pageTitle = `${entry.data.studentName}'s Testimonial - ${entry.data.programCode}`;
+const pageDescription = entry.data.quote.substring(0, 160); // Use quote as description
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <section class="py-12 md:py-20">
+    <div class="container mx-auto px-4">
+      <article class="max-w-3xl mx-auto">
+        <!-- Render Postcard with frontmatter -->
+        <div class="mb-8">
+          <Postcard {...entry.data} />
+        </div>
+
+        <!-- Render Markdown content -->
+        <div class="prose prose-lg dark:prose-invert mx-auto">
+          <Content />
+        </div>
+      </article>
+    </div>
+  </section>
+</Layout>
