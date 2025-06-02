@@ -1,6 +1,4 @@
 ---
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
 import Layout from './Layout.astro';
 
 interface CTA {
@@ -26,41 +24,35 @@ const ctaWithDefaults = {
 ---
 
 <Layout metadata={{title, description: subtitle}}>
-  <Header />
-
-  <main class="pt-24">
-    <!-- Hero section -->
-    <section class="py-16 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800/80 dark:to-gray-900">
-      <div class="container-custom">
-        <div class="max-w-3xl mx-auto text-center">
-          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">{title}</h1>
-          {subtitle && <p class="text-xl text-gray-600 dark:text-gray-300 mt-4">{subtitle}</p>}
-        </div>
+  <!-- Hero section -->
+  <section class="py-16 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800/80 dark:to-gray-900">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">{title}</h1>
+        {subtitle && <p class="text-xl text-gray-600 dark:text-gray-300 mt-4">{subtitle}</p>}
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Content section -->
-    <slot />
+  <!-- Content section -->
+  <slot />
 
-    <!-- Call to Action Final -->
-    <section class="py-16 bg-primary-50 dark:bg-primary-900/10">
-      <div class="container-custom text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
-          ¿Listo para formar parte del programa de intercambio?
-        </h2>
-        <div class="flex flex-wrap gap-4 justify-center">
-          <a
-            href={ctaWithDefaults.link}
-            target={ctaWithDefaults.target}
-            class="btn btn-primary"
-          >
-            {ctaWithDefaults.title}
-          </a>
-          <a href="/#programas" class="btn btn-outline-secondary">Ver programas</a>
-        </div>
+  <!-- Call to Action Final -->
+  <section class="py-16 bg-primary-50 dark:bg-primary-900/10">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
+        ¿Listo para formar parte del programa de intercambio?
+      </h2>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a
+          href={ctaWithDefaults.link}
+          target={ctaWithDefaults.target}
+          class="btn btn-primary"
+        >
+          {ctaWithDefaults.title}
+        </a>
+        <a href="/#programas" class="btn btn-outline-secondary">Ver programas</a>
       </div>
-    </section>
-  </main>
-
-  <Footer />
+    </div>
+  </section>
 </Layout>

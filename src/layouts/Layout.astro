@@ -6,6 +6,8 @@ import '../styles/transitions.css';
 import Metadata from '../components/head/Metadata.astro';
 import Favicons from '../components/head/Favicons.astro';
 import Analytics from '../components/head/Analytics.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
 export interface Props {
   metadata?: MetaData;
@@ -43,9 +45,17 @@ const metadataWithDefaults = {
     <ViewTransitions />
   </head>
   <body class="antialiased bg-white dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100 transition-colors duration-300">
+
     <div id="page-wrapper" class="page-transition-wrapper">
-      <slot />
+      <Header />
+
+      <main>
+        <slot />
+      </main>
+
+      <Footer />
     </div>
+
     <script>
       // Check for user preference
       if (localStorage.getItem('darkMode') === null) {
@@ -75,6 +85,8 @@ const metadataWithDefaults = {
         }
       });
     </script>
+
     <script src="../scripts/transitions.js"></script>
+
   </body>
 </html>
