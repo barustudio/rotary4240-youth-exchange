@@ -1,5 +1,6 @@
 ---
-import type { Testimonial } from '../types';
+import type { CollectionEntry } from 'astro:content';
+
 import { ProgramCode, ProgramTitle } from '../const';
 import DistrictNgseLogo from './logos/DistrictNgseLogo.astro';
 import DistrictRyeLogo from './logos/DistrictRyeLogo.astro';
@@ -7,9 +8,17 @@ import DistrictRyeLogo from './logos/DistrictRyeLogo.astro';
 import logoRye from '../assets/images/logo-rye.png';
 import logoNgse from '../assets/images/logo-ngse.png';
 
-interface Props extends Testimonial {}
+interface Props {
+  testimonial: CollectionEntry<"testimonials">;
+}
 
-const getPhotoFooter = ({ programCode, program, city }: Testimonial): string => {
+const getPhotoFooter = (
+  {
+    programCode,
+    program,
+    city
+  }: CollectionEntry<"testimonials">['data']
+): string => {
   const prefix = programCode === ProgramCode.RYE_STEP ? 'Mis' : 'Mi';
   const programName = ProgramTitle[programCode as keyof typeof ProgramTitle];
   const title = program
@@ -25,6 +34,8 @@ const monthToString = (month: number, short?: boolean): string => {
   return short ? months[month - 1].slice(0, 3).toUpperCase() : months[month - 1];
 };
 
+const { testimonial } = Astro.props;
+
 const {
   studentName,
   homeCountry,
@@ -37,14 +48,14 @@ const {
   month,
   quote,
   image
-} = Astro.props;
+} = testimonial.data;
 
 const ProgramLogo = programCode === ProgramCode.NGSE ? DistrictNgseLogo : DistrictRyeLogo;
 
 const mainImage = image
   ? image
   : programCode.split('-')[0] === 'RYE' ? logoRye : logoNgse;
-const imageFooter = getPhotoFooter({ programCode, program, city } as Testimonial);
+const imageFooter = getPhotoFooter({ programCode, program, city } as CollectionEntry<"testimonials">['data']);
 
 const signatureName = studentName.split(' ')[0];
 const signatureDescription = homeClub ? `Estudiante del CR ${homeClub} en ` : `Estudiante de `;

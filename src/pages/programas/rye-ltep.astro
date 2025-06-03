@@ -2,9 +2,16 @@
 import ProgramLayout from '../../layouts/ProgramLayout.astro';
 import ProgramContent from '../../components/ProgramContent.astro';
 import logoRye from '../../assets/images/logo-rye.png';
-import ryeLtepAnayansi from '../../assets/images/testimonials/ltep-2022-germany-anayansi.jpg';
-import ryeLtepSohannys from '../../assets/images/testimonials/ltep-2023-brazil-sohannys.jpg';
 import { ProgramCode } from '../../const';
+import { getLatestTestimonialsForProgram } from '../../utils/collections/testimonials';
+
+const latestTestimonials = await getLatestTestimonialsForProgram(
+  ProgramCode.RYE_LTEP,
+  {
+    limit: 4,
+    sortOrder: 'asc'
+  }
+);
 
 const programInfo = {
   title: "Año escolar",
@@ -94,8 +101,6 @@ const programInfo = {
     "Cancelar cuota de participación antes del viaje (200 USD)"
   ],
 
-  applicationFormLink: "http://bit.ly/formulario-rye",
-
   importantDates: [
     {
       date: "Septiembre-Noviembre",
@@ -170,32 +175,6 @@ const programInfo = {
     }
   ],
 
-  testimonials: [
-    {
-      studentName: "Anayansi Aguilar",
-      homeCountry: "🇵🇦",
-      homeClub: "Pacífico",
-      city: "Plön",
-      country: "🇩🇪",
-      programCode: ProgramCode.RYE_LTEP,
-      year: 2022,
-      month: 12,
-      quote: "Mi año en Alemania fue uno de los mayores retos y a la vez uno de los mayores regalos de mi vida. Desde el primer día en Plön, el Club Rotario anfitrión me hizo sentir bienvenida. Aprendí a adaptarme a una cultura completamente distinta, a entender nuevas formas de pensar, y sobre todo, a valorar la diversidad. A pesar del frío, siempre sentí el calor de las personas que me rodeaban. Hoy regreso a casa con una nueva familia alemana, amigos de todo el mundo y una visión mucho más amplia del futuro que quiero construir. Gracias, Rotary, por darme alas para volar.",
-      image: ryeLtepAnayansi,
-    },
-    {
-      studentName: "Sohannys Barría",
-      homeCountry: "🇵🇦",
-      homeClub: "David",
-      city: "Canela",
-      country: "🇧🇷",
-      programCode: ProgramCode.RYE_LTEP,
-      year: 2023,
-      month: 6,
-      quote: "Nunca imaginé cuánto podía cambiar en un solo año. Vivir en Canela, Rio Grande do Sul, fue una experiencia transformadora. Aprendí portugués, me integré a una nueva familia, y participé en proyectos con el Club Rotario Canela Inspiração que me hicieron ver el mundo con otros ojos. Conocí personas increíbles y descubrí talentos que no sabía que tenía. Hoy me siento más segura, más abierta al mundo y profundamente agradecida con Rotary por haberme dado esta oportunidad. Este intercambio no solo me enseñó sobre Brasil, me enseñó sobre mí misma.",
-      image: ryeLtepSohannys,
-    }
-  ],
   testimonialContent: [
     {
       type: 'youtube' as const,
@@ -217,7 +196,6 @@ const programInfo = {
   duration={programInfo.duration}
   programCode={programInfo.programCode}
   logo={programInfo.logo}
-  applicationFormLink={programInfo.applicationFormLink}
 >
   <ProgramContent
     description={programInfo.description}
@@ -232,10 +210,9 @@ const programInfo = {
     costs={programInfo.costs}
     rotaryProvides={programInfo.rotaryProvides}
     applicationSteps={programInfo.applicationSteps}
-    applicationFormLink={programInfo.applicationFormLink}
     importantDates={programInfo.importantDates}
     faqs={programInfo.faqs}
-    testimonials={programInfo.testimonials}
+    testimonials={latestTestimonials}
     testimonialContent={programInfo.testimonialContent}
   />
 </ProgramLayout>

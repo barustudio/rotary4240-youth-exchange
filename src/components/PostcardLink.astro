@@ -1,0 +1,15 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+import Postcard from './Postcard.astro';
+
+interface Props {
+  testimonial: CollectionEntry<"testimonials">;
+}
+
+const { testimonial } = Astro.props;
+---
+
+<a href={`/testimonios/${testimonial.slug}`} class="block hover:opacity-80 transition-opacity duration-200">
+  <Postcard testimonial={testimonial} />
+</a>

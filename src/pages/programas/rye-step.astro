@@ -2,6 +2,16 @@
 import ProgramLayout from '../../layouts/ProgramLayout.astro';
 import ProgramContent from '../../components/ProgramContent.astro';
 import logoRye from '../../assets/images/logo-rye.png';
+import { getLatestTestimonialsForProgram } from '../../utils/collections/testimonials';
+import { ProgramCode } from '../../const';
+
+const latestTestimonials = await getLatestTestimonialsForProgram(
+  ProgramCode.RYE_STEP,
+  {
+    limit: 4,
+    sortOrder: 'asc'
+  }
+);
 
 const programInfo = {
   title: "Vacaciones",
@@ -84,8 +94,6 @@ const programInfo = {
     "Contacto inicial con la familia anfitriona antes del viaje"
   ],
 
-  applicationFormLink: "http://bit.ly/formulario-rye",
-
   importantDates: [
     {
       date: "Septiembre-Enero",
@@ -120,7 +128,6 @@ const programInfo = {
     },
   ],
 
-  testimonials: [],
   testimonialContent: [],
 };
 ---
@@ -131,7 +138,6 @@ const programInfo = {
   duration={programInfo.duration}
   programCode={programInfo.programCode}
   logo={programInfo.logo}
-  applicationFormLink={programInfo.applicationFormLink}
 >
   <ProgramContent
     description={programInfo.description}
@@ -146,10 +152,9 @@ const programInfo = {
     costs={programInfo.costs}
     rotaryProvides={programInfo.rotaryProvides}
     applicationSteps={programInfo.applicationSteps}
-    applicationFormLink={programInfo.applicationFormLink}
     importantDates={programInfo.importantDates}
     faqs={programInfo.faqs}
-    testimonials={programInfo.testimonials}
+    testimonials={latestTestimonials}
     testimonialContent={programInfo.testimonialContent}
   />
 </ProgramLayout>

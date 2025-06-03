@@ -15,6 +15,8 @@ const mainMenu = [
       { text: "Vacaciones", url: "/programas/rye-step" },
       { text: "Campamentos", url: "/programas/rye-camps" },
       { text: "Pasantías", url: "/programas/ngse" },
+      { separator: true },
+      { text: "Testimonios", url: "/testimonios" },
     ],
   },
   {
@@ -65,7 +67,7 @@ const mainMenu = [
   // },
 ];
 ---
-<header class="fixed w-full bg-white/90 dark:bg-secondary-950/90 backdrop-blur-xs z-50 py-4 transition-colors duration-300">
+<header class="w-full bg-white/90 dark:bg-secondary-950/90 backdrop-blur-xs z-50 py-4 transition-colors duration-300">
   <div class="container-custom flex items-center justify-between">
     <a href="/" class="flex items-center" aria-label="Ir a la página principal">
       <DistrictLogo class="w-48 sm:w-64 md:w-96 mr-12" />
@@ -99,9 +101,13 @@ const mainMenu = [
             >
               <div class="py-2 grid grid-cols-1 gap-1">
                 {item.children.map(child => (
-                  <a href={child.url} class="block px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800">
-                    {child.text}
-                  </a>
+                  ('separator' in child && child.separator) ? (
+                    <div class="h-px bg-secondary-200 dark:bg-secondary-800"></div>
+                  ) : (
+                    <a href={child.url} class="block px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800">
+                      {child.text}
+                    </a>
+                  )
                 ))}
               </div>
             </div>
@@ -129,8 +135,8 @@ const mainMenu = [
       </button>
 
       <a
-        href="http://bit.ly/formulario-rye"
-        target="_blank"
+        href="/programas/aplicar"
+        target="_self"
         rel="noopener noreferrer"
         class="hidden sm:inline-flex btn-primary"
       >
