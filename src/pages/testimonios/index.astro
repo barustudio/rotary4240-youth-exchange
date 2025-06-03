@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
-import Postcard from '../../components/Postcard.astro';
+import PostcardLink from '../../components/PostcardLink.astro';
 import Layout from '../../layouts/Layout.astro';
 
 // Fetch all testimonials
@@ -23,9 +23,7 @@ const description = "Lee las experiencias de estudiantes que han participado en 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           {testimonials.map(testimonial => (
             <article>
-              <a href={`/testimonios/${testimonial.slug}`} class="block hover:opacity-80 transition-opacity duration-200">
-                <Postcard testimonial={testimonial} />
-              </a>
+              <PostcardLink testimonial={testimonial} />
             </article>
           ))}
         </div>
