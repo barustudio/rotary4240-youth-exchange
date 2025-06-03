@@ -5,9 +5,15 @@ import { ProgramCode } from '../../const';
 import ryeLogo from '../../assets/images/logo-rye.png';
 import ryeCampsTestimonial1 from '../../assets/images/rye-camp-1.jpg';
 import ryeCampsTestimonial2 from '../../assets/images/rye-camp-2.jpg';
-import ryeCampRosa from '../../assets/images/testimonials/camp-2023-egypt-rosa.jpg';
-import ryeCampJuanDiego from '../../assets/images/testimonials/camp-2023-egypt-juan.jpg';
-import ryeCampZosimo from '../../assets/images/testimonials/camp-2023-italy-zosimo.jpg';
+import { getLatestTestimonialsForProgram } from '../../utils/collections/testimonials';
+
+const latestTestimonials = await getLatestTestimonialsForProgram(
+  ProgramCode.RYE_CAMP,
+  {
+    limit: 4,
+    sortOrder: 'asc'
+  }
+);
 
 const programInfo = {
   title: "Campamentos",
@@ -140,47 +146,10 @@ const programInfo = {
     }
   ],
 
-  testimonials: [
-    {
-      studentName: "Rosa Corro",
-      homeCountry: "🇵🇦",
-      homeClub: "Chitré",
-      programCode: ProgramCode.RYE_CAMP,
-      program: "Egyptology Camp",
-      city: "Cairo",
-      country: "🇪🇬",
-      year: 2023,
-      month: 7,
-      quote: "Exploramos sitios arqueológicos asombrosos como las pirámides de Giza, Alejandría y los templos de Luxor, y terminamos con un crucero por el Nilo, entre paisajes y atardeceres inolvidables. Pero lo más impactante fue convivir con jóvenes de todo el mundo. A pesar de los choques culturales, descubrimos experiencias universales que nos unían: canciones que todos conocíamos, bromas compartidas, desafíos al capturar la belleza del viaje en fotos, reacciones a nuevos sabores, y risas bajo el calor del desierto. De esas conexiones nacieron amistades que aún conservo, recordándome que, sin importar de dónde vengamos, siempre hay algo que nos une.",
-      image: ryeCampRosa,
-    },
-    {
-      studentName: "Juan Diego Rodríguez",
-      homeCountry: "🇵🇦",
-      homeClub: "Chitré",
-      programCode: ProgramCode.RYE_CAMP,
-      program: "Egyptology Camp",
-      city: "Cairo",
-      country: "🇪🇬",
-      year: 2023,
-      month: 7,
-      quote: "El campamento es una experiencia que te hace tener una perspectiva internacional, entender la diversidad pero lo único que es el mundo en los diferentes lugares. Cómo el solo hecho de volar unas horas en un avión puede llevarte a vivir experiencias que nunca lo habías pensado. Definitivamente, me impactó. Además conocí a muchos amistades y estoy orgulloso de decir que un año después me vinieron a visitar amistades de 4 países diferentes que conocí en el viaje de Dinamarca, Holanda, Francia, y España.",
-      image: ryeCampJuanDiego,
-    },
-    {
-      studentName: "Zósimo Corro",
-      homeCountry: "🇵🇦",
-      homeClub: "Chitré",
-      programCode: ProgramCode.RYE_CAMP,
-      program: "Between Nature and Energy Camp",
-      city: "Apulia",
-      country: "🇮🇹",
-      year: 2023,
-      month: 7,
-      quote: "Este campamento fue una experiencia fantástica en la cual aprendimos y vivimos de primera mano la importancia de estos ámbitos, logramos hacer nuevas y buenas amistades con culturas totalmente distintas.",
-      image: ryeCampZosimo,
-    },
-  ],
+  testimonials: latestTestimonials.map(testimonial => ({
+    ...testimonial.data
+  })),
+
   testimonialContent: [
     {
       type: 'image' as const,
@@ -195,7 +164,6 @@ const programInfo = {
   ]
 };
 ---
-
 <ProgramLayout
   title={programInfo.title}
   age={programInfo.age}

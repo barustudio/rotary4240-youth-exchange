@@ -2,6 +2,16 @@
 import ProgramLayout from '../../layouts/ProgramLayout.astro';
 import ProgramContent from '../../components/ProgramContent.astro';
 import logoRye from '../../assets/images/logo-rye.png';
+import { getLatestTestimonialsForProgram } from '../../utils/collections/testimonials';
+import { ProgramCode } from '../../const';
+
+const latestTestimonials = await getLatestTestimonialsForProgram(
+  ProgramCode.RYE_STEP,
+  {
+    limit: 4,
+    sortOrder: 'asc'
+  }
+);
 
 const programInfo = {
   title: "Vacaciones",
@@ -118,7 +128,10 @@ const programInfo = {
     },
   ],
 
-  testimonials: [],
+  testimonials: latestTestimonials.map((testimonial) => ({
+    ...testimonial.data
+  })),
+
   testimonialContent: [],
 };
 ---

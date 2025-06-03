@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+import Postcard from '../../components/Postcard.astro';
+import Layout from '../../layouts/Layout.astro';
+
+// Fetch all testimonials
+const testimonials: CollectionEntry<'testimonials'>[] = await getCollection('testimonials');
+
+const title = "Testimonios de Intercambio";
+const description = "Lee las experiencias de estudiantes que han participado en nuestros programas de intercambio.";
+---
+
+<Layout metadata={{ title, description }}>
+  <section class="pt-32 md:pt-40 pb-10">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl font-bold text-center mb-12">{title}</h1>
+
+      {testimonials.length === 0 ? (
+        <p class="text-center text-lg">No hay testimonios disponibles en este momento.</p>
+      ) : (
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {testimonials.map(testimonial => (
+            <article>
+              <a href={`/testimonios/${testimonial.slug}`} class="block hover:opacity-80 transition-opacity duration-200">
+                <Postcard {...testimonial.data} />
+              </a>
+            </article>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</Layout>
