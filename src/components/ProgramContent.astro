@@ -1,7 +1,7 @@
 ---
 import type { ImageMetadata } from 'astro';
 import Postcard from './Postcard.astro';
-import type { Testimonial } from '../types';
+import type { CollectionEntry } from 'astro:content';
 
 interface TestimonialContentYoutube {
   type: 'youtube';
@@ -34,7 +34,7 @@ interface Props {
   applicationFormLink?: string;
   importantDates?: Array<{ date: string; description: string }>;
   faqs: Array<{ question: string; answer: string }>;
-  testimonials?: Testimonial[];
+  testimonials?: CollectionEntry<"testimonials">[];
   testimonialContent?: Array<TestimonialContent>;
 }
 
@@ -487,9 +487,7 @@ const formUrl = applicationFormLink ?? `${Astro.url.pathname}/aplicar`;
             </div>
           </div>
           -->
-          <Postcard
-            {...testimonial}
-          />
+          <Postcard testimonial={testimonial} />
         ))}
       </div>
     </div>

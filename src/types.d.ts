@@ -33,18 +33,3 @@ export interface MetaData {
   openGraph?: MetaDataOpenGraph;
   twitter?: MetaDataTwitter;
 }
-
-export interface Testimonial {
-  studentName: string;
-  homeCountry: string;
-  homeClub?: string;
-  programCode: ProgramCode;
-  country: string;
-  city?: string;
-  club?: string;
-  year: number;
-  month: number;
-  quote: string;
-  program?: ProgramTitle | string | undefined;
-  image?: ImageMetadata;
-}
