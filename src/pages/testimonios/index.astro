@@ -24,7 +24,7 @@ const description = "Lee las experiencias de estudiantes que han participado en 
           {testimonials.map(testimonial => (
             <article>
               <a href={`/testimonios/${testimonial.slug}`} class="block hover:opacity-80 transition-opacity duration-200">
-                <Postcard {...testimonial.data} />
+                <Postcard testimonial={testimonial} />
               </a>
             </article>
           ))}

@@ -28,7 +28,7 @@ const description = entry.data.quote.substring(0, 160);
       <article class="max-w-3xl mx-auto">
         <!-- Render Postcard with frontmatter -->
         <div class="mb-8">
-          <Postcard {...entry.data} />
+          <Postcard testimonial={entry} />
         </div>
 
         <!-- Render Markdown content -->
