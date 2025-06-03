@@ -134,10 +134,6 @@ const programInfo = {
     }
   ],
 
-  testimonials: latestTestimonials.map((testimonial) => ({
-    ...testimonial.data
-  })),
-
   testimonialContent: [
     {
       type: 'image' as const,
@@ -175,7 +171,7 @@ const programInfo = {
     applicationSteps={programInfo.applicationSteps}
     importantDates={programInfo.importantDates}
     faqs={programInfo.faqs}
-    testimonials={programInfo.testimonials}
+    testimonials={latestTestimonials}
     testimonialContent={programInfo.testimonialContent}
   />
 </ProgramLayout>
