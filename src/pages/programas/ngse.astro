@@ -5,7 +5,15 @@ import ProgramContent from '../../components/ProgramContent.astro';
 import logoNgse from '../../assets/images/logo-ngse.png';
 import ngseTestimonial1 from '../../assets/images/ngse-1.jpg';
 import ngseTestimonial2 from '../../assets/images/ngse-2.jpg';
-import ngseVictoria from '../../assets/images/testimonials/ngse-2025-brazil-victoria.jpg';
+import { getLatestTestimonialsForProgram } from '../../utils/collections/testimonials';
+
+const latestTestimonials = await getLatestTestimonialsForProgram(
+  ProgramCode.NGSE,
+  {
+    limit: 4,
+    sortOrder: 'asc'
+  }
+);
 
 const programInfo = {
   title: "Pasantías",
@@ -126,20 +134,9 @@ const programInfo = {
     }
   ],
 
-  testimonials: [
-  {
-      studentName: "Victoria Valderrama",
-      homeCountry: "🇵🇦",
-      homeClub: "Chorrera",
-      programCode: ProgramCode.NGSE,
-      city: "Belo Horizonte",
-      country: "🇧🇷",
-      year: 2025,
-      month: 3,
-      quote: "Actualmente realizo una pasantía en el área administrativa del CEFET-MG, combinando tareas prácticas con seminarios académicos. Esta experiencia ha impulsado mi desarrollo profesional y académico en un entorno internacional, rodeada de docentes, investigadores y compañeros de diversas culturas. Gracias al apoyo de mi familia anfitriona y la participación en actividades culturales con clubes Rotarios, he fortalecido mis habilidades en portugués y ampliado mi red de contactos. Esta vivencia me ha permitido valorar aún más la riqueza cultural de Panamá y reafirmar mi compromiso de representarla con orgullo en el mundo.",
-      image: ngseVictoria,
-    },
-  ],
+  testimonials: latestTestimonials.map((testimonial) => ({
+    ...testimonial.data
+  })),
 
   testimonialContent: [
     {
