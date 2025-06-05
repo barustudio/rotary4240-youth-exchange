@@ -2,31 +2,64 @@
 interface FAQ {
   question: string;
   answer: string;
+  categoryId?: string;
 }
 
 interface FAQCategory {
   id: string;
   title: string;
   icon: string;
-  faqs: FAQ[];
 }
 
 interface Props {
   title?: string;
   subtitle?: string;
-  categories: FAQCategory[];
+  faqs: FAQ[];
+  categories?: FAQCategory[];
   showNavigation?: boolean;
+  showCTA?: boolean;
 }
 
 const {
   title = "Preguntas frecuentes",
   subtitle,
-  categories,
-  showNavigation = true
+  faqs,
+  categories = [],
+  showNavigation = true,
+  showCTA = false
 } = Astro.props;
+
+// Group FAQs by category if categories exist
+const groupedFAQs = categories.length > 0
+  ? (() => {
+      // Group FAQs by their categories
+      const categorizedGroups = categories.map(category => ({
+        ...category,
+        faqs: faqs.filter(faq => faq.categoryId === category.id)
+      })).filter(group => group.faqs.length > 0);
+
+      // Add uncategorized FAQs if any exist
+      const uncategorizedFAQs = faqs.filter(faq => !faq.categoryId);
+      if (uncategorizedFAQs.length > 0) {
+        categorizedGroups.push({
+          id: 'uncategorized',
+          title: 'Otras preguntas',
+          icon: 'M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+          faqs: uncategorizedFAQs
+        });
+      }
+
+      return categorizedGroups;
+    })()
+  : [{
+      id: 'all',
+      title: '',
+      icon: '',
+      faqs: faqs // Show ALL FAQs when no categories provided
+    }];
 ---
 
-<section class="py-16 bg-white dark:bg-gray-800">
+<section class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8 border border-gray-100 dark:border-gray-700 mb-16">
   <div class="container-custom">
     <div class="max-w-4xl mx-auto">
       <!-- Header -->
@@ -48,37 +81,37 @@ const {
       <!-- Category Navigation -->
       {showNavigation && categories.length > 1 && (
         <div class="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category, index) => (
+          {groupedFAQs.map((group, index) => (
             <a
-              href={`#${category.id}`}
+              href={`#${group.id}`}
               class={`px-4 py-2 rounded-full font-medium text-sm transition-colors ${
                 index === 0
                   ? 'bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400'
                   : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
               }`}
             >
-              {category.title}
+              {group.title}
             </a>
           ))}
         </div>
       )}
 
-      <!-- FAQ Categories -->
-      {categories.map((category, categoryIndex) => (
-        <div id={category.id} class={categoryIndex < categories.length - 1 ? "mb-16" : ""}>
-          {categories.length > 1 && (
+      <!-- FAQ Groups -->
+      {groupedFAQs.map((group, groupIndex) => (
+        <div id={group.id} class={groupIndex < groupedFAQs.length - 1 ? "mb-16" : ""}>
+          {categories.length > 1 && group.title && (
             <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
               <span class="inline-block rounded-full bg-primary-100 dark:bg-primary-900 p-2 mr-3">
                 <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={category.icon}></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={group.icon}></path>
                 </svg>
               </span>
-              {category.title}
+              {group.title}
             </h3>
           )}
 
           <div class="space-y-6">
-            {category.faqs.map((faq) => (
+            {group.faqs.map((faq) => (
               <div class="card p-6 border border-gray-200 dark:border-gray-700">
                 <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">
                   {faq.question}
@@ -92,17 +125,19 @@ const {
       ))}
 
       <!-- Call to Action -->
-      <div class="text-center mt-16">
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-          ¿Tienes más preguntas?
-        </h3>
-        <p class="text-gray-600 dark:text-gray-300 mb-8">
-          Nuestro equipo está aquí para ayudarte. Contáctanos y te responderemos lo antes posible.
-        </p>
-        <a href="/contacto" class="btn btn-primary">
-          Contactar ahora
-        </a>
-      </div>
+      {showCTA && (
+        <div class="text-center mt-16">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+            ¿Tienes más preguntas?
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-8">
+            Nuestro equipo está aquí para ayudarte. Contáctanos y te responderemos lo antes posible.
+          </p>
+          <a href="/contacto" class="btn btn-primary">
+            Contactar ahora
+          </a>
+        </div>
+      )}
     </div>
   </div>
 </section>
