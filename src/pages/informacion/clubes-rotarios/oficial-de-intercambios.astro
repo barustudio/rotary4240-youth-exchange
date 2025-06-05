@@ -1,0 +1,276 @@
+---
+import InfoLayout from '../../../layouts/InfoLayout.astro';
+
+// Responsibilities data
+const responsibilities = [
+  {
+    icon: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",
+    title: "Coordinar postulaciones",
+    description: "Gestionar el proceso de aplicación y entrevistas de jóvenes candidatos para el intercambio."
+  },
+  {
+    icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
+    title: "Gestionar alojamiento",
+    description: "Coordinar el proceso de selección y preparación de familias anfitrionas para estudiantes internacionales."
+  },
+  {
+    icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z",
+    title: "Preparar familias",
+    description: "Acompañar la capacitación y orientación de familias anfitrionas para recibir estudiantes."
+  },
+  {
+    icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
+    title: "Representar al club",
+    description: "Actuar como enlace oficial entre el club rotario y el comité distrital de intercambio."
+  },
+  {
+    icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01",
+    title: "Supervisar procesos",
+    description: "Asegurar el cumplimiento de formularios, fechas límite y requisitos del programa."
+  },
+  {
+    icon: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z",
+    title: "Dar seguimiento",
+    description: "Monitorear el bienestar académico, social y emocional de los estudiantes de intercambio."
+  }
+];
+
+// Profile requirements
+const profileRequirements = [
+  "Ser rotario/a activo en el club",
+  "Tener interés genuino en trabajar con jóvenes",
+  "Ser organizado, empático y comunicativo",
+  "Idealmente tener experiencia previa en el programa"
+];
+
+// Monthly tasks timeline
+const monthlyTasks = [
+  {
+    month: "Agosto",
+    tasks: "Recibir estudiante entrante, coordinar primera familia anfitriona, presentación en el club"
+  },
+  {
+    month: "Septiembre",
+    tasks: "Visitas escolares, integración del estudiante, seguimiento académico inicial"
+  },
+  {
+    month: "Octubre",
+    tasks: "Seguimiento académico, actividades culturales, evaluación de adaptación"
+  },
+  {
+    month: "Noviembre",
+    tasks: "Preparación cambio de familia, actividades navideñas, reporte mensual"
+  },
+  {
+    month: "Diciembre",
+    tasks: "Cambio a segunda familia anfitriona, celebraciones familiares, seguimiento festivo"
+  },
+  {
+    month: "Enero",
+    tasks: "Inicio nuevo período escolar, actividades de verano, seguimiento familiar"
+  }
+];
+
+// FAQ data
+const faqList = [
+  {
+    question: "¿El YEO puede ser también consejero o familia anfitriona?",
+    answer: "No. Para evitar conflictos de interés y asegurar la objetividad en el programa, cada rol debe ser asumido por personas distintas. El YEO debe mantener una perspectiva imparcial para tomar decisiones que beneficien al estudiante."
+  },
+  {
+    question: "¿El YEO debe tener experiencia previa en el programa?",
+    answer: "No es obligatorio, pero es altamente recomendable. El distrito ofrece formación completa y apoyo continuo para nuevos YEOs. La experiencia previa facilita la comprensión de los procesos y desafíos del programa."
+  },
+  {
+    question: "¿Puede un club pequeño tener YEO sin enviar estudiantes?",
+    answer: "Sí. Todos los clubes pueden participar en el programa, incluso si no tienen estudiantes outbound. Pueden recibir estudiantes internacionales o apoyar en la estructura del programa distrital."
+  },
+  {
+    question: "¿Qué tipo de soporte brinda el distrito al YEO?",
+    answer: "El distrito proporciona capacitaciones regulares, documentos guía, comunicación continua, apoyo en situaciones difíciles y acceso a una red de YEOs experimentados para consultas y apoyo."
+  },
+  {
+    question: "¿Cuánto tiempo debe dedicar un YEO al programa?",
+    answer: "El compromiso varía según la fase del programa y la cantidad de estudiantes que maneje el club, pero generalmente requiere 2-4 horas mensuales. Durante períodos intensivos como llegadas, cambios de familia o situaciones especiales, puede requerir más tiempo."
+  },
+  {
+    question: "¿Qué sucede si el YEO no puede continuar durante el programa?",
+    answer: "El club debe nombrar un reemplazo inmediatamente. El distrito facilitará la transición y proporcionará capacitación acelerada al nuevo YEO para asegurar la continuidad del cuidado del estudiante."
+  }
+];
+
+const cta = {
+  title: '¿Quieres ser YEO?',
+  link: 'https://forms.gle/h7nKkAK4ww7aWjoX8',
+  target: '_blank' as const,
+};
+---
+
+<InfoLayout title="🧭 ¿Qué es un YEO (Oficial de Intercambios de Jóvenes)?" cta={cta}>
+  <section class="py-16">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto mb-16">
+        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+          Es un socio rotario nombrado por su club para coordinar todas las actividades relacionadas con el Programa de Intercambio de Jóvenes. El YEO conecta al club con el comité distrital y es clave para el éxito del programa.
+        </p>
+      </div>
+
+      <!-- Responsibilities Section -->
+      <div class="mb-16">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+          Responsabilidades del YEO
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {responsibilities.map((responsibility) => (
+            <div class="card p-6 text-center hover:shadow-lg transition-shadow duration-300">
+              <div class="w-14 h-14 rounded-xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mx-auto mb-4">
+                <svg class="w-7 h-7 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={responsibility.icon}></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">{responsibility.title}</h3>
+              <p class="text-gray-600 dark:text-gray-300">{responsibility.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Profile Requirements Section -->
+      <div class="grid md:grid-cols-2 gap-12 mb-16">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+            <span class="inline-block rounded-full bg-secondary-100 dark:bg-secondary-900 p-2 mr-3">
+              <svg class="w-6 h-6 text-secondary-600 dark:text-secondary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+              </svg>
+            </span>
+            ¿Qué perfil debe tener un YEO?
+          </h2>
+
+          <ul class="space-y-4">
+            {profileRequirements.map((requirement) => (
+              <li class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-secondary-100 dark:bg-secondary-900/30 flex items-center justify-center mr-3 mt-1">
+                  <svg class="w-4 h-4 text-secondary-600 dark:text-secondary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="text-gray-600 dark:text-gray-300">{requirement}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="bg-accent-50 dark:bg-accent-900/20 p-6 rounded-lg border border-accent-100 dark:border-accent-800/20 mt-8">
+            <div class="flex items-start">
+              <div class="mr-4 mt-1">
+                <svg class="w-6 h-6 text-accent-600 dark:text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium text-accent-700 dark:text-accent-300 mb-2">Importante:</p>
+                <p class="text-gray-600 dark:text-gray-300">
+                  El YEO es voluntario y no recibe compensación económica. Su motivación debe ser el compromiso con los jóvenes y los ideales de Rotary.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            Ejemplo de tareas mensuales del YEO
+          </h2>
+
+          <div class="space-y-4">
+            {monthlyTasks.map((task) => (
+              <div class="border-l-4 border-primary-400 pl-4 py-2">
+                <h3 class="font-semibold text-gray-900 dark:text-white">{task.month}</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">{task.tasks}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Support Section -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8 border border-gray-100 dark:border-gray-700 mb-16">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center flex items-center justify-center">
+          <span class="inline-block rounded-full bg-primary-100 dark:bg-primary-900 p-2 mr-3">
+            <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </span>
+          El YEO no está solo
+        </h2>
+
+        <p class="text-gray-600 dark:text-gray-300 text-center mb-8">
+          El YEO trabaja como parte de un equipo de apoyo que incluye:
+        </p>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div class="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Consejero rotario</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-300">del estudiante</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-12 h-12 rounded-full bg-secondary-100 dark:bg-secondary-900/30 flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6 text-secondary-600 dark:text-secondary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Familias</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-300">anfitrionas</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-12 h-12 rounded-full bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6 text-accent-600 dark:text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Comité</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-300">distrital</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Escuela</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-300">del estudiante</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8 border border-gray-100 dark:border-gray-700">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+          <span class="inline-block rounded-full bg-primary-100 dark:bg-primary-900 p-2 mr-3">
+            <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </span>
+          Preguntas frecuentes
+        </h2>
+
+        <div class="space-y-6">
+          {faqList.map((faq) => (
+            <div class="border-b border-gray-200 dark:border-gray-700 pb-6 last:border-0 last:pb-0">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">{faq.question}</h3>
+              <p class="text-gray-600 dark:text-gray-300">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</InfoLayout>
