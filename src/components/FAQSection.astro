@@ -1,13 +1,13 @@
 ---
 import Question from 'phosphor-astro/Question.astro';
 
-interface FAQ {
+export interface FAQ {
   question: string;
   answer: string;
   categoryId?: string;
 }
 
-interface FAQCategory {
+export interface FAQCategory {
   id: string;
   title: string;
   icon?: (_props: Record<string, any>) => any;
