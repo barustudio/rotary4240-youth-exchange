@@ -1,5 +1,10 @@
 ---
+import ClipboardText from 'phosphor-astro/ClipboardText.astro';
+import User from 'phosphor-astro/User.astro';
+import Users from 'phosphor-astro/Users.astro';
+
 import InfoLayout from '../../../layouts/InfoLayout.astro';
+import FAQSection from '../../../components/FAQSection.astro';
 
 // Responsibilities data
 const responsibilities = [
@@ -71,31 +76,74 @@ const monthlyTasks = [
   }
 ];
 
-// FAQ data
-const faqList = [
+// Categories definition
+const categories = [
   {
+    id: "responsabilidades",
+    title: "Responsabilidades y Funciones",
+    icon: ClipboardText
+  },
+  {
+    id: "requisitos",
+    title: "Requisitos y Preparación",
+    icon: User
+  },
+  {
+    id: "apoyo",
+    title: "Apoyo y Recursos",
+    icon: Users
+  }
+];
+
+// FAQs with category references
+const faqs = [
+  // Responsabilidades y Funciones
+  {
+    categoryId: "responsabilidades",
     question: "¿El YEO puede ser también consejero o familia anfitriona?",
     answer: "No. Para evitar conflictos de interés y asegurar la objetividad en el programa, cada rol debe ser asumido por personas distintas. El YEO debe mantener una perspectiva imparcial para tomar decisiones que beneficien al estudiante."
   },
   {
+    categoryId: "responsabilidades",
+    question: "¿Cuánto tiempo debe dedicar un YEO al programa?",
+    answer: "El compromiso varía según la fase del programa y la cantidad de estudiantes que maneje el club, pero generalmente requiere 3-8 horas mensuales. Durante períodos intensivos como llegadas, cambios de familia o situaciones especiales, puede requerir más tiempo."
+  },
+  {
+    categoryId: "responsabilidades",
+    question: "¿Qué sucede si el YEO no puede continuar durante el programa?",
+    answer: "El club debe nombrar un reemplazo inmediatamente. El distrito facilitará la transición y proporcionará capacitación acelerada al nuevo YEO para asegurar la continuidad del cuidado del estudiante."
+  },
+  // Requisitos y Preparación
+  {
+    categoryId: "requisitos",
     question: "¿El YEO debe tener experiencia previa en el programa?",
     answer: "No es obligatorio, pero es altamente recomendable. El distrito ofrece formación completa y apoyo continuo para nuevos YEOs. La experiencia previa facilita la comprensión de los procesos y desafíos del programa."
   },
   {
+    categoryId: "requisitos",
     question: "¿Puede un club pequeño tener YEO sin enviar estudiantes?",
     answer: "Sí. Todos los clubes pueden participar en el programa, incluso si no tienen estudiantes outbound. Pueden recibir estudiantes internacionales o apoyar en la estructura del programa distrital."
   },
   {
+    categoryId: "requisitos",
+    question: "¿Qué capacitación inicial necesita un YEO?",
+    answer: "El distrito proporciona capacitación integral que incluye: normativas del programa, manejo de situaciones de crisis, primeros auxilios básicos, conocimiento de las políticas de protección juvenil y herramientas de comunicación intercultural."
+  },
+  // Apoyo y Recursos
+  {
+    categoryId: "apoyo",
     question: "¿Qué tipo de soporte brinda el distrito al YEO?",
     answer: "El distrito proporciona capacitaciones regulares, documentos guía, comunicación continua, apoyo en situaciones difíciles y acceso a una red de YEOs experimentados para consultas y apoyo."
   },
   {
-    question: "¿Cuánto tiempo debe dedicar un YEO al programa?",
-    answer: "El compromiso varía según la fase del programa y la cantidad de estudiantes que maneje el club, pero generalmente requiere 2-4 horas mensuales. Durante períodos intensivos como llegadas, cambios de familia o situaciones especiales, puede requerir más tiempo."
+    categoryId: "apoyo",
+    question: "¿Hay reuniones regulares de YEOs?",
+    answer: "Sí, el distrito organiza reuniones virtuales donde los YEOs comparten experiencias, reciben actualizaciones del programa y participan en capacitaciones especializadas."
   },
   {
-    question: "¿Qué sucede si el YEO no puede continuar durante el programa?",
-    answer: "El club debe nombrar un reemplazo inmediatamente. El distrito facilitará la transición y proporcionará capacitación acelerada al nuevo YEO para asegurar la continuidad del cuidado del estudiante."
+    categoryId: "apoyo",
+    question: "¿A quién contacto en caso de emergencia?",
+    answer: "El YEO tiene contacto directo 24/7 con el Presidente del Comité Nacional de Intercambio y el Encargado Distrital de Protección Juvenil. También cuenta con protocolos claros para diferentes tipos de situaciones de crisis."
   }
 ];
 
@@ -106,7 +154,7 @@ const cta = {
 };
 ---
 
-<InfoLayout title="🧭 ¿Qué es un YEO (Oficial de Intercambios de Jóvenes)?" cta={cta}>
+<InfoLayout title="¿Qué es un YEO (Oficial de Intercambios de Jóvenes)?" cta={cta}>
   <section class="py-16">
     <div class="container-custom">
       <div class="max-w-3xl mx-auto mb-16">
@@ -136,7 +184,7 @@ const cta = {
       </div>
 
       <!-- Profile Requirements Section -->
-      <div class="grid md:grid-cols-2 gap-12 mb-16">
+      <div class="grid md:grid-cols-1 gap-12 mb-16">
         <div>
           <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
             <span class="inline-block rounded-full bg-secondary-100 dark:bg-secondary-900 p-2 mr-3">
@@ -177,6 +225,7 @@ const cta = {
           </div>
         </div>
 
+        <!--
         <div>
           <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
             Ejemplo de tareas mensuales del YEO
@@ -191,6 +240,7 @@ const cta = {
             ))}
           </div>
         </div>
+        -->
       </div>
 
       <!-- Support Section -->
@@ -252,25 +302,15 @@ const cta = {
       </div>
 
       <!-- FAQ Section -->
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8 border border-gray-100 dark:border-gray-700">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
-          <span class="inline-block rounded-full bg-primary-100 dark:bg-primary-900 p-2 mr-3">
-            <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-          </span>
-          Preguntas frecuentes
-        </h2>
+      <FAQSection
+        title="Preguntas frecuentes sobre el rol del YEO"
+        subtitle="Encuentra respuestas a las dudas más comunes sobre ser Oficial de Intercambio de Jóvenes"
+        faqs={faqs}
+        categories={categories}
+        showNavigation={true}
+        showCTA={true}
+      />
 
-        <div class="space-y-6">
-          {faqList.map((faq) => (
-            <div class="border-b border-gray-200 dark:border-gray-700 pb-6 last:border-0 last:pb-0">
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">{faq.question}</h3>
-              <p class="text-gray-600 dark:text-gray-300">{faq.answer}</p>
-            </div>
-          ))}
-        </div>
-      </div>
     </div>
   </section>
 </InfoLayout>
