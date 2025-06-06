@@ -7,6 +7,9 @@ import ryeCampsTestimonial1 from '../../assets/images/rye-camp-1.jpg';
 import ryeCampsTestimonial2 from '../../assets/images/rye-camp-2.jpg';
 import { getLatestTestimonialsForProgram } from '../../utils/collections/testimonials';
 
+import ClipboardText from 'phosphor-astro/ClipboardText.astro';
+import MapPin from 'phosphor-astro/MapPin.astro';
+
 const latestTestimonials = await getLatestTestimonialsForProgram(
   ProgramCode.RYE_CAMP,
   {
@@ -127,24 +130,44 @@ const programInfo = {
     }
   ],
 
-  faqs: [
-    {
-      question: "¿Cómo se seleccionan los participantes para los campamentos?",
-      answer: "La selección se basa en el interés demostrado en el tema del campamento, la capacidad para beneficiarse de la experiencia, y la disposición para ser un buen embajador de tu país y de Rotary. Cada distrito puede tener criterios adicionales."
-    },
-    {
-      question: "¿Necesito tener experiencia previa en el tema del campamento?",
-      answer: "Depende del campamento específico. Algunos están diseñados para principiantes interesados en aprender, mientras que otros pueden requerir habilidades básicas o intermedias. La descripción de cada campamento especifica los requisitos."
-    },
-    {
-      question: "¿Cómo es el alojamiento durante los campamentos?",
-      answer: "Varía según el campamento, pero generalmente incluye instalaciones compartidas como cabañas, dormitorios, o albergues juveniles. Los participantes comparten habitaciones con otros jóvenes internacionales, siempre separados por género."
-    },
-    {
-      question: "¿Qué nivel de supervisión existe durante el campamento?",
-      answer: "Los campamentos son supervisados por rotarios adultos, profesionales en el tema del campamento, y consejeros capacitados. Existe un protocolo de seguridad estricto y contacto permanente con los organizadores del programa."
-    }
-  ],
+  faqs: {
+    categories: [
+      {
+        id: "requisitos",
+        title: "Requisitos y Selección",
+        icon: ClipboardText
+      },
+      {
+        id: "logistica",
+        title: "Logística y Alojamiento",
+        icon: MapPin
+      }
+    ],
+    faqs: [
+      // Requisitos y Selección
+      {
+        categoryId: "requisitos",
+        question: "¿Cómo se seleccionan los participantes para los campamentos?",
+        answer: "La selección se basa en el interés demostrado en el tema del campamento, la capacidad para beneficiarse de la experiencia, y la disposición para ser un buen embajador de tu país y de Rotary. Cada distrito puede tener criterios adicionales."
+      },
+      {
+        categoryId: "requisitos",
+        question: "¿Necesito tener experiencia previa en el tema del campamento?",
+        answer: "Depende del campamento específico. Algunos están diseñados para principiantes interesados en aprender, mientras que otros pueden requerir habilidades básicas o intermedias. La descripción de cada campamento especifica los requisitos."
+      },
+      // Logística y Alojamiento
+      {
+        categoryId: "logistica",
+        question: "¿Cómo es el alojamiento durante los campamentos?",
+        answer: "Varía según el campamento, pero generalmente incluye instalaciones compartidas como cabañas, dormitorios, o albergues juveniles. Los participantes comparten habitaciones con otros jóvenes internacionales, siempre separados por género."
+      },
+      {
+        categoryId: "logistica",
+        question: "¿Qué nivel de supervisión existe durante el campamento?",
+        answer: "Los campamentos son supervisados por rotarios adultos, profesionales en el tema del campamento, y consejeros capacitados. Existe un protocolo de seguridad estricto y contacto permanente con los organizadores del programa."
+      }
+    ],
+  },
 
   testimonialContent: [
     {

@@ -7,6 +7,10 @@ import ngseTestimonial1 from '../../assets/images/ngse-1.jpg';
 import ngseTestimonial2 from '../../assets/images/ngse-2.jpg';
 import { getLatestTestimonialsForProgram } from '../../utils/collections/testimonials';
 
+import User from 'phosphor-astro/User.astro';
+import Gear from 'phosphor-astro/Gear.astro';
+import Trophy from 'phosphor-astro/Trophy.astro';
+
 const latestTestimonials = await getLatestTestimonialsForProgram(
   ProgramCode.NGSE,
   {
@@ -111,28 +115,55 @@ const programInfo = {
     }
   ],
 
-  faqs: [
-    {
-      question: "¿Necesito ser rotario o tener conexión con Rotary para aplicar?",
-      answer: "No es requisito ser rotario, aunque tener una conexión con un club Rotary facilita el proceso. Los programas están abiertos a todos los jóvenes calificados de la comunidad que cumplan con los requisitos."
-    },
-    {
-      question: "¿Las pasantías son remuneradas?",
-      answer: "La mayoría de las pasantías no ofrecen remuneración económica formal, aunque algunos programas pueden proporcionar estipendios para gastos básicos. El valor principal está en la experiencia internacional, el desarrollo profesional y las conexiones establecidas."
-    },
-    {
-      question: "¿Puedo elegir el país y tipo de organización para mi pasantía?",
-      answer: "Puedes indicar tus preferencias y área de especialización, pero la asignación final dependerá de las oportunidades disponibles en el momento de tu aplicación y los acuerdos entre distritos Rotarios."
-    },
-    {
-      question: "¿Qué tipo de reconocimiento obtendré al finalizar el programa?",
-      answer: "Recibirás un certificado oficial del programa NGSE, y dependiendo de la organización anfitriona, podrías recibir una carta de recomendación o certificado adicional. La experiencia internacional es altamente valorada en currículums profesionales."
-    },
-    {
-      question: "¿Puedo extender mi pasantía si surge la oportunidad?",
-      answer: "Las extensiones son posibles en algunos casos, siempre que la organización anfitriona, el club Rotario local y las regulaciones migratorias lo permitan. Cualquier extensión debe ser aprobada formalmente por el comité NGSE."
-    }
-  ],
+  faqs: {
+    categories: [
+      {
+        id: "elegibilidad",
+        title: "Elegibilidad y Requisitos",
+        icon: User
+      },
+      {
+        id: "estructura",
+        title: "Estructura del Programa",
+        icon: Gear
+      },
+      {
+        id: "beneficios",
+        title: "Beneficios y Reconocimiento",
+        icon: Trophy
+      }
+    ],
+    faqs: [
+      // Elegibilidad y Requisitos
+      {
+        categoryId: "elegibilidad",
+        question: "¿Necesito ser rotario o tener conexión con Rotary para aplicar?",
+        answer: "No es requisito ser rotario, aunque tener una conexión con un club Rotary facilita el proceso. Los programas están abiertos a todos los jóvenes calificados de la comunidad que cumplan con los requisitos."
+      },
+      // Estructura del Programa
+      {
+        categoryId: "estructura",
+        question: "¿Puedo elegir el país y tipo de organización para mi pasantía?",
+        answer: "Puedes indicar tus preferencias y área de especialización, pero la asignación final dependerá de las oportunidades disponibles en el momento de tu aplicación y los acuerdos entre distritos Rotarios."
+      },
+      {
+        categoryId: "estructura",
+        question: "¿Puedo extender mi pasantía si surge la oportunidad?",
+        answer: "Las extensiones son posibles en algunos casos, siempre que la organización anfitriona, el club Rotario local y las regulaciones migratorias lo permitan. Cualquier extensión debe ser aprobada formalmente por el comité NGSE."
+      },
+      // Beneficios y Reconocimiento
+      {
+        categoryId: "beneficios",
+        question: "¿Las pasantías son remuneradas?",
+        answer: "La mayoría de las pasantías no ofrecen remuneración económica formal, aunque algunos programas pueden proporcionar estipendios para gastos básicos. El valor principal está en la experiencia internacional, el desarrollo profesional y las conexiones establecidas."
+      },
+      {
+        categoryId: "beneficios",
+        question: "¿Qué tipo de reconocimiento obtendré al finalizar el programa?",
+        answer: "Recibirás un certificado oficial del programa NGSE, y dependiendo de la organización anfitriona, podrías recibir una carta de recomendación o certificado adicional. La experiencia internacional es altamente valorada en currículums profesionales."
+      }
+    ],
+  },
 
   testimonialContent: [
     {
