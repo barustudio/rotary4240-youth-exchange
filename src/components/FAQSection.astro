@@ -1,4 +1,6 @@
 ---
+import Question from 'phosphor-astro/Question.astro';
+
 interface FAQ {
   question: string;
   answer: string;
@@ -8,7 +10,7 @@ interface FAQ {
 interface FAQCategory {
   id: string;
   title: string;
-  icon: string;
+  icon?: (_props: Record<string, any>) => any;
 }
 
 interface Props {
@@ -40,14 +42,14 @@ const groupedFAQs = categories.length > 0
 
       // Add uncategorized FAQs if any exist
       const uncategorizedFAQs = faqs.filter(faq => !faq.categoryId);
-      if (uncategorizedFAQs.length > 0) {
-        categorizedGroups.push({
-          id: 'uncategorized',
-          title: 'Otras preguntas',
-          icon: 'M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
-          faqs: uncategorizedFAQs
-        });
-      }
+        if (uncategorizedFAQs.length > 0) {
+          categorizedGroups.push({
+            id: 'uncategorized',
+            title: 'Otras preguntas',
+            icon: Question,
+            faqs: uncategorizedFAQs
+          });
+        }
 
       return categorizedGroups;
     })()
@@ -86,7 +88,7 @@ const groupedFAQs = categories.length > 0
               href={`#${group.id}`}
               class={`px-4 py-2 rounded-full font-medium text-sm transition-colors ${
                 index === 0
-                  ? 'bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400'
+                  ? 'bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-300'
                   : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
               }`}
             >
@@ -102,9 +104,9 @@ const groupedFAQs = categories.length > 0
           {categories.length > 1 && group.title && (
             <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
               <span class="inline-block rounded-full bg-primary-100 dark:bg-primary-900 p-2 mr-3">
-                <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={group.icon}></path>
-                </svg>
+                {group.icon && (
+                  <group.icon class="w-6 h-6 text-primary-600 dark:text-primary-300" />
+                )}
               </span>
               {group.title}
             </h3>
