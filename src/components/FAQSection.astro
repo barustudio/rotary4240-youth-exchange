@@ -1,0 +1,145 @@
+---
+import Question from 'phosphor-astro/Question.astro';
+
+export interface FAQ {
+  question: string;
+  answer: string;
+  categoryId?: string;
+}
+
+export interface FAQCategory {
+  id: string;
+  title: string;
+  icon?: (_props: Record<string, any>) => any;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  faqs: FAQ[];
+  categories?: FAQCategory[];
+  showNavigation?: boolean;
+  showCTA?: boolean;
+}
+
+const {
+  title = "Preguntas frecuentes",
+  subtitle,
+  faqs,
+  categories = [],
+  showNavigation = true,
+  showCTA = false
+} = Astro.props;
+
+// Group FAQs by category if categories exist
+const groupedFAQs = categories.length > 0
+  ? (() => {
+      // Group FAQs by their categories
+      const categorizedGroups = categories.map(category => ({
+        ...category,
+        faqs: faqs.filter(faq => faq.categoryId === category.id)
+      })).filter(group => group.faqs.length > 0);
+
+      // Add uncategorized FAQs if any exist
+      const uncategorizedFAQs = faqs.filter(faq => !faq.categoryId);
+        if (uncategorizedFAQs.length > 0) {
+          categorizedGroups.push({
+            id: 'uncategorized',
+            title: 'Otras preguntas',
+            icon: Question,
+            faqs: uncategorizedFAQs
+          });
+        }
+
+      return categorizedGroups;
+    })()
+  : [{
+      id: 'all',
+      title: '',
+      icon: '',
+      faqs: faqs // Show ALL FAQs when no categories provided
+    }];
+---
+
+<section class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8 border border-gray-100 dark:border-gray-700 mb-16">
+  <div class="container-custom">
+    <div class="max-w-4xl mx-auto">
+      <!-- Header -->
+      {(title || subtitle) && (
+        <div class="text-center mb-12">
+          {title && (
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              {title}
+            </h2>
+          )}
+          {subtitle && (
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+              {subtitle}
+            </p>
+          )}
+        </div>
+      )}
+
+      <!-- Category Navigation -->
+      {showNavigation && categories.length > 1 && (
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+          {groupedFAQs.map((group, index) => (
+            <a
+              href={`#${group.id}`}
+              class={`px-4 py-2 rounded-full font-medium text-sm transition-colors ${
+                index === 0
+                  ? 'bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-300'
+                  : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+              }`}
+            >
+              {group.title}
+            </a>
+          ))}
+        </div>
+      )}
+
+      <!-- FAQ Groups -->
+      {groupedFAQs.map((group, groupIndex) => (
+        <div id={group.id} class={groupIndex < groupedFAQs.length - 1 ? "mb-16" : ""}>
+          {categories.length > 1 && group.title && (
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+              <span class="inline-block rounded-full bg-primary-100 dark:bg-primary-900 p-2 mr-3">
+                {group.icon && (
+                  <group.icon class="w-6 h-6 text-primary-600 dark:text-primary-300" />
+                )}
+              </span>
+              {group.title}
+            </h3>
+          )}
+
+          <div class="space-y-6">
+            {group.faqs.map((faq) => (
+              <div class="card p-6 border border-gray-200 dark:border-gray-700">
+                <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                  {faq.question}
+                </h4>
+                <p class="text-gray-600 dark:text-gray-300" set:html={faq.answer}>
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <!-- Call to Action -->
+      {showCTA && (
+        <div class="text-center mt-16">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+            ¿Tienes más preguntas?
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-8">
+            Nuestro equipo está aquí para ayudarte. Contáctanos y te responderemos lo antes posible.
+          </p>
+          <a href="/contacto" class="btn btn-primary">
+            Contactar ahora
+          </a>
+        </div>
+      )}
+    </div>
+  </div>
+</section>

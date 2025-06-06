@@ -5,6 +5,9 @@ import logoRye from '../../assets/images/logo-rye.png';
 import { getLatestTestimonialsForProgram } from '../../utils/collections/testimonials';
 import { ProgramCode } from '../../const';
 
+import House from 'phosphor-astro/House.astro';
+import Handshake from 'phosphor-astro/Handshake.astro';
+
 const latestTestimonials = await getLatestTestimonialsForProgram(
   ProgramCode.RYE_STEP,
   {
@@ -109,24 +112,44 @@ const programInfo = {
     }
   ],
 
-  faqs: [
-    {
-      question: "¿Cómo se seleccionan las familias anfitrionas?",
-      answer: "Las familias anfitrionas son seleccionadas por los clubes Rotarios locales, siguiendo un proceso de verificación de antecedentes y entrevistas. Todas las familias deben cumplir con los estándares de seguridad y adecuación establecidos por Rotary International."
-    },
-    {
-      question: "¿Qué sucede si no hay compatibilidad con la familia anfitriona?",
-      answer: "Aunque es raro, si surgen problemas significativos, el club Rotario local y los coordinadores del programa intervienen para resolver la situación, que podría incluir la reubicación con otra familia si fuera necesario."
-    },
-    {
-      question: "¿Es obligatorio que mi familia reciba a un estudiante extranjero?",
-      answer: "Sí, este programa se basa en la reciprocidad. Tu familia debe estar dispuesta y capacitada para recibir al estudiante extranjero en un periodo acordado, generalmente dentro de los 6-12 meses siguientes a tu experiencia."
-    },
-    {
-      question: "¿Puedo elegir el país al que quiero ir?",
-      answer: "Puedes indicar preferencias, pero el emparejamiento depende de la disponibilidad de familias adecuadas en los países participantes y la compatibilidad entre los estudiantes."
-    },
-  ],
+  faqs: {
+    categories: [
+      {
+        id: "familias",
+        title: "Familias Anfitrionas",
+        icon: House
+      },
+      {
+        id: "reciprocidad",
+        title: "Reciprocidad y Destino",
+        icon: Handshake
+      }
+    ],
+    faqs: [
+      // Familias Anfitrionas
+      {
+        categoryId: "familias",
+        question: "¿Cómo se seleccionan las familias anfitrionas?",
+        answer: "Las familias anfitrionas son seleccionadas por los clubes Rotarios locales, siguiendo un proceso de verificación de antecedentes y entrevistas. Todas las familias deben cumplir con los estándares de seguridad y adecuación establecidos por Rotary International."
+      },
+      {
+        categoryId: "familias",
+        question: "¿Qué sucede si no hay compatibilidad con la familia anfitriona?",
+        answer: "Aunque es raro, si surgen problemas significativos, el club Rotario local y los coordinadores del programa intervienen para resolver la situación, que podría incluir la reubicación con otra familia si fuera necesario."
+      },
+      // Reciprocidad y Destino
+      {
+        categoryId: "reciprocidad",
+        question: "¿Es obligatorio que mi familia reciba a un estudiante extranjero?",
+        answer: "Sí, este programa se basa en la reciprocidad. Tu familia debe estar dispuesta y capacitada para recibir al estudiante extranjero en un periodo acordado, generalmente dentro de los 6-12 meses siguientes a tu experiencia."
+      },
+      {
+        categoryId: "reciprocidad",
+        question: "¿Puedo elegir el país al que quiero ir?",
+        answer: "Puedes indicar preferencias, pero el emparejamiento depende de la disponibilidad de familias adecuadas en los países participantes y la compatibilidad entre los estudiantes."
+      },
+    ],
+  },
 
   testimonialContent: [],
 };

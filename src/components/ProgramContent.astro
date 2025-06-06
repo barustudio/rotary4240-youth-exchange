@@ -3,6 +3,7 @@ import type { ImageMetadata } from 'astro';
 import type { CollectionEntry } from 'astro:content';
 
 import PostcardLink from './PostcardLink.astro';
+import FAQSection, { type FAQ, type FAQCategory } from './FAQSection.astro';
 
 interface TestimonialContentYoutube {
   type: 'youtube';
@@ -34,7 +35,10 @@ interface Props {
   applicationSteps: Array<string>;
   applicationFormLink?: string;
   importantDates?: Array<{ date: string; description: string }>;
-  faqs: Array<{ question: string; answer: string }>;
+  faqs: {
+    faqs: FAQ[];
+    categories?: FAQCategory[];
+  };
   testimonials?: CollectionEntry<"testimonials">[];
   testimonialContent?: Array<TestimonialContent>;
 }
@@ -55,7 +59,7 @@ const {
   applicationSteps,
   applicationFormLink,
   importantDates = [],
-  faqs,
+  faqs: { faqs: faqList, categories: faqCategories },
   testimonials = [],
   testimonialContent
 } = Astro.props;
@@ -420,23 +424,13 @@ const formUrl = applicationFormLink ?? `${Astro.url.pathname}/aplicar`;
 <!-- 7. Preguntas frecuentes -->
 <section class="py-16 bg-gray-50 dark:bg-gray-800">
   <div class="container-custom">
-    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
-      <span class="inline-block rounded-full bg-primary-100 dark:bg-primary-900 p-2 mr-3">
-        <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-        </svg>
-      </span>
-      Preguntas frecuentes
-    </h2>
-
-    <div class="space-y-6">
-      {faqs.map((faq, index) => (
-        <div class="card p-6 border border-gray-200 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-700 transition-colors duration-300">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">{faq.question}</h3>
-          <p class="text-gray-600 dark:text-gray-300">{faq.answer}</p>
-        </div>
-      ))}
-    </div>
+    <FAQSection
+      title="Preguntas frecuentes"
+      faqs={faqList}
+      categories={faqCategories}
+      showNavigation={faqCategories && faqCategories.length > 0}
+      showCTA={false}
+    />
   </div>
 </section>
 
