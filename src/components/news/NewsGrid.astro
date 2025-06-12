@@ -4,10 +4,20 @@ import type { CollectionEntry } from 'astro:content';
 interface Props {
   posts: CollectionEntry<'noticias'>[];
   categories: string[];
-  nextPageUrl?: string;
+  page?: {
+    currentPage: number;
+    lastPage: number;
+    url: {
+      current: string;
+      prev?: string;
+      next?: string;
+      first?: string;
+      last?: string;
+    };
+  };
 }
 
-const { posts, categories, nextPageUrl } = Astro.props as Props;
+const { posts, categories, page } = Astro.props as Props;
 ---
 
 <div class="container-custom pb-12">
@@ -61,14 +71,70 @@ const { posts, categories, nextPageUrl } = Astro.props as Props;
     ))}
   </div>
 
-  {nextPageUrl && (
+  {page && page.lastPage > 1 && (
     <div class="mt-12 flex justify-center">
-      <a href={nextPageUrl} class="btn-outline">
-        Cargar más artículos
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v10.586l3.293-3.293a1 1 0 011.414 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 111.414-1.414L9 14.586V4a1 1 0 011-1z" clip-rule="evenodd" />
-        </svg>
-      </a>
+      <nav class="flex items-center space-x-2" aria-label="Pagination">
+        {/* Previous Button */}
+        {page.url.prev ? (
+          <a
+            href={page.url.prev}
+            class="flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700"
+          >
+            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            Anterior
+          </a>
+        ) : (
+          <span class="flex items-center px-4 py-2 text-sm font-medium text-gray-300 bg-white border border-gray-300 rounded-l-md cursor-not-allowed dark:bg-gray-800 dark:border-gray-600 dark:text-gray-600">
+            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            Anterior
+          </span>
+        )}
+
+        {/* Page Numbers */}
+        {Array.from({ length: page.lastPage }, (_, i) => i + 1).map((pageNum) => {
+          const isCurrentPage = pageNum === page.currentPage;
+          const pageUrl = pageNum === 1 ? '/noticias' : `/noticias/p/${pageNum}`;
+
+                    return isCurrentPage ? (
+            <span
+              class="px-4 py-2 text-sm font-medium text-primary-600 bg-primary-50 border border-primary-300 dark:bg-primary-900 dark:border-primary-600 dark:text-primary-400"
+            >
+              {pageNum}
+            </span>
+          ) : (
+            <a
+              href={pageUrl}
+              class="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700"
+            >
+              {pageNum}
+            </a>
+          );
+        })}
+
+        {/* Next Button */}
+        {page.url.next ? (
+          <a
+            href={page.url.next}
+            class="flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-700"
+          >
+            Siguiente
+            <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        ) : (
+          <span class="flex items-center px-4 py-2 text-sm font-medium text-gray-300 bg-white border border-gray-300 rounded-r-md cursor-not-allowed dark:bg-gray-800 dark:border-gray-600 dark:text-gray-600">
+            Siguiente
+            <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+            </svg>
+          </span>
+        )}
+      </nav>
     </div>
   )}
 </div>

@@ -12,7 +12,15 @@ export async function getStaticPaths({ paginate }: { paginate: Function }) {
 interface Props {
   page: {
     data: CollectionEntry<'noticias'>[];
-    url: { next?: string };
+    currentPage: number;
+    lastPage: number;
+    url: {
+      current: string;
+      prev?: string;
+      next?: string;
+      first?: string;
+      last?: string;
+    };
   };
 }
 
@@ -20,7 +28,6 @@ const { page } = Astro.props as Props;
 const pagePosts = page.data;
 const allPosts = await getCollection('noticias');
 const categories = [...new Set(allPosts.map(post => post.data.category))];
-const nextPageUrl = page.url.next;
 ---
 
 <Layout>
@@ -31,6 +38,6 @@ const nextPageUrl = page.url.next;
       description="Mantente al día con las actualizaciones de nuestros programas y las noticias del distrito."
     />
 
-    <NewsGrid posts={pagePosts} categories={categories} nextPageUrl={nextPageUrl} />
+    <NewsGrid posts={pagePosts} categories={categories} page={page} />
   </main>
 </Layout>
