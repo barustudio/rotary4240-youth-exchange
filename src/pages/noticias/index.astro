@@ -17,7 +17,7 @@ const categories = [...new Set(posts.map(post => post.data.category))];
     />
 
     <!-- Category Filter -->
-    <div class="container-custom pb-8">
+    <div class="container-custom pb-12">
       <div class="flex flex-wrap gap-4 justify-center mb-12">
         <a href="#" class="px-4 py-2 rounded-full bg-primary-600 text-white font-medium text-sm hover:bg-primary-700 transition-colors">
           Todas las noticias
@@ -67,6 +67,7 @@ const categories = [...new Set(posts.map(post => post.data.category))];
         ))}
       </div>
 
+      <!-- TODO: Implement pagination
       <div class="mt-12 flex justify-center">
         <a href="#" class="btn-outline">
           Cargar más artículos
@@ -75,6 +76,7 @@ const categories = [...new Set(posts.map(post => post.data.category))];
           </svg>
         </a>
       </div>
+      -->
     </div>
   </main>
 </Layout>
