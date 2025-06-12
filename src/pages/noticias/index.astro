@@ -2,16 +2,13 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
 import HeroSection from '../../components/HeroSection.astro';
-import Footer from '../../components/Footer.astro';
 
 const posts: CollectionEntry<'noticias'>[] = await getCollection('noticias');
 const categories = [...new Set(posts.map(post => post.data.category))];
 ---
 
 <Layout>
-  <Header />
   <main>
     <HeroSection
       title="Últimas Noticias y Novedades"
@@ -80,5 +77,4 @@ const categories = [...new Set(posts.map(post => post.data.category))];
       </div>
     </div>
   </main>
-  <Footer />
 </Layout>

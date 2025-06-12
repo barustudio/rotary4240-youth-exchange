@@ -2,8 +2,6 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('noticias');
@@ -25,7 +23,6 @@ const description = entry.data.excerpt;
 ---
 
 <Layout metadata={{ title, description }}>
-  <Header />
   <main>
     <article class="pt-32 pb-16 md:pt-40 md:pb-24">
       <div class="container-custom max-w-4xl">
@@ -99,5 +96,4 @@ const description = entry.data.excerpt;
       </div>
     </article>
   </main>
-  <Footer />
 </Layout>
