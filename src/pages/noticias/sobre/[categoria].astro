@@ -30,7 +30,7 @@ const categories = [...new Set(allPosts.map(p => p.data.category))];
   <main>
     <HeroSection
       title={`Noticias sobre ${category}`}
-      highlightText="Noticias"
+      highlightText={`${category}`}
       description="Mantente al día con las novedades del distrito."
     />
 
