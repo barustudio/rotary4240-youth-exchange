@@ -1,0 +1,81 @@
+---
+title: "API Improvements and New Endpoints"
+excerpt: "We've expanded our API capabilities with new endpoints and improved documentation for developers."
+date: "April 10, 2025"
+author: "Emily Rodriguez"
+authorRole: "Lead Developer"
+authorAvatar: "https://randomuser.me/api/portraits/women/65.jpg"
+category: "Developer Updates"
+image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+---
+
+<p class="mb-4">We're excited to announce significant improvements to our API along with new endpoints to help developers build more powerful integrations with our platform.</p>
+
+      <h2 class="text-2xl font-semibold mb-4 mt-8">API Version 2.0</h2>
+
+      <p class="mb-4">Our new API version 2.0 includes several major improvements:</p>
+
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li>RESTful design principles for more intuitive resource access</li>
+        <li>Improved rate limits with better handling for high-volume requests</li>
+        <li>Comprehensive error messages with actionable suggestions</li>
+        <li>OAuth 2.0 implementation for more secure authentication</li>
+        <li>Pagination for all list endpoints to improve performance</li>
+      </ul>
+
+      <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg mb-8 overflow-x-auto">
+        <h3 class="text-xl font-semibold mb-3">Example Request</h3>
+        <pre class="text-sm bg-gray-900 text-green-400 p-4 rounded-sm"><code>curl -X GET "https://api.saasify.com/v2/users" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json"</code></pre>
+      </div>
+
+      <h2 class="text-2xl font-semibold mb-4 mt-8">New Endpoints</h2>
+
+      <p class="mb-4">We've added several new endpoints to enable more advanced integrations:</p>
+
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li><strong>/analytics</strong> - Access detailed analytics data for your account</li>
+        <li><strong>/webhooks</strong> - Configure and manage webhook notifications</li>
+        <li><strong>/automations</strong> - Create and manage automated workflows</li>
+        <li><strong>/teams</strong> - Manage team members and permissions</li>
+        <li><strong>/files</strong> - Upload, download, and manage files</li>
+      </ul>
+
+      <h2 class="text-2xl font-semibold mb-4 mt-8">Improved Documentation</h2>
+
+      <p class="mb-4">Along with these API improvements, we've completely revamped our developer documentation:</p>
+
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li>Interactive API explorer for testing endpoints directly in the browser</li>
+        <li>Code examples in multiple languages (JavaScript, Python, Ruby, PHP, Go)</li>
+        <li>Step-by-step integration guides for common use cases</li>
+        <li>Comprehensive reference documentation for all endpoints</li>
+        <li>Changelog to track API updates and changes</li>
+      </ul>
+
+      <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg mb-8">
+        <h3 class="text-xl font-semibold mb-3">Migration Guide</h3>
+        <p>We've prepared a comprehensive migration guide to help you transition from API v1 to v2. The guide includes detailed information on breaking changes, new features, and best practices for updating your integrations.</p>
+        <a href="#" class="inline-flex items-center mt-3 text-primary-600 dark:text-primary-400 font-medium hover:underline">
+          View Migration Guide
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+
+      <h2 class="text-2xl font-semibold mb-4 mt-8">Deprecation Schedule</h2>
+
+      <p class="mb-4">To ensure a smooth transition, we'll be supporting API v1 alongside v2 according to this schedule:</p>
+
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li><strong>Now - October 2025:</strong> Both API v1 and v2 available</li>
+        <li><strong>October 2025:</strong> API v1 enters maintenance mode (no new features)</li>
+        <li><strong>April 2026:</strong> API v1 deprecated (still functional but with warnings)</li>
+        <li><strong>October 2026:</strong> API v1 sunset (no longer available)</li>
+      </ul>
+
+      <p class="mb-4">We recommend migrating to API v2 as soon as possible to take advantage of the new features and improvements.</p>
+
+      <p>If you have any questions or need assistance with the migration, please don't hesitate to reach out to our developer support team.</p>

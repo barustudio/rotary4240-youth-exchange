@@ -5,6 +5,8 @@ import alpinejs from '@astrojs/alpinejs';
 import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
 
+import mdx from '@astrojs/mdx';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://intercambios.rotary4240.org',
@@ -12,10 +14,11 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   integrations: [
-    sitemap(),
     alpinejs(),
+    mdx(),
     partytown({
       config: { forward: ['dataLayer.push'] },
-    })
-  ]
+    }),
+    sitemap(),
+  ],
 });
