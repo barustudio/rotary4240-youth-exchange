@@ -1,0 +1,36 @@
+---
+import { getCollection, paginate, type CollectionEntry } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import HeroSection from '../../../components/HeroSection.astro';
+import NewsGrid from '../../../components/news/NewsGrid.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('noticias');
+  return paginate(posts, { pageSize: 3 });
+}
+
+interface Props {
+  page: {
+    data: CollectionEntry<'noticias'>[];
+    url: { next?: string };
+  };
+}
+
+const { page } = Astro.props as Props;
+const pagePosts = page.data;
+const allPosts = await getCollection('noticias');
+const categories = [...new Set(allPosts.map(post => post.data.category))];
+const nextPageUrl = page.url.next;
+---
+
+<Layout>
+  <main>
+    <HeroSection
+      title="Últimas Noticias y Novedades"
+      highlightText="Noticias"
+      description="Mantente al día con las actualizaciones de nuestros programas y las noticias del distrito."
+    />
+
+    <NewsGrid posts={pagePosts} categories={categories} nextPageUrl={nextPageUrl} />
+  </main>
+</Layout>
