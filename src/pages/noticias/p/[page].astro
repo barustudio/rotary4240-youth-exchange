@@ -1,10 +1,10 @@
 ---
-import { getCollection, paginate, type CollectionEntry } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import HeroSection from '../../../components/HeroSection.astro';
 import NewsGrid from '../../../components/news/NewsGrid.astro';
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ paginate }: { paginate: Function }) {
   const posts = await getCollection('noticias');
   return paginate(posts, { pageSize: 3 });
 }
