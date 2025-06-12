@@ -3,10 +3,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 
 import Layout from '../../../layouts/Layout.astro';
 import HeroSection from '../../../components/HeroSection.astro';
-
-function slugify(str: string) {
-  return str.toLowerCase().replace(/\s+/g, '-');
-}
+import { slugify } from '../../../utils/url';
 
 export async function getStaticPaths() {
   const posts = await getCollection('noticias');
