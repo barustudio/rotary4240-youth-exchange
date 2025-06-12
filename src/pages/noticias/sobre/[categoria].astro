@@ -1,30 +1,58 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 
-import Layout from '../../layouts/Layout.astro';
-import HeroSection from '../../components/HeroSection.astro';
+import Layout from '../../../layouts/Layout.astro';
+import HeroSection from '../../../components/HeroSection.astro';
 
-const posts: CollectionEntry<'noticias'>[] = await getCollection('noticias');
-const categories = [...new Set(posts.map(post => post.data.category))];
+function slugify(str: string) {
+  return str.toLowerCase().replace(/\s+/g, '-');
+}
+
+export async function getStaticPaths() {
+  const posts = await getCollection('noticias');
+  const categories = [...new Set(posts.map(p => p.data.category))];
+
+  return categories.map(category => ({
+    params: { categoria: slugify(category) },
+    props: { category }
+  }));
+}
+
+interface Props {
+  category: string;
+}
+
+const { category } = Astro.props as Props;
+const { categoria } = Astro.params;
+const allPosts: CollectionEntry<'noticias'>[] = await getCollection('noticias');
+const posts = allPosts.filter(post => slugify(post.data.category) === categoria);
+const categories = [...new Set(allPosts.map(p => p.data.category))];
 ---
 
 <Layout>
   <main>
     <HeroSection
-      title="Últimas Noticias y Novedades"
+      title={`Noticias sobre ${category}`}
       highlightText="Noticias"
-      description="Mantente al día con las actualizaciones de nuestros programas y las noticias del distrito."
+      description="Mantente al día con las novedades del distrito."
     />
 
-    <!-- Category Filter -->
     <div class="container-custom pb-12">
       <div class="flex flex-wrap gap-4 justify-center mb-12">
-        <a href="/noticias" class="px-4 py-2 rounded-full bg-primary-600 text-white font-medium text-sm hover:bg-primary-700 transition-colors">
+        <a href="/noticias" class="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
           Todas las noticias
         </a>
-        {categories.map((category) => (
-          <a href={'/noticias/sobre/' + category.toLowerCase().replace(/\s+/g, '-')} class="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-            {category}
+        {categories.map(cat => (
+          <a
+            href={'/noticias/sobre/' + slugify(cat)}
+            class={
+              'px-4 py-2 rounded-full font-medium text-sm transition-colors ' +
+              (slugify(cat) === categoria
+                ? 'bg-primary-600 text-white hover:bg-primary-700'
+                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700')
+            }
+          >
+            {cat}
           </a>
         ))}
       </div>
@@ -66,17 +94,6 @@ const categories = [...new Set(posts.map(post => post.data.category))];
           </div>
         ))}
       </div>
-
-      <!-- TODO: Implement pagination
-      <div class="mt-12 flex justify-center">
-        <a href="#" class="btn-outline">
-          Cargar más artículos
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v10.586l3.293-3.293a1 1 0 011.414 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 111.414-1.414L9 14.586V4a1 1 0 011-1z" clip-rule="evenodd" />
-          </svg>
-        </a>
-      </div>
-      -->
     </div>
   </main>
 </Layout>
