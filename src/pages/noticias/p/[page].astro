@@ -6,7 +6,7 @@ import NewsGrid from '../../../components/news/NewsGrid.astro';
 
 export async function getStaticPaths({ paginate }: { paginate: Function }) {
   const posts = await getCollection('noticias');
-  return paginate(posts, { pageSize: 3 });
+  return paginate(posts, { pageSize: 6});
 }
 
 interface Props {
