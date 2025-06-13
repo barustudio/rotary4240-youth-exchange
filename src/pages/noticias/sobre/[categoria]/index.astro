@@ -1,0 +1,62 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+import Layout from '../../../../layouts/Layout.astro';
+import HeroSection from '../../../../components/HeroSection.astro';
+import NewsGrid from '../../../../components/news/NewsGrid.astro';
+import { slugify } from '../../../../utils/url';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('noticias');
+  const categories = [...new Set(posts.map(p => p.data.category))];
+
+  return categories.map(category => ({
+    params: { categoria: slugify(category) },
+    props: { category }
+  }));
+}
+
+interface Props {
+  category: string;
+}
+
+const { category } = Astro.props as Props;
+const { categoria } = Astro.params;
+const allPosts: CollectionEntry<'noticias'>[] = await getCollection('noticias');
+const filteredPosts = allPosts.filter(post => slugify(post.data.category) === categoria);
+const categories = [...new Set(allPosts.map(p => p.data.category))];
+
+const perPage = 3;
+const firstPagePosts = filteredPosts.slice(0, perPage);
+const totalPages = Math.ceil(filteredPosts.length / perPage);
+
+// Construct page object for the first page with category-specific URLs
+const page = {
+  currentPage: 1,
+  lastPage: totalPages,
+  url: {
+    current: `/noticias/sobre/${categoria}`,
+    prev: undefined,
+    next: filteredPosts.length > perPage ? `/noticias/sobre/${categoria}/p/2` : undefined,
+    first: undefined,
+    last: totalPages > 1 ? `/noticias/sobre/${categoria}/p/${totalPages}` : undefined,
+  }
+};
+---
+
+<Layout>
+  <main>
+    <HeroSection
+      title={`Noticias sobre ${category}`}
+      highlightText={`${category}`}
+      description="Mantente al día con las novedades del distrito."
+    />
+
+    <NewsGrid
+      posts={firstPagePosts}
+      categories={categories}
+      page={page}
+      baseUrl={`/noticias/sobre/${categoria}`}
+    />
+  </main>
+</Layout>
