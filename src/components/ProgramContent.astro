@@ -67,8 +67,20 @@ const {
 const formUrl = applicationFormLink ?? `${Astro.url.pathname}/aplicar`;
 ---
 
+<nav id="content-menu" class="sticky top-20 z-40 bg-white/90 dark:bg-secondary-950/90 backdrop-blur-xs border-b border-gray-200 dark:border-gray-700">
+  <div class="container-custom flex flex-wrap justify-center gap-4 py-2 text-sm font-medium">
+    <a href="#about" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Programa</a>
+    <a href="#requirements" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Requisitos</a>
+    <a href="#duration" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Duración</a>
+    <a href="#costs" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Costos</a>
+    <a href="#apply" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Aplicar</a>
+    <a href="#faqs" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">FAQ</a>
+    <a href="#testimonials" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Testimonios</a>
+  </div>
+</nav>
+
 <!-- 2. ¿Qué es este programa? -->
-<section class="py-16">
+<section id="about" class="py-16">
   <div class="container-custom">
     <div class="text-center max-w-3xl mx-auto mb-12">
       <span class="inline-block px-4 py-1 rounded-full bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-secondary-300 font-medium text-sm mb-4">
@@ -149,7 +161,7 @@ const formUrl = applicationFormLink ?? `${Astro.url.pathname}/aplicar`;
 </section>
 
 <!-- 3. ¿Quién puede participar? -->
-<section class="py-16 bg-gray-50 dark:bg-gray-800">
+<section id="requirements" class="py-16 bg-gray-50 dark:bg-gray-800">
   <div class="container-custom">
     <div class="text-center max-w-3xl mx-auto mb-12">
       <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">
@@ -214,7 +226,7 @@ const formUrl = applicationFormLink ?? `${Astro.url.pathname}/aplicar`;
 </section>
 
 <!-- 4. ¿Cuánto dura y cómo funciona? -->
-<section class="py-16">
+<section id="duration" class="py-16">
   <div class="container-custom">
     <div class="text-center max-w-3xl mx-auto mb-12">
       <span class="inline-block px-4 py-1 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-300 font-medium text-sm mb-4">
@@ -291,7 +303,7 @@ const formUrl = applicationFormLink ?? `${Astro.url.pathname}/aplicar`;
 </section>
 
 <!-- 5. ¿Cuáles son los costos? ¿Qué incluye Rotary? -->
-<section class="py-16 bg-gray-50 dark:bg-gray-800">
+<section id="costs" class="py-16 bg-gray-50 dark:bg-gray-800">
   <div class="container-custom">
     <div class="text-center max-w-3xl mx-auto mb-12">
       <span class="inline-block px-4 py-1 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-300 font-medium text-sm mb-4">
@@ -348,7 +360,7 @@ const formUrl = applicationFormLink ?? `${Astro.url.pathname}/aplicar`;
 </section>
 
 <!-- 6. ¿Cómo aplicar? -->
-<section class="py-16">
+<section id="apply" class="py-16">
   <div class="container-custom">
     <div class="text-center max-w-3xl mx-auto mb-12">
       <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">
@@ -422,7 +434,7 @@ const formUrl = applicationFormLink ?? `${Astro.url.pathname}/aplicar`;
 </section>
 
 <!-- 7. Preguntas frecuentes -->
-<section class="py-16 bg-gray-50 dark:bg-gray-800">
+<section id="faqs" class="py-16 bg-gray-50 dark:bg-gray-800">
   <div class="container-custom">
     <FAQSection
       title="Preguntas frecuentes"
@@ -436,7 +448,7 @@ const formUrl = applicationFormLink ?? `${Astro.url.pathname}/aplicar`;
 
 <!-- 8. Testimonios / Historias -->
 {testimonials.length > 0 && (
-  <section class="py-16">
+  <section id="testimonials" class="py-16">
     <div class="container-custom">
       <div class="text-center max-w-3xl mx-auto mb-16">
         <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">

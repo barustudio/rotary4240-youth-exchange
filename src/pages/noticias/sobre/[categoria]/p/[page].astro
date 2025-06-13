@@ -1,0 +1,79 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+import Layout from '../../../../../layouts/Layout.astro';
+import HeroSection from '../../../../../components/HeroSection.astro';
+import NewsGrid from '../../../../../components/news/NewsGrid.astro';
+import { slugify } from '../../../../../utils/url';
+
+export async function getStaticPaths({ paginate }: { paginate: Function }) {
+  const posts = await getCollection('noticias');
+  const categories = [...new Set(posts.map(p => p.data.category))];
+
+  // Generate paginated routes for each category
+  return categories.flatMap(category => {
+    const categorySlug = slugify(category);
+    const categoryPosts = posts.filter(post => slugify(post.data.category) === categorySlug);
+
+    return paginate(categoryPosts, {
+      params: { categoria: categorySlug },
+      props: { category },
+      pageSize: 6
+    });
+  });
+}
+
+interface Props {
+  category: string;
+  page: {
+    data: CollectionEntry<'noticias'>[];
+    currentPage: number;
+    lastPage: number;
+    url: {
+      current: string;
+      prev?: string;
+      next?: string;
+      first?: string;
+      last?: string;
+    };
+  };
+}
+
+const { category, page } = Astro.props as Props;
+const { categoria } = Astro.params;
+const allPosts: CollectionEntry<'noticias'>[] = await getCollection('noticias');
+const categories = [...new Set(allPosts.map(p => p.data.category))];
+
+// Get posts from pagination
+const posts = page.data;
+
+// Update URLs to match the category structure
+const updatedPage = {
+  ...page,
+  url: {
+    ...page.url,
+    // Fix the URLs to match category structure
+    prev: page.url.prev ? (page.currentPage === 2 ? `/noticias/sobre/${categoria}` : page.url.prev.replace('/noticias/p/', `/noticias/sobre/${categoria}/p/`)) : undefined,
+    next: page.url.next ? page.url.next.replace('/noticias/p/', `/noticias/sobre/${categoria}/p/`) : undefined,
+    first: `/noticias/sobre/${categoria}`,
+    last: page.url.last ? page.url.last.replace('/noticias/p/', `/noticias/sobre/${categoria}/p/`) : undefined,
+  }
+};
+---
+
+<Layout>
+  <main>
+    <HeroSection
+      title={`Noticias sobre ${category}`}
+      highlightText={`${category}`}
+      description="Mantente al día con las novedades del distrito."
+    />
+
+    <NewsGrid
+      posts={posts}
+      categories={categories}
+      page={updatedPage}
+      baseUrl={`/noticias/sobre/${categoria}`}
+    />
+  </main>
+</Layout>
