@@ -5,6 +5,7 @@ import Pagination from '../Pagination.astro';
 interface Props {
   posts: CollectionEntry<'noticias'>[];
   categories: string[];
+  baseUrl?: string; // Optional base URL for pagination
   page?: {
     currentPage: number;
     lastPage: number;
@@ -18,7 +19,7 @@ interface Props {
   };
 }
 
-const { posts, categories, page } = Astro.props as Props;
+const { posts, categories, page, baseUrl = "/noticias" } = Astro.props as Props;
 ---
 
 <div class="container-custom pb-12">
@@ -72,12 +73,12 @@ const { posts, categories, page } = Astro.props as Props;
     ))}
   </div>
 
-    {page && (
+  {page && (
     <Pagination
       currentPage={page.currentPage}
       lastPage={page.lastPage}
       url={page.url}
-      baseUrl="/noticias"
+      baseUrl={baseUrl}
     />
   )}
 </div>
