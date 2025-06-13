@@ -20,6 +20,21 @@ const testimonialsCollection = defineCollection({
   }),
 });
 
+const noticiasCollection = defineCollection({
+  type: 'content',
+  schema: ({ image }) => z.object({
+    title: z.string(),
+    excerpt: z.string(),
+    date: z.string(),
+    author: z.string(),
+    authorRole: z.string(),
+    authorAvatar: z.string(),
+    category: z.string(),
+    image: z.string(),
+  }),
+});
+
 export const collections = {
   'testimonials': testimonialsCollection,
+  'noticias': noticiasCollection,
 };

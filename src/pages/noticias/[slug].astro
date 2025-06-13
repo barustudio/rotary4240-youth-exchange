@@ -1,0 +1,82 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+import Layout from '../../layouts/Layout.astro';
+import ShareButtons from '../../components/ShareButtons.astro';
+import { getUrlByCategory } from '../../utils/collections/news';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('noticias');
+  return posts.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry }
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<'noticias'>;
+}
+
+const { entry } = Astro.props as Props;
+const { Content } = await entry.render();
+
+const title = entry.data.title;
+const description = entry.data.excerpt;
+
+---
+
+<Layout metadata={{ title, description }}>
+  <main>
+    <article class="pt-8 pb-8 md:pt-12 md:pb-12">
+      <div class="container-custom max-w-4xl">
+        <div class="mb-8">
+          <a href="/noticias" class="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+            </svg>
+            Volver a Noticias
+          </a>
+        </div>
+
+        <div class="flex items-center mb-6">
+          <a
+            href={getUrlByCategory(entry.data.category)}
+            class="inline-block px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-300 font-medium text-sm"
+          >
+            {entry.data.category}
+          </a>
+          <span class="mx-2 text-gray-300 dark:text-gray-600">•</span>
+          <span class="text-gray-600 dark:text-gray-400">{entry.data.date}</span>
+        </div>
+
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-white">{entry.data.title}</h1>
+
+        <div class="flex items-center mb-8">
+          <img
+            src={entry.data.authorAvatar}
+            alt={entry.data.author}
+            class="w-12 h-12 rounded-full mr-4 object-cover"
+          />
+          <div>
+            <p class="font-semibold text-gray-900 dark:text-white">{entry.data.author}</p>
+            <p class="text-gray-600 dark:text-gray-400">{entry.data.authorRole}</p>
+          </div>
+        </div>
+
+        <img
+          src={entry.data.image}
+          alt={entry.data.title}
+          class="w-full h-auto rounded-xl mb-10 object-cover"
+          style="max-height: 500px;"
+        />
+
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+          <Content />
+        </div>
+
+
+        <ShareButtons title={title} />
+      </div>
+    </article>
+  </main>
+</Layout>

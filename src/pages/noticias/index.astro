@@ -1,0 +1,38 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/HeroSection.astro';
+import NewsGrid from '../../components/news/NewsGrid.astro';
+
+const posts: CollectionEntry<'noticias'>[] = await getCollection('noticias');
+const categories = [...new Set(posts.map(post => post.data.category))];
+
+const perPage = 3;
+const firstPagePosts = posts.slice(0, perPage);
+const totalPages = Math.ceil(posts.length / perPage);
+
+// Construct page object similar to pagination
+const page = {
+  currentPage: 1,
+  lastPage: totalPages,
+  url: {
+    current: '/noticias',
+    prev: undefined,
+    next: posts.length > perPage ? '/noticias/p/2' : undefined,
+    first: undefined,
+    last: totalPages > 1 ? `/noticias/p/${totalPages}` : undefined,
+  }
+};
+---
+
+<Layout>
+  <main>
+    <HeroSection
+      title="Últimas Noticias y Novedades"
+      highlightText="Noticias"
+      description="Mantente al día con las actualizaciones de nuestros programas y las noticias del distrito."
+    />
+    <NewsGrid posts={firstPagePosts} categories={categories} page={page} />
+  </main>
+</Layout>
