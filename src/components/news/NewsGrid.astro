@@ -23,62 +23,84 @@ const { posts, categories, page, baseUrl = "/noticias" } = Astro.props as Props;
 ---
 
 <div class="container-custom pb-12">
-  <!-- Category Filter -->
-  <div class="flex flex-wrap gap-4 justify-center mb-12">
-    <a href="/noticias" class="px-4 py-2 rounded-full bg-primary-600 text-white font-medium text-sm hover:bg-primary-700 transition-colors">
-      Todas las noticias
-    </a>
-    {categories.map((category) => (
-      <a href={'/noticias/sobre/' + category.toLowerCase().replace(/\s+/g, '-')} class="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-        {category}
+  {posts.length > 0 && (
+    <!-- Category Filter -->
+    <div class="flex flex-wrap gap-4 justify-center mb-12">
+      <a href="/noticias" class="px-4 py-2 rounded-full bg-primary-600 text-white font-medium text-sm hover:bg-primary-700 transition-colors">
+        Todas las noticias
       </a>
-    ))}
-  </div>
-
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {posts.map((post, index) => (
-      <div class="card border border-gray-200 dark:border-gray-700 overflow-hidden slide-up" style={'animation-delay: ' + (index * 100) + 'ms'}>
-        <a href={'/noticias/' + post.slug} class="block">
-          <img
-            src={post.data.image}
-            alt={post.data.title}
-            class="w-full h-48 object-cover"
-            loading="lazy"
-          />
+      {categories.map((category) => (
+        <a href={'/noticias/sobre/' + category.toLowerCase().replace(/\s+/g, '-')} class="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+          {category}
         </a>
-        <div class="p-6">
-          <div class="flex items-center mb-4">
-            <span class="text-sm font-medium text-primary-600 dark:text-primary-400">{post.data.category}</span>
-            <span class="mx-2 text-gray-300 dark:text-gray-600">•</span>
-            <span class="text-sm text-gray-500 dark:text-gray-400">{post.data.date}</span>
-          </div>
-          <a href={'/noticias/' + post.slug} class="block mb-3">
-            <h2 class="text-xl font-semibold text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors">{post.data.title}</h2>
-          </a>
-          <p class="text-gray-600 dark:text-gray-300 mb-6">{post.data.excerpt}</p>
-          <div class="flex items-center">
-            <img
-              src={post.data.authorAvatar}
-              alt={post.data.author}
-              class="w-10 h-10 rounded-full mr-3 object-cover"
-              loading="lazy"
-            />
-            <div>
-              <p class="font-medium text-gray-900 dark:text-white">{post.data.author}</p>
-              <p class="text-sm text-gray-500 dark:text-gray-400">{post.data.authorRole}</p>
+      ))}
+    </div>
+  )}
+
+  {posts.length === 0 ? (
+    <div class="text-center py-16">
+      <div class="mb-6">
+        <svg class="w-24 h-24 mx-auto text-gray-400 dark:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">No hay noticias disponibles</h3>
+      <p class="text-gray-600 dark:text-gray-400 mb-6">Vuelve pronto para ver las últimas actualizaciones y novedades del distrito.</p>
+      <a href="/" class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+        Volver al inicio
+      </a>
+    </div>
+  ) : (
+    <>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map((post, index) => (
+          <div class="card border border-gray-200 dark:border-gray-700 overflow-hidden slide-up" style={'animation-delay: ' + (index * 100) + 'ms'}>
+            <a href={'/noticias/' + post.slug} class="block">
+              <img
+                src={post.data.image}
+                alt={post.data.title}
+                class="w-full h-48 object-cover"
+                loading="lazy"
+              />
+            </a>
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <span class="text-sm font-medium text-primary-600 dark:text-primary-400">{post.data.category}</span>
+                <span class="mx-2 text-gray-300 dark:text-gray-600">•</span>
+                <span class="text-sm text-gray-500 dark:text-gray-400">{post.data.date}</span>
+              </div>
+              <a href={'/noticias/' + post.slug} class="block mb-3">
+                <h2 class="text-xl font-semibold text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors">{post.data.title}</h2>
+              </a>
+              <p class="text-gray-600 dark:text-gray-300 mb-6">{post.data.excerpt}</p>
+              <div class="flex items-center">
+                <img
+                  src={post.data.authorAvatar}
+                  alt={post.data.author}
+                  class="w-10 h-10 rounded-full mr-3 object-cover"
+                  loading="lazy"
+                />
+                <div>
+                  <p class="font-medium text-gray-900 dark:text-white">{post.data.author}</p>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">{post.data.authorRole}</p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        ))}
       </div>
-    ))}
-  </div>
 
-  {page && (
-    <Pagination
-      currentPage={page.currentPage}
-      lastPage={page.lastPage}
-      url={page.url}
-      baseUrl={baseUrl}
-    />
+      {page && (
+        <Pagination
+          currentPage={page.currentPage}
+          lastPage={page.lastPage}
+          url={page.url}
+          baseUrl={baseUrl}
+        />
+      )}
+    </>
   )}
 </div>
