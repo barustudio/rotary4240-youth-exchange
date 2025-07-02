@@ -11,9 +11,13 @@ import Footer from '../components/Footer.astro';
 
 export interface Props {
   metadata?: MetaData;
+  /**
+   * Document language. Defaults to Spanish.
+   */
+  lang?: string;
 }
 
-const { metadata } = Astro.props;
+const { metadata, lang = 'es' } = Astro.props;
 
 const rawTitle = metadata?.title || "Intercambios Juveniles";
 
@@ -25,7 +29,7 @@ const metadataWithDefaults = {
 ---
 
 <!doctype html>
-<html lang="en" x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }" x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))" :class="{ 'dark': darkMode }">
+<html lang={lang} x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }" x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))" :class="{ 'dark': darkMode }">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
