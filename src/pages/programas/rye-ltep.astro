@@ -2,6 +2,7 @@
 import ProgramLayout from '../../layouts/ProgramLayout.astro';
 import ProgramContent from '../../components/ProgramContent.astro';
 import logoRye from '../../assets/images/logo-rye.png';
+import ltepImage from '../../assets/images/testimonials/ltep-2023-brazil-sohannys.jpg';
 import { ProgramCode } from '../../const';
 import { getLatestTestimonialsForProgram } from '../../utils/collections/testimonials';
 
@@ -24,6 +25,13 @@ const programInfo = {
   duration: "10-12 meses",
   programCode: "RYE-LTEP",
   logo: logoRye,
+
+  hero: {
+    title: "Año Escolar",
+    highlightText: "Escolar",
+    description: "El Programa de Intercambio de Jóvenes a Largo Plazo (LTEP) es la experiencia más completa de Rotary para estudiantes de secundaria.",
+    image: ltepImage,
+  },
 
   description: "El Programa de Intercambio de Jóvenes a Largo Plazo (LTEP) es la experiencia más completa de Rotary para estudiantes de secundaria. Durante un año académico completo, los participantes viven con familias anfitrionas en otro país mientras asisten a una escuela local, aprenden un nuevo idioma y se sumergen completamente en una cultura diferente.",
 
@@ -242,6 +250,7 @@ const programInfo = {
   duration={programInfo.duration}
   programCode={programInfo.programCode}
   logo={programInfo.logo}
+  hero={programInfo.hero}
 >
   <ProgramContent
     description={programInfo.description}

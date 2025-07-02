@@ -92,6 +92,34 @@ Custom animations are included:
 3. Start the development server with `npm run dev` or `pnpm dev`
 4. Visit `http://localhost:4321` to see your site
 
+## ➕ Adding New Programs
+
+Program pages live in `src/pages/programas`. When creating a new program file, provide the hero information through the `hero` property that is passed to `ProgramLayout`:
+
+```astro
+<ProgramLayout
+  title={programInfo.title}
+  age={programInfo.age}
+  duration={programInfo.duration}
+  programCode={programInfo.programCode}
+  logo={programInfo.logo}
+  hero={programInfo.hero}
+>
+```
+
+The `hero` object should include:
+
+```ts
+hero: {
+  title: string;            // Main heading
+  highlightText?: string;   // Word to highlight in the title
+  description: string;      // Short description displayed under the title
+  image?: ImageMetadata;    // Optional background image
+}
+```
+
+This information is rendered by the `ProgramHero` component at the top of each program page.
+
 ## 📝 License
 
 MIT
