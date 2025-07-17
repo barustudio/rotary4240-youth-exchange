@@ -1,5 +1,13 @@
 ---
 import Layout from './Layout.astro';
+import ProgramHero from '../components/ProgramHero.astro';
+
+interface HeroProps {
+  title: string;
+  highlightText?: string;
+  description: string;
+  image?: ImageMetadata;
+}
 
 interface Props {
   title: string;
@@ -7,10 +15,11 @@ interface Props {
   duration: string;
   programCode: string;
   logo: ImageMetadata;
+  hero: HeroProps;
   applicationFormLink?: string;
 }
 
-const { title, age, duration, programCode, logo, applicationFormLink } = Astro.props;
+const { title, age, duration, programCode, logo, hero, applicationFormLink } = Astro.props;
 
 const metadata = {
   title: `${programCode} (${title} de ${duration})`,
@@ -22,36 +31,7 @@ const formUrl = applicationFormLink ?? `/programas/${programCode}/aplicar`;
 
 <Layout metadata={metadata}>
   <!-- 1. Hero del programa -->
-  <section class="py-20">
-    <div class="container-custom">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div class="flex flex-col gap-6">
-          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">{title}</h1>
-          <div class="flex flex-wrap gap-4 my-6 text-gray-600 dark:text-white">
-            <span class="badge bg-primary-100 dark:bg-secondary-500 px-3">
-              Edad: {age} años
-            </span>
-            <span class="badge bg-primary-100 dark:bg-secondary-500 px-3">
-              Duración: {duration}
-            </span>
-            <span class="badge bg-primary-100 dark:bg-secondary-500 px-3">
-              [{programCode}]
-            </span>
-          </div>
-          <a href="#aplicar" class="btn btn-primary mt-6 w-fit">Quiero participar</a>
-        </div>
-        <div class="flex justify-center">
-          <div class="w-64 h-64 overflow-hidden">
-            <img
-                src={logo.src}
-                alt={`Logo de ${title}`}
-                class="w-full h-full object-contain p-4"
-              />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <ProgramHero {...hero} />
 
   <!-- Contenido principal -->
   <slot />
