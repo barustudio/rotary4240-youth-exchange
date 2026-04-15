@@ -18,6 +18,8 @@ const metadata = {
 };
 
 const formUrl = applicationFormLink ?? `/programas/${programCode.toLowerCase()}/aplicar`;
+const printablePageUrl = Astro.url.toString();
+const printableQrUrl = `https://quickchart.io/qr?size=180&margin=1&text=${encodeURIComponent(printablePageUrl)}`;
 ---
 
 <Layout metadata={metadata}>
@@ -26,17 +28,25 @@ const formUrl = applicationFormLink ?? `/programas/${programCode.toLowerCase()}/
     <div class="container-custom">
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div class="flex flex-col gap-6">
-          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">{title}</h1>
-          <div class="flex flex-wrap gap-4 my-6 text-gray-600 dark:text-white">
-            <span class="badge bg-primary-100 dark:bg-secondary-500 px-3">
-              Edad: {age} años
-            </span>
-            <span class="badge bg-primary-100 dark:bg-secondary-500 px-3">
-              Duración: {duration}
-            </span>
-            <span class="badge bg-primary-100 dark:bg-secondary-500 px-3">
-              [{programCode}]
-            </span>
+          <div class="program-print-title-row">
+            <div class="program-print-title-copy">
+              <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">{title}</h1>
+              <p class="program-print-hero-url">{printablePageUrl}</p>
+              <div class="flex flex-wrap gap-4 my-6 text-gray-600 dark:text-white program-print-badges">
+                <span class="badge bg-primary-100 dark:bg-secondary-500 px-3">
+                  Edad: {age} años
+                </span>
+                <span class="badge bg-primary-100 dark:bg-secondary-500 px-3">
+                  Duración: {duration}
+                </span>
+                <span class="badge bg-primary-100 dark:bg-secondary-500 px-3">
+                  [{programCode}]
+                </span>
+              </div>
+            </div>
+            <div class="program-print-qr">
+              <img src={printableQrUrl} alt={`QR para ${printablePageUrl}`} class="program-print-qr-image" />
+            </div>
           </div>
           <a href="#aplicar" class="btn btn-primary mt-6 w-fit program-print-hero-action">Quiero participar</a>
         </div>
@@ -79,6 +89,14 @@ const formUrl = applicationFormLink ?? `/programas/${programCode.toLowerCase()}/
 </Layout>
 
 <style>
+  .program-print-qr {
+    display: none;
+  }
+
+  .program-print-hero-url {
+    display: none;
+  }
+
   @media print {
     :global(header .container-custom > :not(a[aria-label="Ir a la página principal"])) {
       display: none !important;
@@ -102,6 +120,50 @@ const formUrl = applicationFormLink ?? `/programas/${programCode.toLowerCase()}/
 
     .program-print-hero-action {
       display: none !important;
+    }
+
+    .program-print-qr {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+    }
+
+    .program-print-qr-image {
+      width: 88px;
+      height: 88px;
+      object-fit: contain;
+    }
+
+    .program-print-title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .program-print-title-row h1 {
+      margin-bottom: 0 !important;
+    }
+
+    .program-print-title-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .program-print-badges {
+      margin-top: 0.5rem !important;
+      margin-bottom: 0 !important;
+    }
+
+    .program-print-hero-url {
+      display: block;
+      margin: 0;
+      font-size: 0.75rem;
+      color: #374151;
+      max-width: 24rem;
+      word-break: break-all;
     }
 
     .program-print-cta {
