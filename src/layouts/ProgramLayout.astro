@@ -17,7 +17,7 @@ const metadata = {
   description: `Intercambios de Rotary en Centroamérica para jóvenes (${age} años)`,
 };
 
-const formUrl = applicationFormLink ?? `/programas/${programCode}/aplicar`;
+const formUrl = applicationFormLink ?? `/programas/${programCode.toLowerCase()}/aplicar`;
 ---
 
 <Layout metadata={metadata}>
