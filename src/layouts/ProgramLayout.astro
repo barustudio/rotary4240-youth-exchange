@@ -22,7 +22,7 @@ const formUrl = applicationFormLink ?? `/programas/${programCode.toLowerCase()}/
 
 <Layout metadata={metadata}>
   <!-- 1. Hero del programa -->
-  <section class="py-20">
+  <section class="py-20 program-print-hero">
     <div class="container-custom">
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div class="flex flex-col gap-6">
@@ -38,7 +38,7 @@ const formUrl = applicationFormLink ?? `/programas/${programCode.toLowerCase()}/
               [{programCode}]
             </span>
           </div>
-          <a href="#aplicar" class="btn btn-primary mt-6 w-fit">Quiero participar</a>
+          <a href="#aplicar" class="btn btn-primary mt-6 w-fit program-print-hero-action">Quiero participar</a>
         </div>
         <div class="flex justify-center">
           <div class="w-64 h-64 overflow-hidden">
@@ -57,7 +57,7 @@ const formUrl = applicationFormLink ?? `/programas/${programCode.toLowerCase()}/
   <slot />
 
   <!-- Call to Action Final -->
-  <section id="aplicar" class="py-20 bg-primary-50 dark:bg-primary-900/10">
+  <section id="aplicar" class="py-20 bg-primary-50 dark:bg-primary-900/10 program-print-cta">
     <div class="container-custom text-center">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
         ¿Listo para vivir esta experiencia?
@@ -77,3 +77,35 @@ const formUrl = applicationFormLink ?? `/programas/${programCode.toLowerCase()}/
     </div>
   </section>
 </Layout>
+
+<style>
+  @media print {
+    :global(header .container-custom > :not(a[aria-label="Ir a la página principal"])) {
+      display: none !important;
+    }
+
+    :global(header) {
+      position: static !important;
+      backdrop-filter: none !important;
+      background: #fff !important;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    :global(footer) {
+      display: none !important;
+    }
+
+    .program-print-hero {
+      break-after: page;
+      page-break-after: always;
+    }
+
+    .program-print-hero-action {
+      display: none !important;
+    }
+
+    .program-print-cta {
+      display: none !important;
+    }
+  }
+</style>

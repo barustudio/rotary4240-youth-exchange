@@ -65,6 +65,7 @@ const {
 } = Astro.props;
 
 const formUrl = applicationFormLink ?? `${Astro.url.pathname}/aplicar`;
+const printableFormUrl = new URL(formUrl, Astro.url).toString();
 ---
 
 <nav id="content-menu" class="sticky top-20 z-40 bg-white/90 dark:bg-secondary-950/90 backdrop-blur-xs border-b border-gray-200 dark:border-gray-700">
@@ -80,7 +81,7 @@ const formUrl = applicationFormLink ?? `${Astro.url.pathname}/aplicar`;
 </nav>
 
 <!-- 2. ¿Qué es este programa? -->
-<section id="about" class="py-16">
+<section id="about" class="py-16 program-print-section">
   <div class="container-custom">
     <div class="text-center max-w-3xl mx-auto mb-12">
       <span class="inline-block px-4 py-1 rounded-full bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-secondary-300 font-medium text-sm mb-4">
@@ -122,21 +123,21 @@ const formUrl = applicationFormLink ?? `${Astro.url.pathname}/aplicar`;
         </div>
       </div>
 
-      <div class="rounded-2xl overflow-hidden bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 h-auto flex flex-col  text-center items-center justify-center shadow-lg p-8 gap-3">
+      <div class="rounded-2xl overflow-hidden bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 h-auto flex flex-col text-center items-center justify-center shadow-lg p-8 gap-3 program-print-media-card">
         <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Experiencia Internacional</h3>
         <p class="text-gray-600 dark:text-gray-300">Una oportunidad única para crecer, aprender y desarrollar habilidades globales a través de una inmersión cultural guiada y estructurada.</p>
         {testimonialContent && testimonialContent.length > 0 ? (
           testimonialContent.map(content => (
-          <div class="w-full h-full">
+          <div class="w-full h-full program-media-item">
             {content.type === 'image' && content.image && (
               <img
                 src={content.image.src}
                 alt={content.alt || "Testimonio visual del programa"}
-                class="w-full h-full object-cover"
+                class="w-full h-full object-cover program-media-image"
               />
             )}
             {content.type === 'youtube' && content.url && (
-              <div class="aspect-video w-full">
+              <div class="aspect-video w-full program-media-youtube">
                 <iframe
                   src={`https://www.youtube.com/embed/${content.url.includes('youtu.be') ? content.url.split('/').at(-1) : content.url}`}
                   title="YouTube video testimonial"
@@ -161,7 +162,7 @@ const formUrl = applicationFormLink ?? `${Astro.url.pathname}/aplicar`;
 </section>
 
 <!-- 3. ¿Quién puede participar? -->
-<section id="requirements" class="py-16 bg-gray-50 dark:bg-gray-800">
+<section id="requirements" class="py-16 bg-gray-50 dark:bg-gray-800 program-print-section">
   <div class="container-custom">
     <div class="text-center max-w-3xl mx-auto mb-12">
       <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">
@@ -226,7 +227,7 @@ const formUrl = applicationFormLink ?? `${Astro.url.pathname}/aplicar`;
 </section>
 
 <!-- 4. ¿Cuánto dura y cómo funciona? -->
-<section id="duration" class="py-16">
+<section id="duration" class="py-16 program-print-section">
   <div class="container-custom">
     <div class="text-center max-w-3xl mx-auto mb-12">
       <span class="inline-block px-4 py-1 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-300 font-medium text-sm mb-4">
@@ -303,7 +304,7 @@ const formUrl = applicationFormLink ?? `${Astro.url.pathname}/aplicar`;
 </section>
 
 <!-- 5. ¿Cuáles son los costos? ¿Qué incluye Rotary? -->
-<section id="costs" class="py-16 bg-gray-50 dark:bg-gray-800">
+<section id="costs" class="py-16 bg-gray-50 dark:bg-gray-800 program-print-section">
   <div class="container-custom">
     <div class="text-center max-w-3xl mx-auto mb-12">
       <span class="inline-block px-4 py-1 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-300 font-medium text-sm mb-4">
@@ -360,7 +361,7 @@ const formUrl = applicationFormLink ?? `${Astro.url.pathname}/aplicar`;
 </section>
 
 <!-- 6. ¿Cómo aplicar? -->
-<section id="apply" class="py-16">
+<section id="apply" class="py-16 program-print-section">
   <div class="container-custom">
     <div class="text-center max-w-3xl mx-auto mb-12">
       <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">
@@ -392,9 +393,10 @@ const formUrl = applicationFormLink ?? `${Astro.url.pathname}/aplicar`;
                   <div class="mt-3 w-full text-center">
                     <a
                       href={formUrl}
+                      data-print-url={printableFormUrl}
                       target={applicationFormLink ? '_blank' : '_self'}
                       rel="noopener noreferrer"
-                      class="btn btn-primary inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300 bg-primary-600 hover:bg-primary-700 text-white"
+                      class="btn btn-primary inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300 bg-primary-600 hover:bg-primary-700 text-white program-print-plain-link"
                     >
                       <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path>
@@ -434,7 +436,7 @@ const formUrl = applicationFormLink ?? `${Astro.url.pathname}/aplicar`;
 </section>
 
 <!-- 7. Preguntas frecuentes -->
-<section id="faqs" class="py-16 bg-gray-50 dark:bg-gray-800">
+<section id="faqs" class="py-16 bg-gray-50 dark:bg-gray-800 program-print-section">
   <div class="container-custom">
     <FAQSection
       title="Preguntas frecuentes"
@@ -448,7 +450,7 @@ const formUrl = applicationFormLink ?? `${Astro.url.pathname}/aplicar`;
 
 <!-- 8. Testimonios / Historias -->
 {testimonials.length > 0 && (
-  <section id="testimonials" class="py-16">
+  <section id="testimonials" class="py-16 program-print-section">
     <div class="container-custom">
       <div class="text-center max-w-3xl mx-auto mb-16">
         <span class="inline-block px-4 py-1 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 font-medium text-sm mb-4">
@@ -460,7 +462,7 @@ const formUrl = applicationFormLink ?? `${Astro.url.pathname}/aplicar`;
         </p>
       </div>
 
-      <div class="grid xl:grid-cols-2 gap-8">
+      <div class="grid xl:grid-cols-2 gap-8 program-testimonials-grid">
         {testimonials.map((testimonial, index) => (
           <!--
           <div
@@ -500,3 +502,134 @@ const formUrl = applicationFormLink ?? `${Astro.url.pathname}/aplicar`;
     </div>
   </section>
 )}
+
+<style>
+  @media print {
+    #content-menu {
+      display: none !important;
+    }
+
+    .program-print-section {
+      break-before: page;
+      page-break-before: always;
+    }
+
+    /* Keep headings together, but allow content blocks to flow across pages. */
+    .program-print-section .container-custom > .text-center {
+      margin-bottom: 1.5rem !important;
+      break-inside: avoid-page;
+      page-break-inside: avoid;
+    }
+
+    .program-print-section h2,
+    .program-print-section h3 {
+      break-after: avoid-page;
+      page-break-after: avoid;
+    }
+
+    .program-print-section .container-custom > .text-center + * {
+      break-inside: auto;
+      page-break-inside: auto;
+    }
+
+    /* Top-level section grids can become non-fragmentable in print.
+       Render them as normal block flow so titles don't get stranded. */
+    .program-print-section .container-custom > .grid {
+      display: block !important;
+    }
+
+    .program-print-section .container-custom > .grid > * {
+      margin-bottom: 1.5rem;
+    }
+
+    .program-print-section .container-custom > .grid > *:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Print testimonials as one card per row. */
+    #testimonials .program-testimonials-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1rem;
+    }
+
+    /* Print-friendly surfaces: remove heavy web card chrome. */
+    .program-print-section .card {
+      background: transparent !important;
+      box-shadow: none !important;
+      border-color: transparent !important;
+    }
+
+    .program-print-section .rounded-lg,
+    .program-print-section .rounded-2xl {
+      border-radius: 0 !important;
+    }
+
+    .program-print-section .shadow-sm,
+    .program-print-section .shadow-lg,
+    .program-print-section .hover\:shadow-md {
+      box-shadow: none !important;
+    }
+
+    .program-print-section .bg-white,
+    .program-print-section .bg-gray-50,
+    .program-print-section .dark\:bg-gray-800,
+    .program-print-section .dark\:bg-gray-700\/30,
+    .program-print-section .dark\:bg-gray-800\/40,
+    .program-print-section .dark\:bg-gray-800\/70 {
+      background: transparent !important;
+    }
+
+    .program-print-plain-link {
+      display: inline !important;
+      padding: 0 !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      color: #1d4ed8 !important;
+      font-weight: 400 !important;
+      text-decoration: underline !important;
+      text-underline-offset: 2px;
+    }
+
+    .program-print-plain-link svg {
+      display: none !important;
+    }
+
+    .program-print-plain-link::after {
+      content: " (" attr(data-print-url) ")";
+      color: #374151;
+      font-size: 0.9em;
+      word-break: break-all;
+    }
+
+    /* Keep heading+intro together, but let long media lists paginate naturally. */
+    .program-print-media-card {
+      break-inside: auto;
+      page-break-inside: auto;
+      overflow: visible !important;
+    }
+
+    .program-media-item {
+      break-inside: avoid-page;
+      page-break-inside: avoid;
+      margin-bottom: 0.75rem;
+    }
+
+    .program-media-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .program-media-image {
+      display: block;
+      height: auto !important;
+      break-inside: avoid-page;
+      page-break-inside: avoid;
+    }
+
+    /* Print only images from the media block. */
+    .program-media-youtube {
+      display: none !important;
+    }
+  }
+</style>
