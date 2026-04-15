@@ -69,14 +69,26 @@ const printableFormUrl = new URL(formUrl, Astro.url).toString();
 ---
 
 <nav id="content-menu" class="sticky top-20 z-40 bg-white/90 dark:bg-secondary-950/90 backdrop-blur-xs border-b border-gray-200 dark:border-gray-700">
-  <div class="container-custom flex flex-wrap justify-center gap-4 py-2 text-sm font-medium">
-    <a href="#about" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Programa</a>
-    <a href="#requirements" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Requisitos</a>
-    <a href="#duration" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Duración</a>
-    <a href="#costs" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Costos</a>
-    <a href="#apply" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Aplicar</a>
-    <a href="#faqs" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">FAQ</a>
-    <a href="#testimonials" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Testimonios</a>
+  <div class="container-custom relative flex items-center justify-center gap-3 py-2 text-sm font-medium">
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a href="#about" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Programa</a>
+      <a href="#requirements" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Requisitos</a>
+      <a href="#duration" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Duración</a>
+      <a href="#costs" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Costos</a>
+      <a href="#apply" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Aplicar</a>
+      <a href="#faqs" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">FAQ</a>
+      <a href="#testimonials" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Testimonios</a>
+    </div>
+    <button
+      type="button"
+      class="program-content-print-tab absolute right-0 bottom-[-1px] inline-flex items-center gap-1 cursor-pointer rounded-t-md rounded-b-none border border-b-0 border-gray-200 px-3 py-1.5 text-primary-700 dark:border-gray-700 dark:bg-primary-900/30 dark:text-primary-300"
+      onclick="window.print()"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17H7v4h10v-4zM7 7V3h10v4M6 17H5a2 2 0 01-2-2v-4a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2h-1"></path>
+      </svg>
+      Imprimir
+    </button>
   </div>
 </nav>
 
@@ -504,6 +516,25 @@ const printableFormUrl = new URL(formUrl, Astro.url).toString();
 )}
 
 <style>
+  .program-content-print-tab {
+    position: absolute;
+  }
+
+  .program-content-print-tab::after {
+    content: "";
+    position: absolute;
+    left: 1px;
+    right: 1px;
+    bottom: -1px;
+    height: 2px;
+    background: rgb(255 255 255 / 0.9);
+    pointer-events: none;
+  }
+
+  :global(.dark) .program-content-print-tab::after {
+    background: rgb(2 6 23 / 0.9);
+  }
+
   @media print {
     #content-menu {
       display: none !important;
