@@ -30,17 +30,18 @@ const printableQrUrl = `https://quickchart.io/qr?size=180&margin=1&text=${encode
         <div class="flex flex-col gap-6">
           <div class="program-print-title-row">
             <div class="program-print-title-copy">
-              <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">{title}</h1>
-              <p class="program-print-hero-url">{printablePageUrl}</p>
+              <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+                {title}
+              </h1>
+              <p class="program-print-hero-url">
+                {printablePageUrl}
+              </p>
               <div class="flex flex-wrap gap-4 my-6 text-gray-600 dark:text-white program-print-badges">
                 <span class="badge bg-primary-100 dark:bg-secondary-500 px-3">
                   Edad: {age} años
                 </span>
                 <span class="badge bg-primary-100 dark:bg-secondary-500 px-3">
                   Duración: {duration}
-                </span>
-                <span class="badge bg-primary-100 dark:bg-secondary-500 px-3">
-                  [{programCode}]
                 </span>
               </div>
             </div>
@@ -51,7 +52,7 @@ const printableQrUrl = `https://quickchart.io/qr?size=180&margin=1&text=${encode
           <a href="#aplicar" class="btn btn-primary mt-6 w-fit program-print-hero-action">Quiero participar</a>
         </div>
         <div class="flex justify-center">
-          <div class="w-64 h-64 overflow-hidden">
+          <div class="w-64 h-64 overflow-hidden program-print-hero-logo">
             <img
                 src={logo.src}
                 alt={`Logo de ${title}`}
@@ -106,7 +107,24 @@ const printableQrUrl = `https://quickchart.io/qr?size=180&margin=1&text=${encode
       position: static !important;
       backdrop-filter: none !important;
       background: #fff !important;
-      border-bottom: 1px solid #e5e7eb;
+      border-bottom: 0 !important;
+    }
+
+    :global(header .container-custom) {
+      justify-content: center !important;
+    }
+
+    :global(header a[aria-label="Ir a la página principal"]) {
+      display: flex !important;
+      justify-content: center !important;
+      width: 100% !important;
+    }
+
+    :global(header a[aria-label="Ir a la página principal"] > *) {
+      width: 28rem !important;
+      max-width: none !important;
+      margin-right: 0 !important;
+      margin-left: 0 !important;
     }
 
     :global(footer) {
@@ -133,6 +151,11 @@ const printableQrUrl = `https://quickchart.io/qr?size=180&margin=1&text=${encode
       width: 88px;
       height: 88px;
       object-fit: contain;
+    }
+
+    .program-print-hero-logo {
+      width: 22rem !important;
+      height: 22rem !important;
     }
 
     .program-print-title-row {
