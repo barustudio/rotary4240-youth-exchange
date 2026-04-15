@@ -69,8 +69,8 @@ const printableFormUrl = new URL(formUrl, Astro.url).toString();
 ---
 
 <nav id="content-menu" class="sticky top-20 z-40 bg-white/90 dark:bg-secondary-950/90 backdrop-blur-xs border-b border-gray-200 dark:border-gray-700">
-  <div class="container-custom relative flex items-center justify-center gap-3 py-2 text-sm font-medium">
-    <div class="flex flex-wrap items-center justify-center gap-4">
+  <div class="container-custom relative flex flex-col items-center justify-center gap-2 py-2 text-sm font-medium md:flex-row md:flex-nowrap md:gap-3">
+    <div class="flex w-full flex-wrap items-center justify-center gap-4 md:w-auto md:pr-28">
       <a href="#about" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Programa</a>
       <a href="#requirements" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Requisitos</a>
       <a href="#duration" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Duración</a>
@@ -78,10 +78,20 @@ const printableFormUrl = new URL(formUrl, Astro.url).toString();
       <a href="#apply" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Aplicar</a>
       <a href="#faqs" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">FAQ</a>
       <a href="#testimonials" class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">Testimonios</a>
+      <button
+        type="button"
+        class="inline-flex items-center gap-1 cursor-pointer text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400 md:hidden"
+        onclick="window.print()"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17H7v4h10v-4zM7 7V3h10v4M6 17H5a2 2 0 01-2-2v-4a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2h-1"></path>
+        </svg>
+        Imprimir
+      </button>
     </div>
     <button
       type="button"
-      class="program-content-print-tab absolute right-0 bottom-[-1px] inline-flex items-center gap-1 cursor-pointer rounded-t-md rounded-b-none border border-b-0 border-gray-200 px-3 py-1.5 text-primary-700 dark:border-gray-700 dark:bg-primary-900/30 dark:text-primary-300"
+      class="program-content-print-tab mt-1 hidden items-center gap-1 self-center cursor-pointer rounded-md border border-gray-200 px-3 py-1.5 text-primary-700 dark:border-gray-700 dark:bg-primary-900/30 dark:text-primary-300 md:absolute md:right-0 md:bottom-[-1px] md:mt-0 md:inline-flex md:rounded-t-md md:rounded-b-none md:border-b-0"
       onclick="window.print()"
     >
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
